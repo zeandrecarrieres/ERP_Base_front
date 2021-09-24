@@ -4,7 +4,7 @@ import { Delete, Edit } from '@material-ui/icons';
 
 function ClientsLine({clients}) {
   const deleteClient = async ()=>{
-    await fetch(`https://wineerpback.herokuapp.com/clients/`+clients._id, {
+    await fetch(`https://erp-base-back.herokuapp.com/clients/`+clients._id, {
       method: "DELETE",
 
     })
