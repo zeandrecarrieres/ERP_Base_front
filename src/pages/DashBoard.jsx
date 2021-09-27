@@ -15,12 +15,12 @@ function DashBoard() {
 
   const totalRevenue = transactions.reduce((acc, transaction) => {
     if (transaction.type === "Venda") {
-      return (acc + transaction.total_price)
+      return acc + transaction.total_price;
     }
     return acc;
   }, 0);
 
-  const transactionsGraph = transactions.sort()
+  const transactionsGraph = transactions.sort();
 
   const totalDepenses = transactions.reduce((acc, transaction) => {
     if (transaction.type === "Compra") {

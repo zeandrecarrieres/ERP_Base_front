@@ -3,7 +3,7 @@ import axios from "axios";
 import { TransactionsContext } from "../TransactionsContext";
 
 function TransactionAdd() {
-    const [date, setDate] = useState("");
+  const [date, setDate] = useState("");
   const [type, setType] = useState("");
   const [client, setClient] = useState("");
   const [product, setProduct] = useState("");
@@ -16,18 +16,14 @@ function TransactionAdd() {
   const transactions = useContext(TransactionsContext);
 
   useEffect(() => {
-    fetch('https://wineerpback.herokuapp.com/products')
-    // fetch(`${process.env.REACT_APP_API_URL}/client`)
-    // fetch("https://erpbacken.herokuapp.com/products/")
+    fetch(`${process.env.REACT_APP_URL_API}/products`)
       .then((response) => response.json())
       .then((data) => setProductOptions(data))
       .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
-      fetch('https://wineerpback.herokuapp.com/clients')
-    // fetch(`${process.env.REACT_APP_API_URL}/client`)
-    // fetch("https://erpbacken.herokuapp.com/clients/")
+    fetch(`${process.env.REACT_APP_URL_API}/clients`)
       .then((response) => response.json())
       .then((data) => setClientOptions(data))
       .catch((error) => console.log(error));
@@ -49,8 +45,7 @@ function TransactionAdd() {
 
     axios({
       method: "post",
-      url: "https://wineerpback.herokuapp.com/transactions",
-      // url: `${process.env.REACT_APP_URL_API}/products`,
+      url: `${process.env.REACT_APP_URL_API}/transactions`,
       data: {
         date,
         type,
@@ -74,12 +69,9 @@ function TransactionAdd() {
       });
   };
 
-    return (
-        <div className="w-90 bg-white rounded shadow-lg p-8 m-4 md:max-w-2xl md:mx-auto">
-        
-        
-
-        <form
+  return (
+    <div className="w-90 bg-white rounded shadow-lg p-8 m-4 md:max-w-2xl md:mx-auto">
+      <form
         action="#"
         className="grid-cols-2 grid-template-columns: repeat(2, minmax(0, 1fr)); items-center justify-center"
         onSubmit={registerTransaction}
@@ -232,8 +224,8 @@ function TransactionAdd() {
           Cadastrar
         </button>
       </form>
-      </div>
-    )
+    </div>
+  );
 }
 
-export default TransactionAdd
+export default TransactionAdd;

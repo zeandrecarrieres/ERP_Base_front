@@ -20,12 +20,10 @@ function ProductRegister() {
   const [inscription, setInscription] = useState("");
   const [site, setSite] = useState("");
   const [clients, setClients] = useState([]);
-  const [counter, setCounter] = useState(1)
+  const [counter, setCounter] = useState(1);
 
   useEffect(() => {
-    fetch('https://wineerpback.herokuapp.com/clients')
-    // fetch("https://erpbacken.herokuapp.com/clients")
-      // fetch(`${process.env.REACT_APP_URL_API}/products`)
+    fetch(`${process.env.REACT_APP_URL_API}/clients`)
       .then((response) => response.json())
       .then((data) => setClients(data));
   }, [counter, category]);
@@ -34,8 +32,7 @@ function ProductRegister() {
     e.preventDefault();
     axios({
       method: "post",
-      url: "https://wineerpback.herokuapp.com/clients",
-      // url: `${process.env.REACT_APP_URL_API}/clients`,
+      url: `${process.env.REACT_APP_URL_API}/clients`,
       data: {
         type,
         category,
@@ -57,8 +54,8 @@ function ProductRegister() {
       .then(function (reponse) {
         //On traite la suite une fois la réponse obtenue
         alert("Cliente Cadastrado com sucesso!");
-        setCounter(counter +1)
-        console.log(category)
+        setCounter(counter + 1);
+        console.log(category);
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues
@@ -108,21 +105,22 @@ function ProductRegister() {
                 className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
                 placeholder="category"
                 onChange={(e) => setCategory(e.target.value)}
-                
               >
                 <option value="" className="flex flex-col mb-4">
                   -- Selecione uma opção --
                 </option>
-                <option 
-                value="Fisica"
-                // name="Física"
-                className="flex flex-col mb-4">
+                <option
+                  value="Fisica"
+                  // name="Física"
+                  className="flex flex-col mb-4"
+                >
                   Física
                 </option>
-                <option 
-                value="Juridica"
-                // name="Jurídica"
-                className="flex flex-col mb-4">
+                <option
+                  value="Juridica"
+                  // name="Jurídica"
+                  className="flex flex-col mb-4"
+                >
                   Jurídica
                 </option>
               </select>
@@ -134,7 +132,7 @@ function ProductRegister() {
               htmlFor="nick"
               className="uppercase font-bold text-md text-gray-500"
             >
-              {category === 'Fisica' ? "NOME" : "RAZÃO SOCIAL" }
+              {category === "Fisica" ? "NOME" : "RAZÃO SOCIAL"}
             </label>
             <input
               type="text"
@@ -144,8 +142,6 @@ function ProductRegister() {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-
-          
 
           <div className="flex flex-col mb-4">
             <label
@@ -282,7 +278,7 @@ function ProductRegister() {
               htmlFor="cnp"
               className="uppercase font-bold text-md text-gray-500"
             >
-              {category === 'Fisica' ? "CPF" : "CNPJ" }
+              {category === "Fisica" ? "CPF" : "CNPJ"}
             </label>
             <input
               type="text"
@@ -293,13 +289,12 @@ function ProductRegister() {
             />
           </div>
 
-        
           <div className="flex flex-col mb-4">
             <label
               htmlFor="inscription"
               className="uppercase font-bold text-md text-gray-500"
-           >
-             INSCRIÇÃO ESTADUAL
+            >
+              INSCRIÇÃO ESTADUAL
             </label>
             <input
               type="text"
@@ -332,20 +327,22 @@ function ProductRegister() {
         </form>
       </div>
       <div className="mx-20">
-      <h1 className="text-red-700 text-xl mt-20">Lista de Clientes</h1>
-      <table className="table-fixed border w-full ">
-        <thead className="border ">
-          <tr className="border ">
-            <th className="w-1/12  border bg-gray-100">Tipo</th>
-            <th className="w-1/12 px-12 border py-2 bg-gray-100">Categoria</th>
-            <th className="w-1/12 px-12 border bg-gray-100">Nome</th>
-            <th className="w-3/12 px-12 border bg-gray-100">Razão Social</th>
-            <th className="w-2/12 px-12 border bg-gray-100">Email</th>
-            <th className="w-2/12 px-12 border bg-gray-100">Telefone</th>
-          </tr>
-        </thead>
+        <h1 className="text-red-700 text-xl mt-20">Lista de Clientes</h1>
+        <table className="table-fixed border w-full ">
+          <thead className="border ">
+            <tr className="border ">
+              <th className="w-1/12  border bg-gray-100">Tipo</th>
+              <th className="w-1/12 px-12 border py-2 bg-gray-100">
+                Categoria
+              </th>
+              <th className="w-1/12 px-12 border bg-gray-100">Nome</th>
+              <th className="w-3/12 px-12 border bg-gray-100">Razão Social</th>
+              <th className="w-2/12 px-12 border bg-gray-100">Email</th>
+              <th className="w-2/12 px-12 border bg-gray-100">Telefone</th>
+            </tr>
+          </thead>
         </table>
-      
+
         {clients.map((client) => (
           <ClientLine key={client._id} clients={client} />
         ))}

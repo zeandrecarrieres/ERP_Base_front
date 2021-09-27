@@ -1,5 +1,3 @@
-import { createContext } from "react"
+import { createContext } from "react";
 
-export const TransactionsContext = createContext([])
-
-
+export const TransactionsContext = createContext([]);

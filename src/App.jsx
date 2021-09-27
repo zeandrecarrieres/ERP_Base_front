@@ -9,15 +9,11 @@ import DashBoard from "./pages/DashBoard";
 import Transactions from "./pages/Transactions";
 import SideBar from "./components/SideBar";
 
-
 function App() {
   const [transactions, setTransactions] = useState([]);
- 
 
   useEffect(() => {
-    
-    fetch("https://wineerpback.herokuapp.com/transactions")
-      // fetch(`${process.env.REACT_APP_URL_API}/products`)
+    fetch(`${process.env.REACT_APP_URL_API}/transactions`)
       .then((response) => response.json())
       .then((data) => setTransactions(data));
   }, []);
@@ -38,8 +34,6 @@ function App() {
               </Switch>
             </div>
           </div>
-
-          
         </BrowserRouter>
       </TransactionsContext.Provider>
     </div>
