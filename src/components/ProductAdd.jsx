@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import ProductLine from "../components/ProductLine";
+import React, { useState} from "react";
 import axios from "axios";
-import { NewProductModal } from "../components/NewProductModal";
+
 
 function ProductAdd() {
   const [code, setCode] = useState("");
@@ -10,25 +9,6 @@ function ProductAdd() {
   const [description, setDescription] = useState("");
   const [purchase_price, setPurchase_price] = useState("");
   const [reference_price, setReference_price] = useState("");
-  const [products, setProducts] = useState([]);
-  const [counter, setCounter] = useState(1);
-  const [modalProductIsOpen, setModalProductIsOpen] = useState(false);
-
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_URL_API}/products`)
-      .then((response) => response.json())
-      .then((data) => setProducts(data));
-  }, [counter]);
-
-
-  function openProductModal() {
-    setModalProductIsOpen(true);
-  }
-
-  function closeProductModal() {
-    setModalProductIsOpen(false);
-  }
-
 
   const registerProduct = (e) => {
     e.preventDefault();
@@ -53,11 +33,7 @@ function ProductAdd() {
         setDescription("");
         setPurchase_price("");
         setReference_price("");
-        setCounter(counter + 1);
-
-        console.log(reponse);
-        console.log(products);
-        console.log(typeof products);
+      
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues

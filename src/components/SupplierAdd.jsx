@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import SupplierLine from "../components/SupplierLine";
-// import { MicNone } from "@material-ui/icons";
 
 function SuppliersAdd() {
   const [type, setType] = useState("");
   const [category, setCategory] = useState("");
-  const [nick, setNick] = useState("");
+  // const [nick, setNick] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [telephone, setTelephone] = useState("");
@@ -19,14 +17,6 @@ function SuppliersAdd() {
   const [cnp, setCnp] = useState("");
   const [inscription, setInscription] = useState("");
   const [site, setSite] = useState("");
-  const [suppliers, setSuppliers] = useState([]);
-  const [counter, setCounter] = useState(1);
-
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_URL_API}/suppliers`)
-      .then((response) => response.json())
-      .then((data) => setSuppliers(data));
-  }, [counter, category]);
 
   const registerSupplier = (e) => {
     e.preventDefault();
@@ -36,7 +26,7 @@ function SuppliersAdd() {
       data: {
         type,
         category,
-        nick,
+        // nick,
         name,
         email,
         telephone,
@@ -54,8 +44,6 @@ function SuppliersAdd() {
       .then(function (reponse) {
         //On traite la suite une fois la réponse obtenue
         alert("Fornecedor Cadastrado com sucesso!");
-        setCounter(counter + 1);
-        console.log(category);
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues
@@ -289,21 +277,23 @@ function SuppliersAdd() {
             />
           </div>
 
-          {category === "Juridica" ?  <div className="flex flex-col mb-4">
-            <label
-              htmlFor="inscription"
-              className="uppercase font-bold text-md text-gray-500"
-            >
-              INSCRIÇÃO ESTADUAL
-            </label>
-            <input
-              type="text"
-              id="inscription"
-              name="inscription"
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
-              onChange={(e) => setInscription(e.target.value)}
-            />
-        </div> : null}
+          {category === "Juridica" ? (
+            <div className="flex flex-col mb-4">
+              <label
+                htmlFor="inscription"
+                className="uppercase font-bold text-md text-gray-500"
+              >
+                INSCRIÇÃO ESTADUAL
+              </label>
+              <input
+                type="text"
+                id="inscription"
+                name="inscription"
+                className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+                onChange={(e) => setInscription(e.target.value)}
+              />
+            </div>
+          ) : null}
 
           <div className="flex flex-col mb-4">
             <label
@@ -326,9 +316,7 @@ function SuppliersAdd() {
           </button>
         </form>
       </div>
-      <div className="mx-20">
-        
-      </div>
+      <div className="mx-20"></div>
     </div>
   );
 }

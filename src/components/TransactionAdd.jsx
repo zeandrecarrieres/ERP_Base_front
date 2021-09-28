@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { TransactionsContext } from "../TransactionsContext";
+// import { TransactionsContext } from "../TransactionsContext";
 
 function TransactionAdd() {
   const [date, setDate] = useState("");
@@ -17,7 +17,7 @@ function TransactionAdd() {
   const [obs, setObs] = useState("");
   const [counter, setCounter] = useState(1);
 
-  const transactions = useContext(TransactionsContext);
+  // const transactions = useContext(TransactionsContext);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/products`)
@@ -39,8 +39,6 @@ function TransactionAdd() {
       .then((data) => setSupplierOptions(data))
       .catch((error) => console.log(error));
   }, []);
-
-
 
   const registerTransaction = (e) => {
     e.preventDefault();
@@ -74,17 +72,13 @@ function TransactionAdd() {
         //  addCounter();
         console.log(reponse);
         alert("Transação efetuada com sucesso!");
-        
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues
         console.log(erreur);
         alert("Preencha todos os campos");
       });
-      setCounter(counter + 1);
-      
-      
-      
+    setCounter(counter + 1);
   };
 
   return (
@@ -153,11 +147,13 @@ function TransactionAdd() {
             <option value="" className="flex flex-col mb-4">
               -- Selecione uma opção --
             </option>
-            {type === "Compra" ? supplierOptions.map((option) => (
-              <option value={option.name}>{option.name}</option>
-            )) : clientOptions.map((option) => (
-              <option value={option.name}>{option.name}</option>
-            )) }
+            {type === "Compra"
+              ? supplierOptions.map((option) => (
+                  <option value={option.name}>{option.name}</option>
+                ))
+              : clientOptions.map((option) => (
+                  <option value={option.name}>{option.name}</option>
+                ))}
           </select>
         </div>
 
@@ -218,7 +214,12 @@ function TransactionAdd() {
               onChange={(e) => {
                 setReference_price(parseFloat(e.target.value));
                 setTotal_price(qtde * e.target.value);
-                console.log(reference_price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
+                console.log(
+                  reference_price.toLocaleString("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  })
+                );
               }}
             />
           </div>
@@ -233,11 +234,9 @@ function TransactionAdd() {
               type="number"
               id="discount"
               name="discount"
-              // value={discount}
               className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
-              onChange={(e) => {setDiscount(e.target.value);
-                // console.log(total_price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
-                // console.log(discount)
+              onChange={(e) => {
+                setDiscount(e.target.value);
               }}
             />
           </div>
@@ -252,10 +251,9 @@ function TransactionAdd() {
               type="number"
               id="totalPrice"
               name="totalPrice"
-              value={(total_price*(1-discount/100)).toFixed(2)}
+              value={(total_price * (1 - discount / 100)).toFixed(2)}
               readOnly
               className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
-              // onChange={(e) => setTotal_price(e.target.value)}
             />
             <label
               htmlFor="totalPrice"
@@ -264,8 +262,8 @@ function TransactionAdd() {
               Observação
             </label>
             <textarea
-              rows="4" 
-              cols="50" 
+              rows="4"
+              cols="50"
               // maxlength="200"
               type="string"
               id="obs"

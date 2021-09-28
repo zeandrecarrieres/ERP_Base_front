@@ -1,16 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
+import React, { useState, useContext } from "react";
 import { TransactionsContext } from "../TransactionsContext";
 import TransactionLine from "../components/TransactionLine";
 // import TransactionsAdd from "../components/TransactionAdd";
 
-import Modal from "react-modal";
 import { NewTransactionModal } from "../components/NewTransactionModal";
 
 function Transactions() {
   const transactions = useContext(TransactionsContext);
   const [modalTransactionIsOpen, setModalTransactionIsOpen] = useState(false);
-  const [counter, setCounter] = useState(0);
 
   function openModal() {
     setModalTransactionIsOpen(true);
@@ -19,11 +16,6 @@ function Transactions() {
   function closeModal() {
     setModalTransactionIsOpen(false);
   }
-
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_URL_API}/transactions`);
-    console.log(transactions);
-  }, []);
 
   return (
     <div>

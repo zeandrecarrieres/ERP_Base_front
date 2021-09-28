@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 
 function ClientAdd() {
   const [type, setType] = useState("");
   const [category, setCategory] = useState("");
-  const [nick, setNick] = useState("");
+  // const [nick, setNick] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [telephone, setTelephone] = useState("");
@@ -18,14 +18,7 @@ function ClientAdd() {
   const [cnp, setCnp] = useState("");
   const [inscription, setInscription] = useState("");
   const [site, setSite] = useState("");
-  const [clients, setClients] = useState([]);
-  const [counter, setCounter] = useState(1);
-
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_URL_API}/clients`)
-      .then((response) => response.json())
-      .then((data) => setClients(data));
-  }, [counter, category]);
+ 
 
   const registerClient = (e) => {
     e.preventDefault();
@@ -35,7 +28,7 @@ function ClientAdd() {
       data: {
         type,
         category,
-        nick,
+        // nick,
         name,
         email,
         telephone,
@@ -53,7 +46,7 @@ function ClientAdd() {
       .then(function (reponse) {
         //On traite la suite une fois la réponse obtenue
         alert("Cliente Cadastrado com sucesso!");
-        setCounter(counter + 1);
+       
         setName('')
         setEmail('')
         setTelephone('')

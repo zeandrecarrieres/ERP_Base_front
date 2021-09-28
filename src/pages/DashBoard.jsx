@@ -20,7 +20,7 @@ function DashBoard() {
     return acc;
   }, 0);
 
-  const transactionsGraph = transactions.sort();
+  // const transactionsGraph = transactions.sort();
 
   const totalDepenses = transactions.reduce((acc, transaction) => {
     if (transaction.type === "Compra") {

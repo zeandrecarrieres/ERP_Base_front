@@ -1,27 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import ClientLine from "../components/ClientLine";
-import Modal from "react-modal";
 import { NewClientModal } from "../components/NewClientModal";
 
 function Clients() {
-  const [type, setType] = useState("");
-  const [category, setCategory] = useState("");
-  const [nick, setNick] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [telephone, setTelephone] = useState("");
-  const [address, setAddress] = useState("");
-  const [complement, setComplement] = useState("");
-  const [district, setDistrict] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [postal, setPostal] = useState("");
-  const [cnp, setCnp] = useState("");
-  const [inscription, setInscription] = useState("");
-  const [site, setSite] = useState("");
   const [clients, setClients] = useState([]);
-  const [counter, setCounter] = useState(1);
   const [modalClientIsOpen, setModalClientIsOpen] = useState(false);
 
   function openClientModal() {
@@ -36,44 +18,9 @@ function Clients() {
     fetch(`${process.env.REACT_APP_URL_API}/clients`)
       .then((response) => response.json())
       .then((data) => setClients(data));
-  }, [counter, category]);
+  }, []);
 
-  const registerClient = (e) => {
-    e.preventDefault();
-    axios({
-      method: "post",
-      url: `${process.env.REACT_APP_URL_API}/clients`,
-      data: {
-        type,
-        category,
-        nick,
-        name,
-        email,
-        telephone,
-        address,
-        complement,
-        district,
-        city,
-        state,
-        postal,
-        cnp,
-        inscription,
-        site,
-      },
-    })
-      .then(function (reponse) {
-        //On traite la suite une fois la réponse obtenue
-        alert("Cliente Cadastrado com sucesso!");
-        setCounter(counter + 1);
-        console.log(category);
-      })
-      .catch(function (erreur) {
-        //On traite ici les erreurs éventuellement survenues
-        console.log(erreur);
-        alert("Preencha todos os campos!");
-      });
-  };
-
+  
   return (
     <div>
       <div className="mx-20">

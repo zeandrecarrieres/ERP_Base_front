@@ -1,25 +1,17 @@
 import React, { useState, useEffect } from "react";
 import ProductLine from "../components/ProductLine";
-import axios from "axios";
 import { NewProductModal } from "../components/NewProductModal";
 
 function Products() {
-  const [code, setCode] = useState("");
-  const [category, setCategory] = useState("");
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [purchase_price, setPurchase_price] = useState("");
-  const [reference_price, setReference_price] = useState("");
   const [products, setProducts] = useState([]);
-  const [counter, setCounter] = useState(1);
+  // const [counter, setCounter] = useState(1);
   const [modalProductIsOpen, setModalProductIsOpen] = useState(false);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/products`)
       .then((response) => response.json())
       .then((data) => setProducts(data));
-  }, [counter]);
-
+  }, []);
 
   function openProductModal() {
     setModalProductIsOpen(true);
@@ -29,46 +21,10 @@ function Products() {
     setModalProductIsOpen(false);
   }
 
-
-  const registerProduct = (e) => {
-    e.preventDefault();
-    axios({
-      method: "post",
-      url: `${process.env.REACT_APP_URL_API}/products`,
-      data: {
-        code,
-        category,
-        name,
-        description,
-        purchase_price,
-        reference_price,
-      },
-    })
-      .then(function (reponse) {
-        //On traite la suite une fois la réponse obtenue
-        alert("Produto Cadastrado com sucesso!");
-        setCode("");
-        setCategory("");
-        setName("");
-        setDescription("");
-        setPurchase_price("");
-        setReference_price("");
-        setCounter(counter + 1);
-
-    
-      })
-      .catch(function (erreur) {
-        //On traite ici les erreurs éventuellement survenues
-        alert("Preencha todos os campos!");
-        console.log(erreur);
-      });
-  };
-
   return (
     <div>
-      
       <div className="mx-20 pb-12">
-      <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center">
           <h1 className="text-red-700 text-xl mt-20 font-bold">
             Lista de Produtos
           </h1>
@@ -94,9 +50,7 @@ function Products() {
               <th className="w-1/12 px-12 border bg-gray-100">
                 Preço de venda
               </th>
-              <th className="w-1/12 px-12 border bg-gray-100">
-                Qtde Estoque
-              </th>
+              <th className="w-1/12 px-12 border bg-gray-100">Qtde Estoque</th>
               <th className="w-1/12 px-12 border bg-gray-100">Editar</th>
               <th className="w-1/12 px-12 border bg-gray-100">Excluir</th>
             </tr>
@@ -112,7 +66,6 @@ function Products() {
         isOpen={modalProductIsOpen}
         onRequestClose={closeProductModal}
       />
-
     </div>
   );
 }

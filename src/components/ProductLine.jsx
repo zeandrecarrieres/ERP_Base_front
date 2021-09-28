@@ -1,16 +1,21 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { Delete, Edit } from "@material-ui/icons";
 
-import { TransactionsContext } from "../TransactionsContext";
+// import { TransactionsContext } from "../TransactionsContext";
 
 function ProductsLine({ products }) {
+  const [counter, setCounter]=useState(0)
+
+
   const deleteProduct = async () => {
     await fetch(`${process.env.REACT_APP_URL_API}/products/` + products._id, {
       method: "DELETE",
     });
     alert("Produto deletado com sucesso!");
+    setCounter(counter + 1);
+    
   };
-  const transactions = useContext(TransactionsContext);
+  // const transactions = useContext(TransactionsContext);
 
   // const totalStock = transactions.reduce((acc, transaction) => {
   //   if (transaction.type = "Venda") {
@@ -19,14 +24,14 @@ function ProductsLine({ products }) {
   //   return acc;
   // }, 0);
 
-  console.log(transactions)
+  // console.log(transactions)
 
-  const stockItem = transactions.filter((transaction) => {
-    if ( transaction.name === products.name) {
-      return transaction.qtde;
-    }
-    return transaction.qtde;
-  }, 0);
+  // const stockItem = transactions.filter((transaction) => {
+  //   if ( transaction.name === products.name) {
+  //     return transaction.qtde;
+  //   }
+  //   return transaction.qtde;
+  // }, 0);
 
 
   // const stockItem = transactions.reduce((acc, transaction) => {
@@ -36,7 +41,7 @@ function ProductsLine({ products }) {
   //   return acc;
   // }, 0);
 
-  console.log(stockItem, products.name, transactions.name)
+  // console.log(stockItem, products.name, transactions.name)
  
 
 
