@@ -14,6 +14,7 @@ function TransactionAdd() {
   const [clientOptions, setClientOptions] = useState([]);
   const [supplierOptions, setSupplierOptions] = useState([]);
   const [discount, setDiscount] = useState(0);
+  const [obs, setObs] = useState("");
   const [counter, setCounter] = useState(1);
 
   const transactions = useContext(TransactionsContext);
@@ -254,6 +255,23 @@ function TransactionAdd() {
               readOnly
               className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
               // onChange={(e) => setTotal_price(e.target.value)}
+            />
+            <label
+              htmlFor="totalPrice"
+              className="uppercase font-bold text-md text-gray-500"
+            >
+              Observação
+            </label>
+            <textarea
+              rows="4" 
+              cols="50" 
+              // maxlength="200"
+              type="string"
+              id="obs"
+              name="obs"
+              value={obs}
+              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
+              onChange={(e) => setObs(e.target.value)}
             />
           </div>
         </div>
