@@ -40,6 +40,7 @@ function TransactionAdd() {
   }, []);
 
 
+
   const registerTransaction = (e) => {
     e.preventDefault();
     console.log(
@@ -72,6 +73,7 @@ function TransactionAdd() {
         //  addCounter();
         console.log(reponse);
         alert("Transação efetuada com sucesso!");
+        
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues
@@ -79,6 +81,8 @@ function TransactionAdd() {
         alert("Preencha todos os campos");
       });
       setCounter(counter + 1);
+      
+      
   };
 
   return (
@@ -192,7 +196,7 @@ function TransactionAdd() {
               name="qtde"
               className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-32"
               onChange={(e) => {
-                setTotal_price(qtde * e.target.value);
+                // setTotal_price(qtde * e.target.value);
                 setQtde(e.target.value);
               }}
             />
@@ -205,7 +209,7 @@ function TransactionAdd() {
               Preço Venda
             </label>
             <input
-              type="number"
+              type="float"
               id="salePrice"
               name="salePrice"
               className="border py-2 px-3 text-grey-darkes h-10 my-2 shadow-sm bg-opacity-30 px-2	w-32 "
@@ -246,7 +250,7 @@ function TransactionAdd() {
               type="number"
               id="totalPrice"
               name="totalPrice"
-              value={total_price*(1-discount/100)}
+              value={(total_price*(1-discount/100)).toFixed(2)}
               readOnly
               className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
               // onChange={(e) => setTotal_price(e.target.value)}

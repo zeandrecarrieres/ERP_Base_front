@@ -23,10 +23,12 @@ function TransactionsLine({ transactions }) {
             <td className="w-3/12 px-12 border">{transactions.product}</td>
             <td className="w-1/12 px-12 border">{transactions.qtde}</td>
             <td className="w-1/12 px-12 border">
-              {transactions.reference_price}
+              {transactions.reference_price.toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+              .replace(".", ",")}
             </td>
             <td className="w-1/12 px-12 border" readOnly>
-              {transactions.total_price}
+              {transactions.total_price.toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+              .replace(".", ",")}
             </td>
             <td className="w-1/12 px-12 border text-yellow-700 hover:text-yellow-500">
               <button>
