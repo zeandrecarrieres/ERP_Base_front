@@ -210,8 +210,9 @@ function TransactionAdd() {
               name="salePrice"
               className="border py-2 px-3 text-grey-darkes h-10 my-2 shadow-sm bg-opacity-30 px-2	w-32 "
               onChange={(e) => {
-                setReference_price(e.target.value);
+                setReference_price(parseFloat(e.target.value));
                 setTotal_price(qtde * e.target.value);
+                console.log(reference_price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
               }}
             />
           </div>
@@ -229,8 +230,8 @@ function TransactionAdd() {
               // value={discount}
               className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
               onChange={(e) => {setDiscount(e.target.value);
-                console.log(total_price)
-                console.log(discount)
+                // console.log(total_price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
+                // console.log(discount)
               }}
             />
           </div>

@@ -64,7 +64,7 @@ function ProductRegister() {
       });
   };
 
-  setName('')
+  
 
   return (
     <div>
