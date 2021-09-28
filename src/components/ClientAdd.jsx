@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ClientLine from "../components/ClientLine";
-import Modal from "react-modal";
-import { NewClientModal } from "../components/NewClientModal";
-// import { MicNone } from "@material-ui/icons";
+
 
 function ClientAdd() {
   const [type, setType] = useState("");
@@ -23,16 +20,6 @@ function ClientAdd() {
   const [site, setSite] = useState("");
   const [clients, setClients] = useState([]);
   const [counter, setCounter] = useState(1);
-  const [modalClientIsOpen, setModalClientIsOpen] = useState(false);
-
-
-  function openClientModal() {
-    setModalClientIsOpen(true);
-  }
-
-  function closeClientModal() {
-    setModalClientIsOpen(false);
-  }
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/clients`)
@@ -67,20 +54,35 @@ function ClientAdd() {
         //On traite la suite une fois la réponse obtenue
         alert("Cliente Cadastrado com sucesso!");
         setCounter(counter + 1);
-        console.log(category);
+        setName('')
+        setEmail('')
+        setTelephone('')
+        setAddress('')
+        setComplement('')
+        setDistrict('')
+        setCity('')
+        setState('')
+        setPostal('')
+        setCnp('')
+        setEmail('')
+        setInscription('')
+        setSite('')
+       
+    
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues
         console.log(erreur);
         alert("Preencha todos os campos!");
       });
+      
   };
 
   
 
   return (
     <div>
-      <div className="w-90 bg-white rounded shadow-lg p-8 m-4 md:max-w-2xl md:mx-auto ">
+      <div className="w-90 bg-white rounded shadow-lg mt-24 p-8 m-4 md:max-w-2xl md:mx-auto ">
         <form
           action="#"
           className="grid-cols-2 grid-template-columns: repeat(2, minmax(0, 1fr)); items-center justify-center"
@@ -91,21 +93,7 @@ function ClientAdd() {
           </div>
 
           <div className="flex justify-between">
-            {/* <div className="flex flex-col mb-4">
-              <label
-                htmlFor="type"
-                className="uppercase font-bold text-md text-gray-500"
-              >
-                Tipo
-              </label>
-              <input
-                type="text"
-                id="type"
-                name="type"
-                className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30"
-                onChange={(e) => setType(e.target.value)}
-              />
-            </div> */}
+    
 
 <div className="flex flex-col mb-4">
               <label
@@ -120,7 +108,7 @@ function ClientAdd() {
                 placeholder="category"
                 onChange={(e) => setType(e.target.value)}
               >
-                <option value="" className="flex flex-col mb-4">
+                <option value="initial" className="flex flex-col mb-4">
                   -- Selecione uma opção --
                 </option>
                 <option
@@ -186,6 +174,7 @@ function ClientAdd() {
               type="text"
               id="name"
               name="name"
+              value={name}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setName(e.target.value)}
             />
@@ -202,6 +191,7 @@ function ClientAdd() {
               type="text"
               id="email"
               name="email"
+              value={email}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -218,6 +208,7 @@ function ClientAdd() {
               type="text"
               id="telephone"
               name="telephone"
+              value={telephone}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setTelephone(e.target.value)}
             />
@@ -234,6 +225,7 @@ function ClientAdd() {
               type="text"
               id="address"
               name="address"
+              value={address}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setAddress(e.target.value)}
             />
@@ -250,6 +242,7 @@ function ClientAdd() {
               type="text"
               id="complement"
               name="complement"
+              value={complement}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setComplement(e.target.value)}
             />
@@ -266,6 +259,7 @@ function ClientAdd() {
               type="text"
               id="district"
               name="district"
+              value={district}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setDistrict(e.target.value)}
             />
@@ -282,6 +276,7 @@ function ClientAdd() {
               type="text"
               id="city"
               name="city"
+              value={city}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setCity(e.target.value)}
             />
@@ -299,6 +294,7 @@ function ClientAdd() {
                 type="text"
                 id="state"
                 name="state"
+                value={state}
                 className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
                 onChange={(e) => setState(e.target.value)}
               />
@@ -315,6 +311,7 @@ function ClientAdd() {
                 type="text"
                 id="postal"
                 name="postal"
+                value={postal}
                 className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
                 onChange={(e) => setPostal(e.target.value)}
               />
@@ -332,6 +329,7 @@ function ClientAdd() {
               type="text"
               id="cnp"
               name="cnp"
+              value={cnp}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setCnp(e.target.value)}
             />
@@ -348,6 +346,7 @@ function ClientAdd() {
               type="text"
               id="inscription"
               name="inscription"
+              value={inscription}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setInscription(e.target.value)}
             />
@@ -365,6 +364,7 @@ function ClientAdd() {
               type="text"
               id="site"
               name="site"
+              value={site}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setSite(e.target.value)}
             />
@@ -378,9 +378,7 @@ function ClientAdd() {
       </div>
       
 
-      <NewClientModal
-      isOpen={modalClientIsOpen}
-      onRequestClose={closeClientModal} />
+     
 
     </div>
   );

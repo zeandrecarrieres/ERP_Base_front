@@ -51,8 +51,10 @@ function ProductsLine({ products }) {
             <td className="w-1/12 px-12 border">{products.category}</td>
             <td className="w-2/12 px-12 border">{products.name}</td>
             <td className="w-2/12 px-12 border">{products.description}</td>
-            <td className="w-1/12 px-12 border">{products.purchase_price}</td>
-            <td className="w-1/12 px-12 border">{products.reference_price}</td>
+            <td className="w-1/12 px-12 border">{(products.purchase_price).toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+              .replace(".", ",")}</td>
+            <td className="w-1/12 px-12 border">{(products.reference_price).toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+              .replace(".", ",")}</td>
             <td className="w-1/12 px-12 border">0</td>
             <td className="w-1/12 px-12 border text-yellow-700 hover:text-yellow-500">
               <button>

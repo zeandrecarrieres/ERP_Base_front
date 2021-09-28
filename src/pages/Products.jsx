@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductLine from "../components/ProductLine";
 import axios from "axios";
+import { NewProductModal } from "../components/NewProductModal";
 
 function Products() {
   const [code, setCode] = useState("");
@@ -11,12 +12,23 @@ function Products() {
   const [reference_price, setReference_price] = useState("");
   const [products, setProducts] = useState([]);
   const [counter, setCounter] = useState(1);
+  const [modalProductIsOpen, setModalProductIsOpen] = useState(false);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/products`)
       .then((response) => response.json())
       .then((data) => setProducts(data));
   }, [counter]);
+
+
+  function openProductModal() {
+    setModalProductIsOpen(true);
+  }
+
+  function closeProductModal() {
+    setModalProductIsOpen(false);
+  }
+
 
   const registerProduct = (e) => {
     e.preventDefault();
@@ -43,9 +55,7 @@ function Products() {
         setReference_price("");
         setCounter(counter + 1);
 
-        console.log(reponse);
-        console.log(products);
-        console.log(typeof products);
+    
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues
@@ -56,128 +66,19 @@ function Products() {
 
   return (
     <div>
-      <div className="w-90 bg-white rounded shadow-lg p-8 m-4 md:max-w-2xl md:mx-auto">
-        <form
-          action="#"
-          className="grid-cols-2 grid-template-columns: repeat(2, minmax(0, 1fr)); items-center justify-center"
-          onSubmit={registerProduct}
-        >
-          <div className="text-3xl mb-8 text-gray-500">
-            Inclusão de Produtos
-          </div>
-
-          <div className="flex justify-between ">
-            <div className="flex flex-col mb-4">
-              <label
-                htmlFor="code"
-                className="uppercase font-bold text-md text-gray-500 "
-              >
-                Código
-              </label>
-              <input
-                type="text"
-                id="code"
-                name="code"
-                value={code}
-                className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30"
-                onChange={(e) => setCode(e.target.value)}
-              />
-            </div>
-            <div className="flex flex-col mb-4">
-              <label
-                htmlFor="category"
-                className="uppercase font-bold text-md text-gray-500 w-64"
-              >
-                Categoria
-              </label>
-              <input
-                type="text"
-                id="category"
-                name="category"
-                value={category}
-                className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30 px-2"
-                onChange={(e) => setCategory(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-col mb-4">
-            <label
-              htmlFor="name"
-              className="uppercase font-bold text-md text-gray-500"
-            >
-              Nome
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={name}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col mb-4">
-            <label
-              htmlFor="description"
-              className="uppercase font-bold text-md text-gray-500"
-            >
-              Descrição
-            </label>
-            <input
-              type="text"
-              id="description"
-              name="description"
-              value={description}
-              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
-
-          <div className="flex justify-between">
-            <div className="flex flex-col mb-4">
-              <label
-                htmlFor="purchase_price"
-                className="uppercase font-bold text-md text-gray-500"
-              >
-                Preço de Compra
-              </label>
-              <input
-                type="text"
-                id="purchase_price"
-                name="purchase_price"
-                value={purchase_price}
-                className="border py-2 px-3 text-grey-darkes h-10 my-2 shadow-sm bg-opacity-30 px-2	w-full"
-                onChange={(e) => setPurchase_price(e.target.value)}
-              />
-            </div>
-            <div className="flex flex-col mb-4">
-              <label
-                htmlFor="reference_price"
-                className="uppercase font-bold text-md text-gray-500"
-              >
-                Preço de Venda
-              </label>
-              <input
-                type="text"
-                id="reference_price"
-                name="reference_price"
-                value={reference_price}
-                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full"
-                onChange={(e) => setReference_price(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <button className="px-5 py-3 bg-red-700 text-white hover:bg-red-600 text-white uppercase text-lg mx-auto p-4 rounded w-full sm:w-auto">
-            Cadastrar
-          </button>
-        </form>
-
-        <div></div>
-      </div>
+      
       <div className="mx-20 pb-12">
-        <h1 className="text-red-700 text-xl mt-20">Lista de Produtos</h1>
+      <div className="flex justify-between items-center">
+          <h1 className="text-red-700 text-xl mt-20 font-bold">
+            Lista de Produtos
+          </h1>
+          <button
+            onClick={openProductModal}
+            className="flex justify-center items-center text-xl bg-gray-700 hover:bg-gray-500 text-white p-4 rounded align-rigth h-12 mt-4 "
+          >
+            +
+          </button>
+        </div>
         <table className="table-fixed border w-full">
           <thead className="border ">
             <tr className="border ">
@@ -206,6 +107,12 @@ function Products() {
           <ProductLine key={product.id} products={product} />
         ))}
       </div>
+
+      <NewProductModal
+        isOpen={modalProductIsOpen}
+        onRequestClose={closeProductModal}
+      />
+
     </div>
   );
 }

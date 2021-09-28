@@ -10,7 +10,7 @@ import { NewTransactionModal } from "../components/NewTransactionModal";
 function Transactions() {
   const transactions = useContext(TransactionsContext);
   const [modalTransactionIsOpen, setModalTransactionIsOpen] = useState(false);
-  const [counter, setCounter] = useState(0)
+  const [counter, setCounter] = useState(0);
 
   function openModal() {
     setModalTransactionIsOpen(true);
@@ -20,12 +20,10 @@ function Transactions() {
     setModalTransactionIsOpen(false);
   }
 
-  
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_URL_API}/transactions`)
-      console.log(transactions)
+    fetch(`${process.env.REACT_APP_URL_API}/transactions`);
+    console.log(transactions);
   }, []);
-
 
   return (
     <div>
@@ -63,14 +61,15 @@ function Transactions() {
       </div>
 
       <NewTransactionModal
-      isOpen={modalTransactionIsOpen}
-      onRequestClose={closeModal} />
+        isOpen={modalTransactionIsOpen}
+        onRequestClose={closeModal}
+      />
       {/* <Modal
         isOpen={modalTransactionIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
       > */}
-        {/* <TransactionsAdd props={openModal} /> */}
+      {/* <TransactionsAdd props={openModal} /> */}
       {/* </Modal> */}
     </div>
   );

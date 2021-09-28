@@ -16,7 +16,7 @@ function SuppliersLine({ suppliers }) {
           <tr>
             <td className="w-1/12 px-12 py-2 border">{suppliers.type}</td>
             <td className="w-1/12 px-12 border">{suppliers.category}</td>
-            <td className="w-1/12 px-12 border">{suppliers.nick}</td>
+            {/* <td className="w-1/12 px-12 border">{suppliers.nick}</td> */}
             <td className="w-3/12 px-12 border">{suppliers.name}</td>
             <td className="w-2/12 px-12 border">{suppliers.email}</td>
             <td className="w-2/12 px-12 border">{suppliers.telephone}</td>

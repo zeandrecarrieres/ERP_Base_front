@@ -66,7 +66,7 @@ function SuppliersAdd() {
 
   return (
     <div>
-      <div className="w-90 bg-white rounded shadow-lg p-8 m-4 md:max-w-2xl md:mx-auto ">
+      <div className="w-90 bg-white rounded shadow-lg p-8 m-4 mt-24 md:max-w-2xl md:mx-auto ">
         <form
           action="#"
           className="grid-cols-2 grid-template-columns: repeat(2, minmax(0, 1fr)); items-center justify-center"
@@ -289,7 +289,7 @@ function SuppliersAdd() {
             />
           </div>
 
-          <div className="flex flex-col mb-4">
+          {category === "Juridica" ?  <div className="flex flex-col mb-4">
             <label
               htmlFor="inscription"
               className="uppercase font-bold text-md text-gray-500"
@@ -303,7 +303,7 @@ function SuppliersAdd() {
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setInscription(e.target.value)}
             />
-          </div>
+        </div> : null}
 
           <div className="flex flex-col mb-4">
             <label

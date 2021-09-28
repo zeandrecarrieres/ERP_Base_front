@@ -32,9 +32,6 @@ function Suppliers() {
     setModalSupplierIsOpen(false);
   }
 
-
-
-
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/suppliers`)
       .then((response) => response.json())
@@ -79,26 +76,28 @@ function Suppliers() {
 
   return (
     <div>
-      
       <div className="mx-20">
-        <h1 className="text-red-700 text-xl mt-20">Lista de Fornecedores</h1>
-        <button
+        <div className="flex justify-between items-center">
+          <h1 className="text-red-700 text-xl mt-20 font-bold">
+            Lista de Fornecedores
+          </h1>
+          <button
             onClick={openSupplierModal}
             className="flex justify-center items-center text-xl bg-gray-700 hover:bg-gray-500 text-white p-4 rounded align-rigth h-12 mt-4 "
           >
             +
           </button>
+        </div>
         <table className="table-fixed border w-full ">
           <thead className="border ">
             <tr className="border ">
               <th className="w-1/12  border bg-gray-100">Tipo</th>
-              <th className="w-1/12 px-12 border py-2 bg-gray-100">
-                Categoria
-              </th>
-              <th className="w-1/12 px-12 border bg-gray-100">Nome</th>
-              <th className="w-3/12 px-12 border bg-gray-100">Razão Social</th>
-              <th className="w-2/12 px-12 border bg-gray-100">Email</th>
-              <th className="w-2/12 px-12 border bg-gray-100">Telefone</th>
+              <th className="w-1/12  border py-2 bg-gray-100">Categoria</th>
+              <th className="w-2/12  border bg-gray-100">Nome/Razão Social</th>
+              <th className="w-2/12  border bg-gray-100">Email</th>
+              <th className="w-2/12  border bg-gray-100">Telefone</th>
+              <th className="w-1/12  border bg-gray-100">Editar</th>
+              <th className="w-1/12  border bg-gray-100">Excluir</th>
             </tr>
           </thead>
         </table>
@@ -109,9 +108,9 @@ function Suppliers() {
       </div>
 
       <NewSupplierModal
-      isOpen={modalSupplierIsOpen}
-      onRequestClose={closeSupplierModal} />
-
+        isOpen={modalSupplierIsOpen}
+        onRequestClose={closeSupplierModal}
+      />
     </div>
   );
 }
