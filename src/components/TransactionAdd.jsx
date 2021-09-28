@@ -84,6 +84,7 @@ function TransactionAdd() {
       setCounter(counter + 1);
       
       
+      
   };
 
   return (

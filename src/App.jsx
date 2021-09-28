@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { TransactionsContext } from "./TransactionsContext";
 import Header from "./components/Header";
-import ProductRegister from "./pages/ProductRegister";
-import ClientRegister from "./pages/ClientRegister";
-import SupplierRegister from "./pages/SupplierRegister"
+import ProductRegister from "./pages/Products";
+import Clients from "./pages/Clients";
+import Suppliers from "./pages/Suppliers"
 import DashBoard from "./pages/DashBoard";
 
 import Transactions from "./pages/Transactions";
@@ -29,8 +29,8 @@ function App() {
             <div className="flex bg-grey-100 w-full flex-wrap md:flex-nowrap">
               <Switch>
                 <Route path="/" exact component={DashBoard} />
-                <Route path="/clients" component={ClientRegister} />
-                <Route path="/suppliers" component={SupplierRegister} />
+                <Route path="/clients" component={Clients} />
+                <Route path="/suppliers" component={Suppliers} />
                 <Route path="/products" exact component={ProductRegister} />
                 <Route path="/transactions" exact component={Transactions} />
               </Switch>

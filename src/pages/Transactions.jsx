@@ -2,9 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { TransactionsContext } from "../TransactionsContext";
 import TransactionLine from "../components/TransactionLine";
-import TransactionsAdd from "../components/TransactionAdd";
+// import TransactionsAdd from "../components/TransactionAdd";
 
 import Modal from "react-modal";
+import { NewTransactionModal } from "../components/NewTransactionModal";
 
 function Transactions() {
   const transactions = useContext(TransactionsContext);
@@ -60,13 +61,17 @@ function Transactions() {
           <TransactionLine key={transaction._id} transactions={transaction} />
         ))}
       </div>
-      <Modal
+
+      <NewTransactionModal
+      isOpen={modalTransactionIsOpen}
+      onRequestClose={closeModal} />
+      {/* <Modal
         isOpen={modalTransactionIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
-      >
-        <TransactionsAdd props={openModal} />
-      </Modal>
+      > */}
+        {/* <TransactionsAdd props={openModal} /> */}
+      {/* </Modal> */}
     </div>
   );
 }

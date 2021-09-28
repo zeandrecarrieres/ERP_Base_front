@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ClientLine from "../components/ClientLine";
+import SupplierLine from "../components/SupplierLine";
 // import { MicNone } from "@material-ui/icons";
 
-function ProductRegister() {
+function SuppliersAdd() {
   const [type, setType] = useState("");
   const [category, setCategory] = useState("");
   const [nick, setNick] = useState("");
@@ -19,20 +19,20 @@ function ProductRegister() {
   const [cnp, setCnp] = useState("");
   const [inscription, setInscription] = useState("");
   const [site, setSite] = useState("");
-  const [clients, setClients] = useState([]);
+  const [suppliers, setSuppliers] = useState([]);
   const [counter, setCounter] = useState(1);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_URL_API}/clients`)
+    fetch(`${process.env.REACT_APP_URL_API}/suppliers`)
       .then((response) => response.json())
-      .then((data) => setClients(data));
+      .then((data) => setSuppliers(data));
   }, [counter, category]);
 
-  const registerClient = (e) => {
+  const registerSupplier = (e) => {
     e.preventDefault();
     axios({
       method: "post",
-      url: `${process.env.REACT_APP_URL_API}/clients`,
+      url: `${process.env.REACT_APP_URL_API}/suppliers`,
       data: {
         type,
         category,
@@ -53,7 +53,7 @@ function ProductRegister() {
     })
       .then(function (reponse) {
         //On traite la suite une fois la réponse obtenue
-        alert("Cliente Cadastrado com sucesso!");
+        alert("Fornecedor Cadastrado com sucesso!");
         setCounter(counter + 1);
         console.log(category);
       })
@@ -64,22 +64,20 @@ function ProductRegister() {
       });
   };
 
-  
-
   return (
     <div>
       <div className="w-90 bg-white rounded shadow-lg p-8 m-4 md:max-w-2xl md:mx-auto ">
         <form
           action="#"
           className="grid-cols-2 grid-template-columns: repeat(2, minmax(0, 1fr)); items-center justify-center"
-          onSubmit={registerClient}
+          onSubmit={registerSupplier}
         >
           <div className="text-3xl mb-8 text-gray-500">
-            Inclusão de Clientes
+            Inclusão de Fornecedores
           </div>
 
           <div className="flex justify-between">
-            {/* <div className="flex flex-col mb-4">
+            <div className="flex flex-col mb-4">
               <label
                 htmlFor="type"
                 className="uppercase font-bold text-md text-gray-500"
@@ -93,41 +91,7 @@ function ProductRegister() {
                 className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30"
                 onChange={(e) => setType(e.target.value)}
               />
-            </div> */}
-
-<div className="flex flex-col mb-4">
-              <label
-                htmlFor="category"
-                className="uppercase font-bold text-md text-gray-500"
-              >
-                Tipo
-              </label>
-              <select
-                id="options-select"
-                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
-                placeholder="category"
-                onChange={(e) => setType(e.target.value)}
-              >
-                <option value="" className="flex flex-col mb-4">
-                  -- Selecione uma opção --
-                </option>
-                <option
-                  value="Final"
-                  // name="Física"
-                  className="flex flex-col mb-4"
-                >
-                  Final
-                </option>
-                <option
-                  value="Revenda"
-                  // name="Jurídica"
-                  className="flex flex-col mb-4"
-                >
-                  Revenda
-                </option>
-              </select>
             </div>
-          </div>
 
             <div className="flex flex-col mb-4">
               <label
@@ -161,7 +125,7 @@ function ProductRegister() {
                 </option>
               </select>
             </div>
-          
+          </div>
 
           <div className="flex flex-col mb-4">
             <label
@@ -325,7 +289,7 @@ function ProductRegister() {
             />
           </div>
 
-          {category === "Juridica" ?  <div className="flex flex-col mb-4">
+          <div className="flex flex-col mb-4">
             <label
               htmlFor="inscription"
               className="uppercase font-bold text-md text-gray-500"
@@ -339,10 +303,9 @@ function ProductRegister() {
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setInscription(e.target.value)}
             />
-          </div> : null}
+          </div>
 
-
-          {category === "Juridica" ?<div className="flex flex-col mb-4">
+          <div className="flex flex-col mb-4">
             <label
               htmlFor="site"
               className="uppercase font-bold text-md text-gray-500"
@@ -356,8 +319,7 @@ function ProductRegister() {
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setSite(e.target.value)}
             />
-          </div>: null}
-         
+          </div>
 
           <button className="px-5 py-3 bg-red-500 text-white hover:bg-red-600 text-white uppercase text-lg mx-auto p-4 rounded w-full sm:w-auto">
             Cadastrar
@@ -365,28 +327,10 @@ function ProductRegister() {
         </form>
       </div>
       <div className="mx-20">
-        <h1 className="text-red-700 text-xl mt-20">Lista de Clientes</h1>
-        <table className="table-fixed border w-full ">
-          <thead className="border ">
-            <tr className="border ">
-              <th className="w-1/12  border bg-gray-100">Tipo</th>
-              <th className="w-1/12 px-12 border py-2 bg-gray-100">
-                Categoria
-              </th>
-              <th className="w-1/12 px-12 border bg-gray-100">Nome</th>
-              <th className="w-3/12 px-12 border bg-gray-100">Razão Social</th>
-              <th className="w-2/12 px-12 border bg-gray-100">Email</th>
-              <th className="w-2/12 px-12 border bg-gray-100">Telefone</th>
-            </tr>
-          </thead>
-        </table>
-
-        {clients.map((client) => (
-          <ClientLine key={client._id} clients={client} />
-        ))}
+        
       </div>
     </div>
   );
 }
 
-export default ProductRegister;
+export default SuppliersAdd;

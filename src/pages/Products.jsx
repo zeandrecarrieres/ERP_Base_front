@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProductLine from "../components/ProductLine";
 import axios from "axios";
 
-function ProductRegister() {
+function Products() {
   const [code, setCode] = useState("");
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
@@ -210,4 +210,4 @@ function ProductRegister() {
   );
 }
 
-export default ProductRegister;
+export default Products;
