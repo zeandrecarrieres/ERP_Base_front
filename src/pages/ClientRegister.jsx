@@ -77,7 +77,7 @@ function ProductRegister() {
           </div>
 
           <div className="flex justify-between">
-            <div className="flex flex-col mb-4">
+            {/* <div className="flex flex-col mb-4">
               <label
                 htmlFor="type"
                 className="uppercase font-bold text-md text-gray-500"
@@ -91,7 +91,41 @@ function ProductRegister() {
                 className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30"
                 onChange={(e) => setType(e.target.value)}
               />
+            </div> */}
+
+<div className="flex flex-col mb-4">
+              <label
+                htmlFor="category"
+                className="uppercase font-bold text-md text-gray-500"
+              >
+                Tipo
+              </label>
+              <select
+                id="options-select"
+                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
+                placeholder="category"
+                onChange={(e) => setType(e.target.value)}
+              >
+                <option value="" className="flex flex-col mb-4">
+                  -- Selecione uma opção --
+                </option>
+                <option
+                  value="Final"
+                  // name="Física"
+                  className="flex flex-col mb-4"
+                >
+                  Final
+                </option>
+                <option
+                  value="Revenda"
+                  // name="Jurídica"
+                  className="flex flex-col mb-4"
+                >
+                  Revenda
+                </option>
+              </select>
             </div>
+          </div>
 
             <div className="flex flex-col mb-4">
               <label
@@ -125,7 +159,7 @@ function ProductRegister() {
                 </option>
               </select>
             </div>
-          </div>
+          
 
           <div className="flex flex-col mb-4">
             <label
