@@ -13,6 +13,7 @@ function TransactionAdd() {
   const [productOptions, setProductOptions] = useState([]);
   const [clientOptions, setClientOptions] = useState([]);
   const [supplierOptions, setSupplierOptions] = useState([]);
+  const [discount, setDiscount] = useState(0);
   const [counter, setCounter] = useState(1);
 
   const transactions = useContext(TransactionsContext);
@@ -216,6 +217,25 @@ function TransactionAdd() {
           </div>
           <div className="flex flex-col mb-4">
             <label
+              htmlFor="discount"
+              className="uppercase font-bold text-md text-gray-500"
+            >
+              % Desconto
+            </label>
+            <input
+              type="number"
+              id="discount"
+              name="discount"
+              // value={discount}
+              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
+              onChange={(e) => {setDiscount(e.target.value);
+                console.log(total_price)
+                console.log(discount)
+              }}
+            />
+          </div>
+          <div className="flex flex-col mb-4">
+            <label
               htmlFor="totalPrice"
               className="uppercase font-bold text-md text-gray-500"
             >
@@ -225,7 +245,7 @@ function TransactionAdd() {
               type="number"
               id="totalPrice"
               name="totalPrice"
-              value={total_price}
+              value={total_price*(1-discount/100)}
               readOnly
               className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
               // onChange={(e) => setTotal_price(e.target.value)}

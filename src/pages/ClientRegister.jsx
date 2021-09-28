@@ -64,6 +64,8 @@ function ProductRegister() {
       });
   };
 
+  setName('')
+
   return (
     <div>
       <div className="w-90 bg-white rounded shadow-lg p-8 m-4 md:max-w-2xl md:mx-auto ">
@@ -323,7 +325,7 @@ function ProductRegister() {
             />
           </div>
 
-          <div className="flex flex-col mb-4">
+          {category === "Juridica" ?  <div className="flex flex-col mb-4">
             <label
               htmlFor="inscription"
               className="uppercase font-bold text-md text-gray-500"
@@ -337,9 +339,10 @@ function ProductRegister() {
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setInscription(e.target.value)}
             />
-          </div>
+          </div> : null}
 
-          <div className="flex flex-col mb-4">
+
+          {category === "Juridica" ?<div className="flex flex-col mb-4">
             <label
               htmlFor="site"
               className="uppercase font-bold text-md text-gray-500"
@@ -353,7 +356,8 @@ function ProductRegister() {
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setSite(e.target.value)}
             />
-          </div>
+          </div>: null}
+         
 
           <button className="px-5 py-3 bg-red-500 text-white hover:bg-red-600 text-white uppercase text-lg mx-auto p-4 rounded w-full sm:w-auto">
             Cadastrar
