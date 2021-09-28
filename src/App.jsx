@@ -4,6 +4,7 @@ import { TransactionsContext } from "./TransactionsContext";
 import Header from "./components/Header";
 import ProductRegister from "./pages/ProductRegister";
 import ClientRegister from "./pages/ClientRegister";
+import SupplierRegister from "./pages/SupplierRegister"
 import DashBoard from "./pages/DashBoard";
 
 import Transactions from "./pages/Transactions";
@@ -29,6 +30,7 @@ function App() {
               <Switch>
                 <Route path="/" exact component={DashBoard} />
                 <Route path="/clients" component={ClientRegister} />
+                <Route path="/suppliers" component={SupplierRegister} />
                 <Route path="/products" exact component={ProductRegister} />
                 <Route path="/transactions" exact component={Transactions} />
               </Switch>

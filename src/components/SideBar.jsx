@@ -1,5 +1,5 @@
 import React from "react";
-import { LineStyle, Assessment, Group, Assignment } from "@material-ui/icons";
+import { LineStyle, Assessment, Group, Assignment, AssignmentInd } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
 function SideBar() {
@@ -37,9 +37,9 @@ function SideBar() {
               </Link>
             </li>
             <li className="py-2  hover:bg-gray-200 rounded p-4 hover:text-red-700 ">
-              <Group />
+              <AssignmentInd />
               <Link
-                to="/clients"
+                to="/suppliers"
                 className="text-lg m-4 font-bold text-gray-500 hover:text-red-700"
               >
                 Fornecedores

@@ -9,6 +9,7 @@ import Modal from "react-modal";
 function Transactions() {
   const transactions = useContext(TransactionsContext);
   const [modalTransactionIsOpen, setModalTransactionIsOpen] = useState(false);
+  const [counter, setCounter] = useState(0)
 
   function openModal() {
     setModalTransactionIsOpen(true);
@@ -17,6 +18,12 @@ function Transactions() {
   function closeModal() {
     setModalTransactionIsOpen(false);
   }
+
+  
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_URL_API}/transactions`)
+      console.log(transactions)
+  }, []);
 
 
   return (

@@ -193,6 +193,9 @@ function ProductRegister() {
               <th className="w-1/12 px-12 border bg-gray-100">
                 Preço de venda
               </th>
+              <th className="w-1/12 px-12 border bg-gray-100">
+                Qtde Estoque
+              </th>
               <th className="w-1/12 px-12 border bg-gray-100">Editar</th>
               <th className="w-1/12 px-12 border bg-gray-100">Excluir</th>
             </tr>

@@ -12,6 +12,8 @@ function TransactionAdd() {
   const [total_price, setTotal_price] = useState(0);
   const [productOptions, setProductOptions] = useState([]);
   const [clientOptions, setClientOptions] = useState([]);
+  const [supplierOptions, setSupplierOptions] = useState([]);
+  const [counter, setCounter] = useState(1);
 
   const transactions = useContext(TransactionsContext);
 
@@ -28,6 +30,14 @@ function TransactionAdd() {
       .then((data) => setClientOptions(data))
       .catch((error) => console.log(error));
   }, []);
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_URL_API}/suppliers`)
+      .then((response) => response.json())
+      .then((data) => setSupplierOptions(data))
+      .catch((error) => console.log(error));
+  }, []);
+
 
   const registerTransaction = (e) => {
     e.preventDefault();
@@ -67,6 +77,7 @@ function TransactionAdd() {
         console.log(erreur);
         alert("Preencha todos os campos");
       });
+      setCounter(counter + 1);
   };
 
   return (
@@ -123,7 +134,7 @@ function TransactionAdd() {
             htmlFor="client"
             className="uppercase font-bold text-md text-gray-500 w-64"
           >
-            Cliente
+            {type === "Compra" ? "FORNECEDOR" : "CLIENTE"}
           </label>
           <select
             className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
@@ -135,9 +146,11 @@ function TransactionAdd() {
             <option value="" className="flex flex-col mb-4">
               -- Selecione uma opção --
             </option>
-            {clientOptions.map((option) => (
+            {type === "Compra" ? supplierOptions.map((option) => (
               <option value={option.name}>{option.name}</option>
-            ))}
+            )) : clientOptions.map((option) => (
+              <option value={option.name}>{option.name}</option>
+            )) }
           </select>
         </div>
 
