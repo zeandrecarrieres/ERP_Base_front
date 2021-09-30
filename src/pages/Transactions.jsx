@@ -36,6 +36,8 @@ function Transactions() {
             <tr className="border ">
               <th className="w-2/12  border bg-gray-100">Data</th>
               <th className="w-2/12  border bg-gray-100">Tipo</th>
+              <th className="w-2/12  border bg-gray-100">Usuário</th>
+              <th className="w-2/12  border bg-gray-100">Comissão</th>
               <th className="w-3/12  border py-2 bg-gray-100">Cliente</th>
               <th className="w-3/12  border bg-gray-100">Produto</th>
               <th className="w-1/12  border bg-gray-100">Qtde</th>

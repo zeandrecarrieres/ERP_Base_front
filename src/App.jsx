@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import ProductRegister from "./pages/Products";
 import Clients from "./pages/Clients";
 import Suppliers from "./pages/Suppliers"
+import Users from "./pages/Users"
 import DashBoard from "./pages/DashBoard";
 
 import Transactions from "./pages/Transactions";
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/" exact component={DashBoard} />
                 <Route path="/clients" component={Clients} />
                 <Route path="/suppliers" component={Suppliers} />
+                <Route path="/users" component={Users} />
                 <Route path="/products" exact component={ProductRegister} />
                 <Route path="/transactions" exact component={Transactions} />
               </Switch>

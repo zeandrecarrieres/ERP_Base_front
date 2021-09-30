@@ -19,6 +19,8 @@ function TransactionsLine({ transactions }) {
           <tr>
             <td className="w-2/12 px-12 py-2 border">{transactions.date}</td>
             <td className="w-2/12 px-12 py-2 border">{transactions.type}</td>
+            <td className="w-2/12 px-12 py-2 border">{transactions.user}</td>
+            <td className="w-2/12 px-12 py-2 border">{transactions.comission}</td>
             <td className="w-3/12 px-12 border">{transactions.client}</td>
             <td className="w-3/12 px-12 border">{transactions.product}</td>
             <td className="w-1/12 px-12 border">{transactions.qtde}</td>

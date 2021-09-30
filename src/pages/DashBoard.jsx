@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { TransactionsContext } from "../TransactionsContext";
+import CountUp from 'react-countup'
 
 import {
   ResponsiveContainer,
@@ -54,9 +55,21 @@ function DashBoard() {
             Receitas
           </h3>
           <p className="text-3xl font-bold text-center text-green-500 ">
-            {totalRevenue
+            <CountUp 
+              end={totalRevenue}
+              duration={2}
+              prefix={"R$"}
+              separator="."
+              decimal=","
+              decimals={2}
+
+
+            />
+{console.log(typeof(totalRevenue))}
+
+            {/* {totalRevenue
               .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
-              .replace(".", ",")}
+              .replace(".", ",")} */}
           </p>
         </div>
         <div className="flex-col justify-between items-center shadow-md w-full p-10 rounded m-10">
@@ -64,9 +77,16 @@ function DashBoard() {
             Despesas
           </h3>
           <p className="text-3xl font-bold text-center text-red-700 ">
-            {totalDepenses
-              .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
-              .replace(".", ",")}
+            <CountUp 
+              end={totalDepenses}
+              duration={2}
+              prefix={"R$"}
+              separator="."
+              decimal=","
+              decimals={2}
+
+
+            />
           </p>
         </div>
         <div className="flex-col justify-between items-center shadow-md w-full p-10 rounded m-10">
@@ -74,9 +94,19 @@ function DashBoard() {
             Resultado
           </h3>
           <p className="text-3xl font-bold text-center text-gray-500 ">
-            {(totalRevenue - totalDepenses)
+          <CountUp 
+              end={totalRevenue - totalDepenses}
+              duration={2}
+              prefix={"R$"}
+              separator="."
+              decimal=","
+              decimals={2}
+
+
+            />
+            {/* {(totalRevenue - totalDepenses)
               .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
-              .replace(".", ",")}
+              .replace(".", ",")} */}
           </p>
         </div>
       </div>

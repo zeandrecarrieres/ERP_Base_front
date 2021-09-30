@@ -6,14 +6,17 @@ function TransactionAdd() {
   const [date, setDate] = useState("");
   const [type, setType] = useState("");
   const [client, setClient] = useState("");
+  const [user, setUser] = useState("");
   const [product, setProduct] = useState("");
   const [qtde, setQtde] = useState(0);
   const [reference_price, setReference_price] = useState(0);
   const [total_price, setTotal_price] = useState(0);
   const [productOptions, setProductOptions] = useState([]);
   const [clientOptions, setClientOptions] = useState([]);
+  const [userOptions, setUserOptions] = useState([]);
   const [supplierOptions, setSupplierOptions] = useState([]);
   const [discount, setDiscount] = useState(0);
+  const [comission, setComission] = useState(0);
   const [obs, setObs] = useState("");
   const [counter, setCounter] = useState(1);
 
@@ -34,6 +37,14 @@ function TransactionAdd() {
   }, []);
 
   useEffect(() => {
+    fetch(`${process.env.REACT_APP_URL_API}/users`)
+      .then((response) => response.json())
+      .then((data) => setUserOptions(data))
+      .catch((error) => console.log(error));
+    }, []);
+  
+
+  useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/suppliers`)
       .then((response) => response.json())
       .then((data) => setSupplierOptions(data))
@@ -46,9 +57,12 @@ function TransactionAdd() {
       date,
       type,
       client,
+      user,
+      comission,
       product,
       qtde,
       reference_price,
+      comission,
       total_price,
       productOptions,
       clientOptions
@@ -61,6 +75,8 @@ function TransactionAdd() {
         date,
         type,
         client,
+        user,
+        comission,
         product,
         qtde,
         reference_price,
@@ -130,6 +146,37 @@ function TransactionAdd() {
             </select>
           </div>
         </div>
+
+
+        <div className="flex justify-between flex-wrap">
+
+        <div className="flex flex-col mb-4 ">
+          <label
+            htmlFor="client"
+            className="uppercase font-bold text-md text-gray-500 w-64"
+          >
+            {type === "Compra" ? "COMPRADOR" : "VENDEDOR"}
+          </label>
+          <select
+            className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
+            id="options-select"
+            placeholder="description"
+            // onClick={(e) => getProducts(e)}
+            onChange={(e) => setUser(e.target.value)}
+          >
+            <option value="" className="flex flex-col mb-4">
+              -- Selecione uma opção --
+            </option>
+            {userOptions.map((option) => (
+                  <option value={option.name}>{option.name}</option>
+                ))}
+              
+          </select>
+
+          
+        </div>
+        </div>
+
         <div className="flex flex-col mb-4 ">
           <label
             htmlFor="client"
@@ -155,6 +202,22 @@ function TransactionAdd() {
                   <option value={option.name}>{option.name}</option>
                 ))}
           </select>
+          <label
+              htmlFor="discount"
+              className="uppercase font-bold text-md text-gray-500"
+            >
+              % Comissão
+            </label>
+            <input
+              type="number"
+              id="comission"
+              name="comission"
+              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
+              onChange={(e) => {
+                setComission(e.target.value);
+              }}
+            />
+          
         </div>
 
         <div className="flex flex-col mb-4">
@@ -239,6 +302,9 @@ function TransactionAdd() {
                 setDiscount(e.target.value);
               }}
             />
+
+            
+            
           </div>
           <div className="flex flex-col mb-4">
             <label
@@ -255,6 +321,9 @@ function TransactionAdd() {
               readOnly
               className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
             />
+
+
+
             <label
               htmlFor="totalPrice"
               className="uppercase font-bold text-md text-gray-500"

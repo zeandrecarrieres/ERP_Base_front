@@ -46,6 +46,15 @@ function SideBar() {
               </Link>
             </li>
             <li className="py-2  hover:bg-gray-200 rounded p-4 hover:text-red-700 ">
+              <AssignmentInd />
+              <Link
+                to="/users"
+                className="text-lg m-4 font-bold text-gray-500 hover:text-red-700"
+              >
+                Usuários
+              </Link>
+            </li>
+            <li className="py-2  hover:bg-gray-200 rounded p-4 hover:text-red-700 ">
               <Assessment />
               <Link
                 to="/transactions"
