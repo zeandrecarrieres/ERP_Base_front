@@ -15,11 +15,11 @@ function ClientsLine({ clients }) {
         <tbody>
           <tr>
             <td className="w-1/12 px-12 py-2 border">{clients.type}</td>
-            <td className="w-1/12 px-12 border">{clients.category}</td>
+            <td className="w-1/12  px-6 border">{clients.category}</td>
             {/* <td className="w-1/12 px-12 border">{clients.nick}</td> */}
-            <td className="w-3/12 px-12 border">{clients.name}</td>
+            <td className="w-2/12 px-8 border">{clients.name}</td>
             <td className="w-2/12 px-12 border">{clients.email}</td>
-            <td className="w-2/12 px-12 border">{clients.telephone}</td>
+            <td className="w-1/12 px-3 border">{clients.telephone}</td>
             <td className="w-1/12 px-12 border text-yellow-700 hover:text-yellow-500">
               <button>
                 <Edit />

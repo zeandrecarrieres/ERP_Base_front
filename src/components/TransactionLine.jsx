@@ -12,27 +12,40 @@ function TransactionsLine({ transactions }) {
     alert("Transação deletada com sucesso!");
   };
 
+ 
   return (
     <>
       <table className="table-fixed border w-full ">
         <tbody>
           <tr>
-            <td className="w-2/12 px-12 py-2 border">{transactions.date}</td>
-            <td className="w-2/12 px-12 py-2 border">{transactions.type}</td>
-            <td className="w-2/12 px-12 py-2 border">{transactions.user}</td>
-            <td className="w-2/12 px-12 py-2 border">{transactions.comission}</td>
-            <td className="w-3/12 px-12 border">{transactions.client}</td>
-            <td className="w-3/12 px-12 border">{transactions.product}</td>
-            <td className="w-1/12 px-12 border">{transactions.qtde}</td>
-            <td className="w-1/12 px-12 border">
+            <td className="w-1/12  pl-6 py-2 border">{transactions.date}</td>
+            <td className="w-1/12  pl-12 py-2 border">{transactions.type}</td>
+            <td className="w-2/12  pl-6 py-2 border">{transactions.user}</td>
+            <td className="w-1/12  pl-12 py-2 border">{transactions.comission}</td>
+            <td className="w-2/12  pl-12 border">{transactions.client}</td>
+            <td className="w-3/12  border">{transactions.product}</td>
+            <td className="w-1/12  border">{transactions.qtde}</td>
+            <td className="w-1/12  border ">
               {transactions.reference_price.toLocaleString("pt-br", { style: "currency", currency: "BRL" })
               .replace(".", ",")}
             </td>
-            <td className="w-1/12 px-12 border" readOnly>
-              {transactions.total_price.toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+            {}
+           
+            {transactions.total_price > 0 ?  <td className="w-1/12 px-12 border text-green-500">
+              {(transactions.total_price).toLocaleString("pt-br", { style: "currency", currency: "BRL" })
               .replace(".", ",")}
-            </td>
-            <td className="w-1/12 px-12 border text-yellow-700 hover:text-yellow-500">
+            </td> :<td className="w-1/12 px-12 border text-green-500">
+              {((transactions.total_price)*-1).toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+              .replace(".", ",")}
+            </td>}  
+
+            {/* <td className="w-1/12 px-12 border text-red-500">
+             {transactions.total_price.toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+              .replace(".", ",")}
+            </td> */}
+
+
+            <td className="w-1/12 px-16 border text-yellow-700 hover:text-yellow-500">
               <button>
                 <Edit />
               </button>

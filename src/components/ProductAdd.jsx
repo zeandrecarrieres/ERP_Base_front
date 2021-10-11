@@ -7,6 +7,7 @@ function ProductAdd() {
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [qtde, setQtde] = useState("");
   const [purchase_price, setPurchase_price] = useState("");
   const [reference_price, setReference_price] = useState("");
 
@@ -20,6 +21,7 @@ function ProductAdd() {
         category,
         name,
         description,
+        qtde,
         purchase_price,
         reference_price,
       },
@@ -31,6 +33,7 @@ function ProductAdd() {
         setCategory("");
         setName("");
         setDescription("");
+        setQtde("");
         setPurchase_price("");
         setReference_price("");
       
@@ -175,6 +178,22 @@ function ProductAdd() {
           </div>
 
           <div className="flex justify-between">
+            <div className="flex flex-col mb-4">
+              <label
+                htmlFor="purchase_price"
+                className="uppercase font-bold text-md text-gray-500"
+              >
+                Qtde Estoque
+              </label>
+              <input
+                type="text"
+                id="qtde"
+                name="qtde"
+                value={qtde}
+                className="border py-2 px-3 text-grey-darkes h-10 my-2 shadow-sm bg-opacity-30 px-2	w-full"
+                onChange={(e) => setQtde(e.target.value)}
+              />
+            </div>
             <div className="flex flex-col mb-4">
               <label
                 htmlFor="purchase_price"

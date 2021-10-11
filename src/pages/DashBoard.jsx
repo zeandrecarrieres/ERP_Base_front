@@ -52,7 +52,7 @@ function DashBoard() {
       <div className="flex justify-center items-center wrap-wrap w-4/5 m-auto w-full flex-wrap md:flex-nowrap ">
         <div className="flex-col justify-between items-center shadow-md w-full p-10 rounded m-10 ">
           <h3 className="text-3xl text-center text-gray-500 font-bold uppercase">
-            Receitas
+            Receitass
           </h3>
           <p className="text-3xl font-bold text-center text-green-500 ">
             <CountUp 

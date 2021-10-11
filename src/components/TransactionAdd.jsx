@@ -53,20 +53,7 @@ function TransactionAdd() {
 
   const registerTransaction = (e) => {
     e.preventDefault();
-    console.log(
-      date,
-      type,
-      client,
-      user,
-      comission,
-      product,
-      qtde,
-      reference_price,
-      comission,
-      total_price,
-      productOptions,
-      clientOptions
-    );
+
 
     axios({
       method: "post",
@@ -276,13 +263,10 @@ function TransactionAdd() {
               className="border py-2 px-3 text-grey-darkes h-10 my-2 shadow-sm bg-opacity-30 px-2	w-32 "
               onChange={(e) => {
                 setReference_price(parseFloat(e.target.value));
+
                 setTotal_price(qtde * e.target.value);
-                console.log(
-                  reference_price.toLocaleString("pt-br", {
-                    style: "currency",
-                    currency: "BRL",
-                  })
-                );
+                
+           
               }}
             />
           </div>
