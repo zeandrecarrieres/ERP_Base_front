@@ -44,6 +44,25 @@ function SuppliersAdd() {
       .then(function (reponse) {
         //On traite la suite une fois la réponse obtenue
         alert("Fornecedor Cadastrado com sucesso!");
+
+        setType('')
+        setCategory('')
+        setName('')
+        setEmail('')
+        setTelephone('')
+        setAddress('')
+        setComplement('')
+        setDistrict('')
+        setCity('')
+        setState('')
+        setPostal('')
+        setCnp('')
+        setEmail('')
+        setInscription('')
+        setSite('')
+
+
+
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues
@@ -76,6 +95,7 @@ function SuppliersAdd() {
                 type="text"
                 id="type"
                 name="type"
+                value={type}
                 className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30"
                 onChange={(e) => setType(e.target.value)}
               />
@@ -126,6 +146,7 @@ function SuppliersAdd() {
               type="text"
               id="name"
               name="name"
+              value={name}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setName(e.target.value)}
             />
@@ -142,6 +163,7 @@ function SuppliersAdd() {
               type="text"
               id="email"
               name="email"
+              value={email}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -158,6 +180,7 @@ function SuppliersAdd() {
               type="text"
               id="telephone"
               name="telephone"
+              value={telephone}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setTelephone(e.target.value)}
             />
@@ -174,6 +197,7 @@ function SuppliersAdd() {
               type="text"
               id="address"
               name="address"
+              value={address}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setAddress(e.target.value)}
             />
@@ -190,6 +214,7 @@ function SuppliersAdd() {
               type="text"
               id="complement"
               name="complement"
+              value={complement}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setComplement(e.target.value)}
             />
@@ -206,6 +231,7 @@ function SuppliersAdd() {
               type="text"
               id="district"
               name="district"
+              value={district}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setDistrict(e.target.value)}
             />
@@ -222,6 +248,7 @@ function SuppliersAdd() {
               type="text"
               id="city"
               name="city"
+              value={city}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setCity(e.target.value)}
             />
@@ -239,6 +266,7 @@ function SuppliersAdd() {
                 type="text"
                 id="state"
                 name="state"
+                value={state}
                 className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
                 onChange={(e) => setState(e.target.value)}
               />
@@ -255,6 +283,7 @@ function SuppliersAdd() {
                 type="text"
                 id="postal"
                 name="postal"
+                value={postal}
                 className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
                 onChange={(e) => setPostal(e.target.value)}
               />
@@ -272,6 +301,7 @@ function SuppliersAdd() {
               type="text"
               id="cnp"
               name="cnp"
+              value={cnp}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setCnp(e.target.value)}
             />
@@ -289,6 +319,7 @@ function SuppliersAdd() {
                 type="text"
                 id="inscription"
                 name="inscription"
+                value={inscription}
                 className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
                 onChange={(e) => setInscription(e.target.value)}
               />
@@ -306,6 +337,7 @@ function SuppliersAdd() {
               type="text"
               id="site"
               name="site"
+              value={site}
               className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
               onChange={(e) => setSite(e.target.value)}
             />

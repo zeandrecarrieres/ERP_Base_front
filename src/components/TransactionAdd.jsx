@@ -75,6 +75,23 @@ function TransactionAdd() {
         //  addCounter();
         console.log(reponse);
         alert("Transação efetuada com sucesso!");
+
+        setDate("");
+  setType("");
+  setClient("");
+setUser("");
+  setProduct("");
+setQtde("");
+  setReference_price("");
+setTotal_price(0);
+setProductOptions([]);
+ setClientOptions([]);
+setUserOptions([]);
+setSupplierOptions([]);
+ setDiscount(0);
+setComission(0);
+  setObs("");
+
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues
@@ -199,6 +216,7 @@ function TransactionAdd() {
               type="number"
               id="comission"
               name="comission"
+              value={comission}
               className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
               onChange={(e) => {
                 setComission(e.target.value);
@@ -242,6 +260,7 @@ function TransactionAdd() {
               type="number"
               id="qtde"
               name="qtde"
+              value={qtde}
               className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-32"
               onChange={(e) => {
                 // setTotal_price(qtde * e.target.value);
@@ -260,6 +279,7 @@ function TransactionAdd() {
               type="float"
               id="salePrice"
               name="salePrice"
+              value={reference_price}
               className="border py-2 px-3 text-grey-darkes h-10 my-2 shadow-sm bg-opacity-30 px-2	w-32 "
               onChange={(e) => {
                 setReference_price(parseFloat(e.target.value));
@@ -281,6 +301,7 @@ function TransactionAdd() {
               type="number"
               id="discount"
               name="discount"
+              value={discount}
               className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
               onChange={(e) => {
                 setDiscount(e.target.value);
