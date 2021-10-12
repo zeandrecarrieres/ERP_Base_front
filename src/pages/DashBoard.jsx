@@ -74,7 +74,7 @@ function DashBoard() {
         </div>
         <div className="flex-col justify-between items-center shadow-md w-full p-10 rounded m-10">
           <h3 className="text-3xl text-center text-gray-500 font-bold uppercase">
-            Despesas
+            Despesasy
           </h3>
           <p className="text-3xl font-bold text-center text-red-700 ">
             <CountUp 

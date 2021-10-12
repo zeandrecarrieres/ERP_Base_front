@@ -41,8 +41,7 @@ function TransactionAdd() {
       .then((response) => response.json())
       .then((data) => setUserOptions(data))
       .catch((error) => console.log(error));
-    }, []);
-  
+  }, []);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/suppliers`)
@@ -53,7 +52,6 @@ function TransactionAdd() {
 
   const registerTransaction = (e) => {
     e.preventDefault();
-
 
     axios({
       method: "post",
@@ -77,21 +75,20 @@ function TransactionAdd() {
         alert("Transação efetuada com sucesso!");
 
         setDate("");
-  setType("");
-  setClient("");
-setUser("");
-  setProduct("");
-setQtde("");
-  setReference_price("");
-setTotal_price(0);
-setProductOptions([]);
- setClientOptions([]);
-setUserOptions([]);
-setSupplierOptions([]);
- setDiscount(0);
-setComission(0);
-  setObs("");
-
+        setType("");
+        setClient("");
+        setUser("");
+        setProduct("");
+        setQtde("");
+        setReference_price("");
+        setTotal_price(0);
+        setProductOptions([]);
+        setClientOptions([]);
+        setUserOptions([]);
+        setSupplierOptions([]);
+        setDiscount(0);
+        setComission(0);
+        setObs("");
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues
@@ -151,34 +148,29 @@ setComission(0);
           </div>
         </div>
 
-
         <div className="flex justify-between flex-wrap">
-
-        <div className="flex flex-col mb-4 ">
-          <label
-            htmlFor="client"
-            className="uppercase font-bold text-md text-gray-500 w-64"
-          >
-            {type === "Compra" ? "COMPRADOR" : "VENDEDOR"}
-          </label>
-          <select
-            className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
-            id="options-select"
-            placeholder="description"
-            // onClick={(e) => getProducts(e)}
-            onChange={(e) => setUser(e.target.value)}
-          >
-            <option value="" className="flex flex-col mb-4">
-              -- Selecione uma opção --
-            </option>
-            {userOptions.map((option) => (
-                  <option value={option.name}>{option.name}</option>
-                ))}
-              
-          </select>
-
-          
-        </div>
+          <div className="flex flex-col mb-4 ">
+            <label
+              htmlFor="client"
+              className="uppercase font-bold text-md text-gray-500 w-64"
+            >
+              {type === "Compra" ? "COMPRADOR" : "VENDEDOR"}
+            </label>
+            <select
+              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              id="options-select"
+              placeholder="description"
+              // onClick={(e) => getProducts(e)}
+              onChange={(e) => setUser(e.target.value)}
+            >
+              <option value="" className="flex flex-col mb-4">
+                -- Selecione uma opção --
+              </option>
+              {userOptions.map((option) => (
+                <option value={option.name}>{option.name}</option>
+              ))}
+            </select>
+          </div>
         </div>
 
         <div className="flex flex-col mb-4 ">
@@ -207,22 +199,21 @@ setComission(0);
                 ))}
           </select>
           <label
-              htmlFor="discount"
-              className="uppercase font-bold text-md text-gray-500"
-            >
-              % Comissão
-            </label>
-            <input
-              type="number"
-              id="comission"
-              name="comission"
-              value={comission}
-              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
-              onChange={(e) => {
-                setComission(e.target.value);
-              }}
-            />
-          
+            htmlFor="discount"
+            className="uppercase font-bold text-md text-gray-500"
+          >
+            % Comissão
+          </label>
+          <input
+            type="number"
+            id="comission"
+            name="comission"
+            value={comission}
+            className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
+            onChange={(e) => {
+              setComission(e.target.value);
+            }}
+          />
         </div>
 
         <div className="flex flex-col mb-4">
@@ -285,8 +276,6 @@ setComission(0);
                 setReference_price(parseFloat(e.target.value));
 
                 setTotal_price(qtde * e.target.value);
-                
-           
               }}
             />
           </div>
@@ -307,9 +296,6 @@ setComission(0);
                 setDiscount(e.target.value);
               }}
             />
-
-            
-            
           </div>
           <div className="flex flex-col mb-4">
             <label
@@ -326,8 +312,6 @@ setComission(0);
               readOnly
               className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
             />
-
-
 
             <label
               htmlFor="totalPrice"
