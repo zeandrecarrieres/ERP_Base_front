@@ -19,14 +19,14 @@ function Transactions() {
 
   return (
     <div>
-      <div className="mx-20">
+      <div className="mx-20 text-sm">
         <div className="flex justify-between items-center">
-          <h1 className="text-red-700 text-xl mt-20 font-bold">
+          <h1 className="text-red-700 text-lg mt-20 ">
             Lista de Transações
           </h1>
           <button
             onClick={openModal}
-            className="flex justify-center items-center text-xl bg-gray-700 hover:bg-gray-500 text-white p-4 rounded align-rigth h-12 mt-4 "
+            className="flex justify-center items-center text-base bg-gray-700 hover:bg-gray-500 text-white p-3 rounded align-rigth h-8 mt-4 "
           >
             +
           </button>
@@ -37,12 +37,13 @@ function Transactions() {
               <th className="w-1/12  border bg-gray-100">Data</th>
               <th className="w-1/12  border bg-gray-100">Tipo</th>
               <th className="w-1/12  border bg-gray-100">Usuário</th>
-              <th className="w-1/12  border bg-gray-100">Comissão</th>
+              {/* <th className="w-1/12  border bg-gray-100">Comissão</th> */}
               <th className="w-1/12  border py-2 bg-gray-100">Cliente</th>
-              <th className="w-1/12  border bg-gray-100">Produto</th>
-              <th className="w-1/12  border bg-gray-100">Qtde</th>
-              <th className="w-1/12  border bg-gray-100">Valor</th>
-              <th className="w-1/12 border bg-gray-100">Valor Total</th>
+              <th className="w-1/12  pl-12 border bg-gray-100">Produto</th>
+              <th className="w-1/12  pl-32 border bg-gray-100">Qtde</th>
+              <th className="w-1/12  pl-28 border bg-gray-100">Valor</th>
+              <th className="w-2/12 pl-20 border bg-gray-100">Valor Total</th>
+              <th className="w-1/12 border bg-gray-100">Vcto</th>
               <th className="w-1/12 border bg-gray-100">Editar</th>
               <th className="w-1/12 border bg-gray-100">Excluir</th>
             </tr>

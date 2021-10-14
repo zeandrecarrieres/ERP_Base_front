@@ -32,12 +32,12 @@ function TransactionsLine({ transactions }) {
                 new Date(transactions.date)
               )}
             </td>
-            <td className="w-1/12  pl-12 py-2 border">{transactions.type}</td>
-            <td className="w-2/12  pl-6 py-2 border">{transactions.user}</td>
-            <td className="w-1/12  pl-12 py-2 border">
+            <td className="w-1/12  pl-16 py-2 border">{transactions.type}</td>
+            <td className="w-3/12  pl-24 py-2 border">{transactions.user}</td>
+            {/* <td className="w-1/12  pl-12 py-2 border">
               {transactions.comission}
-            </td>
-            <td className="w-2/12  pl-12 border">{transactions.client}</td>
+            </td> */}
+            <td className="w-2/12  pl-8 border">{transactions.client}</td>
             <td className="w-3/12  border">{transactions.product}</td>
             <td className="w-1/12  border">{transactions.qtde}</td>
             <td className="w-1/12  border ">

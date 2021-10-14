@@ -70,19 +70,19 @@ function ProductsLine({ products }) {
 
   return (
     <>
-      <table className="table-fixed border w-full ">
+      <table className="table-fixed border w-full  ">
         <tbody>
           <tr>
-            <td className="w-1/12 px-12 py-2 border">{products.code}</td>
-            <td className="w-2/12 px-12 border">{products.category}</td>
-            <td className="w-2/12  border">{products.name}</td>
-            <td className="w-2/12 border">{products.description}</td>
-            <td className="w-1/12 border">{(products.purchase_price).toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+            <td className="w-1/12 px-12 py-2 border text-sm">{products.code}</td>
+            <td className="w-1/12 px-12 border text-sm">{products.category}</td>
+            <td className="w-1/12  border text-sm">{products.name}</td>
+            <td className="w-1/12 border text-sm">{products.description}</td>
+            <td className="w-1/12 border text-sm">{(products.purchase_price).toLocaleString("pt-br", { style: "currency", currency: "BRL" })
               .replace(".", ",")}</td>
-            <td className="w-1/12  border">{(products.reference_price).toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+            <td className="w-1/12  border text-sm">{(products.reference_price).toLocaleString("pt-br", { style: "currency", currency: "BRL" })
               .replace(".", ",")}</td>
              
-              <td className="w-1/12 px-12 border">{transactions.filter(transaction =>transaction.product === products.name).reduce((acc, transaction) => {
+              <td className="w-1/12 px-12 border text-sm">{transactions.filter(transaction =>transaction.product === products.name).reduce((acc, transaction) => {
   // console.log( typeof(acc))
   // console.log( typeof(transaction.qtde))
   return acc + (transaction.type === 'Venda' || transaction.type === 'Consignado' ?  -transaction.qtde : transaction.qtde)}

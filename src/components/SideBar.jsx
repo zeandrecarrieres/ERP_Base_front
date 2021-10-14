@@ -6,14 +6,14 @@ function SideBar() {
   return (
     <div className="  h-screen bg-gray-100 sticky top-50 lg:w-3/12">
       <div className="">
-        <div className="p-20">
-          <h3 className="mb-4 text-2xl font-bold text-red-700 px-4">Menu</h3>
+        <div className="p-6 xl:ml-20 mt-10">
+          <h3 className="mb-4 text-xl text-red-700 px-4">Menu</h3>
           <ul>
             <li className="py-2 hover:bg-gray-200 rounded p-4 hover:text-red-700   ">
               <LineStyle />
               <Link
                 to="/"
-                className="text-lg m-4 font-bold text-gray-500 hover:text-red-700 "
+                className="text-base m-4 text-gray-500 hover:text-red-700 "
               >
                 Dashboard
               </Link>
@@ -22,7 +22,7 @@ function SideBar() {
               <Assignment />
               <Link
                 to="/products"
-                className="text-lg m-4 font-bold text-gray-500 hover:text-red-700"
+                className="text-base m-4 text-gray-500 hover:text-red-700"
               >
                 Produtos
               </Link>
@@ -31,7 +31,7 @@ function SideBar() {
               <Group />
               <Link
                 to="/clients"
-                className="text-lg m-4 font-bold text-gray-500 hover:text-red-700"
+                className="text-base m-4 text-gray-500 hover:text-red-700"
               >
                 Clientes
               </Link>
@@ -40,7 +40,7 @@ function SideBar() {
               <AssignmentInd />
               <Link
                 to="/suppliers"
-                className="text-lg m-4 font-bold text-gray-500 hover:text-red-700"
+                className="text-base m-4 text-gray-500 hover:text-red-700"
               >
                 Fornecedores
               </Link>
@@ -49,7 +49,7 @@ function SideBar() {
               <AssignmentInd />
               <Link
                 to="/users"
-                className="text-lg m-4 font-bold text-gray-500 hover:text-red-700"
+                className="text-base m-4 text-gray-500 hover:text-red-700"
               >
                 Usuários
               </Link>
@@ -58,7 +58,7 @@ function SideBar() {
               <Assessment />
               <Link
                 to="/transactions"
-                className="text-lg m-4 font-bold text-gray-500 hover:text-red-700"
+                className="text-base m-4 text-gray-500 hover:text-red-700"
               >
                 Transações
               </Link>
@@ -67,7 +67,7 @@ function SideBar() {
               <Assessment />
               <Link
                 to="/transactions"
-                className="text-lg m-4 font-bold text-gray-500 hover:text-red-700"
+                className="text-base m-4 text-gray-500 hover:text-red-700"
               >
                 Estoque
               </Link>
@@ -76,7 +76,7 @@ function SideBar() {
               <Assessment />
               <Link
                 to="/transactions"
-                className="text-lg m-4 font-bold text-gray-500 hover:text-red-700"
+                className="text-base m-4 text-gray-500 hover:text-red-700"
               >
                 Relatórios
               </Link>
@@ -86,7 +86,7 @@ function SideBar() {
               <Assessment />
               <Link
                 to="/finances"
-                className="text-lg m-4 font-bold text-gray-500 hover:text-red-700"
+                className="text-base m-4 text-gray-500 hover:text-red-700"
               >
                 Financeiro
               </Link>

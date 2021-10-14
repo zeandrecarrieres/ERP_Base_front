@@ -23,40 +23,40 @@ function Products() {
 
   return (
     <div>
-      <div className="mx-20 pb-12">
+      <div className="mx-20 pb-12 xl:max-w-3xl">
         <div className="flex justify-between items-center">
-          <h1 className="text-red-700 text-xl mt-20 font-bold">
+          <h1 className="text-red-700 text-xl mt-20 ">
             Lista de Produtos
           </h1>
           <button
             onClick={openProductModal}
-            className="flex justify-center items-center text-xl bg-gray-700 hover:bg-gray-500 text-white p-4 rounded align-rigth h-12 mt-4 "
+            className="flex justify-center items-center text-ll bg-gray-700 hover:bg-gray-500 text-white p-3 rounded align-rigth h-8 mt-4 "
           >
             +
           </button>
         </div>
-        <table className="table-fixed border w-full">
+        <table className="table-fixed border  ">
           <thead className="border ">
             <tr className="border ">
-              <th className="w-1/12 px-12 border bg-gray-100">Código</th>
-              <th className="w-1/12  px-12 border py-2 bg-gray-100">
+              <th className="w-1/12 px-12 border bg-gray-100 font-medium ">Código</th>
+              <th className="w-1/12  px-12 border py-2 bg-gray-100 font-medium">
                 Categoria
               </th>
-              <th className="w-2/12 px-12 border bg-gray-100">Nome</th>
-              <th className="w-2/12 px-12 border bg-gray-100">Descrição</th>
-              <th className="w-1/12 px-12 border bg-gray-100">
-                Preço de compra
+              <th className="w-2/12 px-12 border bg-gray-100 font-medium">Nome</th>
+              <th className="w-2/12 px-12 border bg-gray-100 font-medium">Descrição</th>
+              <th className="w-1/12 px-12 border bg-gray-100 font-medium">
+                Preço Compra
               </th>
-              <th className="w-1/12 px-12 border bg-gray-100">
-                Preço de venda
+              <th className="w-1/12 px-12 border bg-gray-100 font-medium">
+                Preço Venda
               </th>
-              <th className="w-1/12 px-12 border bg-gray-100">Qtde Estoque</th>
-              <th className="w-1/12 px-12 border bg-gray-100">Editar</th>
-              <th className="w-1/12 px-12 border bg-gray-100">Excluir</th>
+              <th className="w-1/12 px-12 border bg-gray-100 font-medium">Qtde Estoque</th>
+              <th className="w-1/12 px-12 border bg-gray-100 font-medium">Editar</th>
+              <th className="w-1/12 px-12 border bg-gray-100 font-medium">Excluir</th>
             </tr>
           </thead>
         </table>
-
+    
         {products.map((product) => (
           <ProductLine key={product.id} products={product} />
         ))}
