@@ -30,7 +30,7 @@ function Products() {
           </h1>
           <button
             onClick={openProductModal}
-            className="flex justify-center items-center text-ll bg-gray-700 hover:bg-gray-500 text-white p-3 rounded align-rigth h-8 mt-4 "
+            className="flex justify-center items-center text-base bg-gray-700 hover:bg-gray-500 text-white p-3 rounded align-rigth h-8 mt-4 "
           >
             +
           </button>
@@ -38,25 +38,25 @@ function Products() {
         <table className="table-fixed border  ">
           <thead className="border ">
             <tr className="border ">
-              <th className="w-1/12 px-12 border bg-gray-100 font-medium ">Código</th>
-              <th className="w-1/12  px-12 border py-2 bg-gray-100 font-medium">
+              <th className="w-1/12 border bg-gray-100 font-medium text-sm ">Código</th>
+              <th className="w-1/12  border py-2 bg-gray-100 font-medium text-sm">
                 Categoria
               </th>
-              <th className="w-2/12 px-12 border bg-gray-100 font-medium">Nome</th>
-              <th className="w-2/12 px-12 border bg-gray-100 font-medium">Descrição</th>
-              <th className="w-1/12 px-12 border bg-gray-100 font-medium">
+              <th className="w-2/12 border bg-gray-100 font-medium text-sm">Nome</th>
+              <th className="w-2/12 pl-12 border bg-gray-100 font-medium text-sm">Descrição</th>
+              <th className="w-1/12 pl-12 border bg-gray-100 font-medium text-sm">
                 Preço Compra
               </th>
-              <th className="w-1/12 px-12 border bg-gray-100 font-medium">
+              <th className="w-1/12 border bg-gray-100 font-medium text-sm">
                 Preço Venda
               </th>
-              <th className="w-1/12 px-12 border bg-gray-100 font-medium">Qtde Estoque</th>
-              <th className="w-1/12 px-12 border bg-gray-100 font-medium">Editar</th>
-              <th className="w-1/12 px-12 border bg-gray-100 font-medium">Excluir</th>
+              <th className="w-1/12 pl-6 border bg-gray-100 font-medium text-sm">Qtde Estoque</th>
+              <th className="w-1/12 border bg-gray-100 font-medium text-sm">Editar</th>
+              <th className="w-1/12 border bg-gray-100 font-medium text-sm">Excluir</th>
             </tr>
           </thead>
         </table>
-    
+        
         {products.map((product) => (
           <ProductLine key={product.id} products={product} />
         ))}

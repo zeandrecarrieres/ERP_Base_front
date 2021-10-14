@@ -50,7 +50,7 @@ function UserAdd({onUserModalClose}) {
           className="grid-cols-2 grid-template-columns: repeat(2, minmax(0, 1fr)); items-center justify-center"
           onSubmit={registerUser}
         >
-          <div className="text-3xl mb-8 text-gray-500">
+          <div className="text-xl mb-8 text-gray-500">
             Inclusão de Usuários
           </div>
 
@@ -58,13 +58,13 @@ function UserAdd({onUserModalClose}) {
             <div className="flex flex-col mb-4">
               <label
                 htmlFor="category"
-                className="uppercase font-bold text-md text-gray-500"
+                className="font-bold text-sm text-gray-500"
               >
                 Tipo
               </label>
               <select
                 id="options-select"
-                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
+                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
                 placeholder="category"
                 onChange={(e) => setType(e.target.value)}
               >
@@ -84,7 +84,7 @@ function UserAdd({onUserModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="name"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
               Nome
             </label>
@@ -101,7 +101,7 @@ function UserAdd({onUserModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="email"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
               Email
             </label>
@@ -118,7 +118,7 @@ function UserAdd({onUserModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="telephone"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
               Telefone
             </label>
@@ -135,7 +135,7 @@ function UserAdd({onUserModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="username"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
               Username
             </label>
@@ -152,7 +152,7 @@ function UserAdd({onUserModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="password"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
               Password
             </label>
@@ -166,7 +166,7 @@ function UserAdd({onUserModalClose}) {
             />
           </div>
 
-          <button className="px-5 py-3 bg-red-500 text-white hover:bg-red-600 text-white uppercase text-lg mx-auto p-4 rounded w-full sm:w-auto">
+          <button className="px-5 py-3 bg-red-500 text-white hover:bg-red-600 text-white text-base mx-auto p-4 rounded w-full sm:w-auto">
             Cadastrar
           </button>
         </form>

@@ -57,18 +57,18 @@ function Finances() {
         </div>
 
         <div className="flex justify-between items-center">
-          <h1 className="text-red-700 text-xl mt-20 font-bold">Financeiro</h1>
+          <h1 className="text-red-700 text-xl mt-20 font-base">Financeiro</h1>
        
         </div>
         <table className="table-fixed border w-full ">
           <thead className="border ">
             <tr className="border ">
-              <th className="w-1/12  border bg-gray-100">Data</th>
-              <th className="w-1/12  border bg-gray-100">Tipo</th>
+              <th className="w-1/12  border bg-gray-100 font-medium">Data</th>
+              <th className="w-1/12  border bg-gray-100 font-medium">Tipo</th>
 
-              <th className="w-3/12  border bg-gray-100">Cliente</th>
+              <th className="w-3/12  border bg-gray-100 font-medium">Cliente</th>
 
-              <th className="w-3/12 border bg-gray-100">Valor Total</th>
+              <th className="w-3/12 border bg-gray-100 font-medium">Valor Total</th>
             </tr>
           </thead>
         </table>

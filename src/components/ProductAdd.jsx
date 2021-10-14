@@ -55,7 +55,7 @@ function ProductAdd({onProductModalClose}) {
           className="grid-cols-2 grid-template-columns: repeat(2, minmax(0, 1fr)); items-center justify-center"
           onSubmit={registerProduct}
         >
-          <div className="text-3xl mb-8 text-gray-500">
+          <div className="text-xl mb-8 text-gray-500">
             Inclusão de Produtos
           </div>
 
@@ -63,7 +63,7 @@ function ProductAdd({onProductModalClose}) {
             <div className="flex flex-col mb-4">
               <label
                 htmlFor="code"
-                className="uppercase font-bold text-md text-gray-500 "
+                className=" font-medium text-sm text-gray-500 "
               >
                 Código
               </label>
@@ -79,7 +79,7 @@ function ProductAdd({onProductModalClose}) {
             <div className="flex flex-col mb-4">
               {/* <label
                 htmlFor="category"
-                className="uppercase font-bold text-md text-gray-500 w-64"
+                className=" font-medium text-sm text-gray-500 w-64"
               >
                 Categoria
               </label>
@@ -93,13 +93,13 @@ function ProductAdd({onProductModalClose}) {
               /> */}
               <label
                 htmlFor="category"
-                className="uppercase font-bold text-md text-gray-500"
+                className=" font-medium text-sm text-gray-500"
               >
                 Tipo
               </label>
               <select
                 id="options-select"
-                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
+                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
                 placeholder="category"
                 onChange={(e) => setCategory(e.target.value)}
               >
@@ -149,7 +149,7 @@ function ProductAdd({onProductModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="name"
-              className="uppercase font-bold text-md text-gray-500"
+              className=" font-medium text-sm text-gray-500"
             >
               Nome
             </label>
@@ -165,7 +165,7 @@ function ProductAdd({onProductModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="description"
-              className="uppercase font-bold text-md text-gray-500"
+              className=" font-medium text-sm text-gray-500"
             >
               Descrição
             </label>
@@ -183,7 +183,7 @@ function ProductAdd({onProductModalClose}) {
             <div className="flex flex-col mb-4">
               <label
                 htmlFor="purchase_price"
-                className="uppercase font-bold text-md text-gray-500"
+                className=" font-medium text-sm text-gray-500"
               >
                 Qtde Estoque
               </label>
@@ -199,7 +199,7 @@ function ProductAdd({onProductModalClose}) {
             <div className="flex flex-col mb-4">
               <label
                 htmlFor="purchase_price"
-                className="uppercase font-bold text-md text-gray-500"
+                className=" font-medium text-sm text-gray-500"
               >
                 Preço de Compra
               </label>
@@ -215,7 +215,7 @@ function ProductAdd({onProductModalClose}) {
             <div className="flex flex-col mb-4">
               <label
                 htmlFor="reference_price"
-                className="uppercase font-bold text-md text-gray-500"
+                className=" font-medium text-sm text-gray-500"
               >
                 Preço de Venda
               </label>
@@ -230,7 +230,7 @@ function ProductAdd({onProductModalClose}) {
             </div>
           </div>
 
-          <button className="px-5 py-3 bg-red-700 text-white hover:bg-red-600 text-white uppercase text-lg mx-auto p-4 rounded w-full sm:w-auto">
+          <button className="px-5 py-3 bg-red-700 text-white hover:bg-red-600 text-white  text-base mx-auto p-4 rounded w-full sm:w-auto">
             Cadastrar
           </button>
         </form>

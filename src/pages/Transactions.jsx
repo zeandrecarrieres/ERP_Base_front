@@ -34,18 +34,18 @@ function Transactions() {
         <table className="table-fixed border w-full ">
           <thead className="border ">
             <tr className="border ">
-              <th className="w-1/12  border bg-gray-100">Data</th>
-              <th className="w-1/12  border bg-gray-100">Tipo</th>
-              <th className="w-1/12  border bg-gray-100">Usuário</th>
-              {/* <th className="w-1/12  border bg-gray-100">Comissão</th> */}
-              <th className="w-1/12  border py-2 bg-gray-100">Cliente</th>
-              <th className="w-1/12  pl-12 border bg-gray-100">Produto</th>
-              <th className="w-1/12  pl-32 border bg-gray-100">Qtde</th>
-              <th className="w-1/12  pl-28 border bg-gray-100">Valor</th>
-              <th className="w-2/12 pl-20 border bg-gray-100">Valor Total</th>
-              <th className="w-1/12 border bg-gray-100">Vcto</th>
-              <th className="w-1/12 border bg-gray-100">Editar</th>
-              <th className="w-1/12 border bg-gray-100">Excluir</th>
+              <th className="w-1/12  border bg-gray-100 text-sm font-medium">Data</th>
+              <th className="w-1/12  border bg-gray-100 text-sm font-medium">Tipo</th>
+              <th className="w-1/12  border bg-gray-100 text-sm font-medium">Usuário</th>
+              {/* <th className="w-1/12  border bg-gray-100 text-sm font-medium">Comissão</th> */}
+              <th className="w-1/12  border py-2 bg-gray-100 text-sm font-medium">Cliente</th>
+              <th className="w-1/12  pl-12 border bg-gray-100 text-sm font-medium">Produto</th>
+              <th className="w-1/12  pl-32 border bg-gray-100 text-sm font-medium">Qtde</th>
+              <th className="w-1/12  pl-28 border bg-gray-100 text-sm font-medium">Valor</th>
+              <th className="w-2/12 pl-20 border bg-gray-100 text-sm font-medium">Valor Total</th>
+              <th className="w-1/12 border bg-gray-100 text-sm font-medium">Vcto</th>
+              <th className="w-1/12 border bg-gray-100 text-sm font-medium">Editar</th>
+              <th className="w-1/12 border bg-gray-100 text-sm font-medium">Excluir</th>
             </tr>
           </thead>
         </table>

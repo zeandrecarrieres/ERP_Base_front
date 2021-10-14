@@ -81,7 +81,7 @@ function SuppliersAdd({onSupplierModalClose}) {
           className="grid-cols-2 grid-template-columns: repeat(2, minmax(0, 1fr)); items-center justify-center"
           onSubmit={registerSupplier}
         >
-          <div className="text-3xl mb-8 text-gray-500">
+          <div className="text-xl mb-8 text-gray-500">
             Inclusão de Fornecedores
           </div>
 
@@ -89,7 +89,7 @@ function SuppliersAdd({onSupplierModalClose}) {
             <div className="flex flex-col mb-4">
               <label
                 htmlFor="type"
-                className="uppercase font-bold text-md text-gray-500"
+                className="font-bold text-sm text-gray-500"
               >
                 Tipo
               </label>
@@ -106,13 +106,13 @@ function SuppliersAdd({onSupplierModalClose}) {
             <div className="flex flex-col mb-4">
               <label
                 htmlFor="category"
-                className="uppercase font-bold text-md text-gray-500"
+                className="font-bold text-sm text-gray-500"
               >
                 Categoria
               </label>
               <select
                 id="options-select"
-                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
+                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
                 placeholder="category"
                 onChange={(e) => setCategory(e.target.value)}
               >
@@ -140,9 +140,9 @@ function SuppliersAdd({onSupplierModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="nick"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
-              {category === "Fisica" ? "NOME" : "RAZÃO SOCIAL"}
+              {category === "Fisica" ? "NOME" : "Razão Social"}
             </label>
             <input
               type="text"
@@ -157,7 +157,7 @@ function SuppliersAdd({onSupplierModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="email"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
               Email
             </label>
@@ -174,7 +174,7 @@ function SuppliersAdd({onSupplierModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="telephone"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
               Telefone
             </label>
@@ -191,7 +191,7 @@ function SuppliersAdd({onSupplierModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="address"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
               Endereço
             </label>
@@ -208,7 +208,7 @@ function SuppliersAdd({onSupplierModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="complement"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
               Complemento
             </label>
@@ -225,7 +225,7 @@ function SuppliersAdd({onSupplierModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="district"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
               Bairro
             </label>
@@ -242,7 +242,7 @@ function SuppliersAdd({onSupplierModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="city"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
               Cidade
             </label>
@@ -260,7 +260,7 @@ function SuppliersAdd({onSupplierModalClose}) {
             <div className="flex flex-col mb-4">
               <label
                 htmlFor="state"
-                className="uppercase font-bold text-md text-gray-500"
+                className="font-bold text-sm text-gray-500"
               >
                 Estado
               </label>
@@ -277,7 +277,7 @@ function SuppliersAdd({onSupplierModalClose}) {
             <div className="flex flex-col mb-4">
               <label
                 htmlFor="postal"
-                className="uppercase font-bold text-md text-gray-500"
+                className="font-bold text-sm text-gray-500"
               >
                 CEP
               </label>
@@ -295,7 +295,7 @@ function SuppliersAdd({onSupplierModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="cnp"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
               {category === "Fisica" ? "CPF" : "CNPJ"}
             </label>
@@ -313,7 +313,7 @@ function SuppliersAdd({onSupplierModalClose}) {
             <div className="flex flex-col mb-4">
               <label
                 htmlFor="inscription"
-                className="uppercase font-bold text-md text-gray-500"
+                className="font-bold text-sm text-gray-500"
               >
                 INSCRIÇÃO ESTADUAL
               </label>
@@ -331,7 +331,7 @@ function SuppliersAdd({onSupplierModalClose}) {
           <div className="flex flex-col mb-4">
             <label
               htmlFor="site"
-              className="uppercase font-bold text-md text-gray-500"
+              className="font-bold text-sm text-gray-500"
             >
               Site
             </label>
@@ -345,7 +345,7 @@ function SuppliersAdd({onSupplierModalClose}) {
             />
           </div>
 
-          <button className="px-5 py-3 bg-red-500 text-white hover:bg-red-600 text-white uppercase text-lg mx-auto p-4 rounded w-full sm:w-auto">
+          <button className="px-5 py-3 bg-red-500 text-white hover:bg-red-600 text-white text-lg mx-auto p-4 rounded w-full sm:w-auto">
             Cadastrar
           </button>
         </form>

@@ -6,7 +6,7 @@ function SideBar() {
   return (
     <div className="  h-screen bg-gray-100 sticky top-50 lg:w-3/12">
       <div className="">
-        <div className="p-6 xl:ml-20 mt-10">
+        <div className="p-4 xl:ml-10 mt-12">
           <h3 className="mb-4 text-xl text-red-700 px-4">Menu</h3>
           <ul>
             <li className="py-2 hover:bg-gray-200 rounded p-4 hover:text-red-700   ">
