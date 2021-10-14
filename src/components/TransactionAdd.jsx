@@ -275,7 +275,7 @@ function TransactionAdd({onTransactionModalClose}) {
               htmlFor="salePrice"
               className="uppercase font-bold text-md text-gray-500"
             >
-              Preço Venda
+              {type === "Compra" || type === "Entrada" ? "Preço de Compra" : "Preço de Venda"}
             </label>
             <input
               type="float"

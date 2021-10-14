@@ -157,7 +157,7 @@ function UserAdd({onUserModalClose}) {
               Password
             </label>
             <input
-              type="text"
+              type="password"
               id="password"
               name="password"
               value={password}
