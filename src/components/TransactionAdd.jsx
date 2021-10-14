@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import { TransactionsContext } from "../TransactionsContext";
 
-function TransactionAdd() {
+function TransactionAdd({onTransactionModalClose}) {
   const [date, setDate] = useState("");
   const [type, setType] = useState("");
   const [client, setClient] = useState("");
@@ -17,6 +17,9 @@ function TransactionAdd() {
   const [supplierOptions, setSupplierOptions] = useState([]);
   const [discount, setDiscount] = useState(0);
   const [comission, setComission] = useState(0);
+  const [condition_payment, setCondition_payment] = useState("");
+  const [vcto, setVcto] = useState("");
+  const [form_payment, setForm_payment] = useState("");
   const [obs, setObs] = useState("");
   const [counter, setCounter] = useState(1);
 
@@ -66,6 +69,9 @@ function TransactionAdd() {
         qtde,
         reference_price,
         total_price,
+        condition_payment,
+        vcto,
+        form_payment,
       },
     })
       .then(function (reponse) {
@@ -89,6 +95,9 @@ function TransactionAdd() {
         setDiscount(0);
         setComission(0);
         setObs("");
+
+        onTransactionModalClose()
+        
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues
@@ -142,8 +151,10 @@ function TransactionAdd() {
               </option>
 
               <option value="Venda">Venda</option>
-              <option value="Compra">Compra</option>
+              <option value="Saída">Saída</option>
               <option value="Consignado">Consignado</option>
+              <option value="Compra">Compra</option>
+              <option value="Entrada">Entrada</option>
             </select>
           </div>
         </div>
@@ -312,6 +323,74 @@ function TransactionAdd() {
               readOnly
               className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
             />
+
+<div className="flex justify-between flex-wrap">
+
+            <div className="flex flex-col mb-4 ">
+              <label
+                htmlFor="client"
+                className="uppercase font-bold text-md text-gray-500 w-64"
+              >
+                Condição de Pagamento
+              </label>
+              <select
+                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
+                id="options-select"
+                placeholder="description"
+                // onClick={(e) => getProducts(e)}
+                onChange={(e) => setCondition_payment(e.target.value)}
+              >
+                <option value="" className="flex flex-col mb-4">
+                  -- Selecione uma opção --
+                </option>
+
+                <option value="vista">À vista</option>
+                <option value="prazo">À prazo</option>
+              </select>
+            </div>
+
+            <div className="flex flex-col ml-20 mb-4">
+              <label
+                htmlFor="date"
+                className="uppercase font-bold text-md text-gray-500"
+              >
+                Vencimento
+              </label>
+              <input
+                type="date"
+                id="date"
+                name="vcto"
+                className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30"
+                onChange={(e) => setVcto(e.target.value)}
+              />
+            </div>
+
+            </div>
+
+            <div className="flex flex-col mb-4 ">
+              <label
+                htmlFor="form_payment"
+                className="uppercase font-bold text-md text-gray-500 w-64"
+              >
+                Forma de Pagamento
+              </label>
+              <select
+                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
+                id="options-select"
+                placeholder="description"
+                // onClick={(e) => getProducts(e)}
+                onChange={(e) => setForm_payment(e.target.value)}
+              >
+                <option value="" className="flex flex-col mb-4">
+                  -- Selecione uma opção --
+                </option>
+
+                <option value="dinheiro">Dinheiro</option>
+                <option value="cheque">Cheque</option>
+                <option value="boleto">Boleto</option>
+                <option value="cartao">Cartão Crédito</option>
+              </select>
+            </div>
 
             <label
               htmlFor="totalPrice"

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 
-function ClientAdd() {
+function ClientAdd({onCLientModalClose}) {
   const [type, setType] = useState("");
   const [category, setCategory] = useState("");
   // const [nick, setNick] = useState("");
@@ -60,6 +60,8 @@ function ClientAdd() {
         setEmail('')
         setInscription('')
         setSite('')
+
+        onCLientModalClose()
        
     
       })

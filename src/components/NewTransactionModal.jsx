@@ -8,7 +8,7 @@ export function NewTransactionModal({isOpen, onRequestClose}) {
         onRequestClose={onRequestClose}
         contentLabel="Example Modal"
       >
-        <TransactionsAdd  />
+        <TransactionsAdd onTransactionModalClose={onRequestClose}  />
       </Modal>
     )
 }

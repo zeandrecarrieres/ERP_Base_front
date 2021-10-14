@@ -8,7 +8,7 @@ export function NewProductModal({isOpen, onRequestClose}) {
         onRequestClose={onRequestClose}
         contentLabel="Example Modal"
       >
-        <ProductAdd />
+        <ProductAdd onProductModalClose={onRequestClose} />
       </Modal>
     )
 }

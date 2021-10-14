@@ -2,7 +2,7 @@ import React, { useState} from "react";
 import axios from "axios";
 
 
-function ProductAdd() {
+function ProductAdd({onProductModalClose}) {
   const [code, setCode] = useState("");
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
@@ -36,6 +36,8 @@ function ProductAdd() {
         setQtde("");
         setPurchase_price("");
         setReference_price("");
+
+        onProductModalClose()
       
       })
       .catch(function (erreur) {

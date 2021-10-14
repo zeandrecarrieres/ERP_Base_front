@@ -8,7 +8,7 @@ export function NewClientModal({isOpen, onRequestClose}) {
         onRequestClose={onRequestClose}
         contentLabel="Example Modal"
       >
-        <ClientAdd />
+        <ClientAdd onCLientModalClose={onRequestClose}/>
       </Modal>
     )
 }

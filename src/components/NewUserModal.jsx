@@ -8,7 +8,7 @@ export function NewUserModal({isOpen, onRequestClose}) {
         onRequestClose={onRequestClose}
         contentLabel="User Modal"
       >
-        <UserAdd />
+        <UserAdd onUserModalClose={onRequestClose} />
       </Modal>
     )
 }

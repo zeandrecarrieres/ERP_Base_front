@@ -80,6 +80,17 @@ function SideBar() {
               >
                 Relatórios
               </Link>
+              
+            </li>
+            <li className="py-2  hover:bg-gray-200 rounded p-4 hover:text-red-700">
+              <Assessment />
+              <Link
+                to="/finances"
+                className="text-lg m-4 font-bold text-gray-500 hover:text-red-700"
+              >
+                Financeiro
+              </Link>
+              
             </li>
           </ul>
         </div>

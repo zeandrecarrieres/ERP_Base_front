@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function UserAdd() {
+function UserAdd({onUserModalClose}) {
   const [type, setType] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -32,6 +32,8 @@ function UserAdd() {
         setTelephone("");
         setUsername("");
         setPassword("");
+
+        onUserModalClose()
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues

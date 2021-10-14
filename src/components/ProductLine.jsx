@@ -57,11 +57,11 @@ function ProductsLine({ products }) {
   // const filter = transactions.filter(transaction =>transaction.product === product.name).reduce((acc, transaction) =>acc + transaction.qtde ,0)
   
   // console.log(filter)
- const debitStockTransaction = transactions.filter(transaction => transaction.type === "Venda" || "Consignado")
- const creditStockTransaction = transactions.filter(transaction => transaction.type === "Compra")
+//  const debitStockTransaction = transactions.filter(transaction => transaction.type === "Venda" || "Consignado")
+//  const creditStockTransaction = transactions.filter(transaction => transaction.type === "Compra")
 
- console.log(debitStockTransaction)
- console.log(creditStockTransaction)
+//  console.log(debitStockTransaction)
+//  console.log(creditStockTransaction)
 
 // const stock = transactions.reduce((acc, transaction) =>acc + transaction.type === 'Venda' ? - transaction.qtde : transaction.qdte ,0)
 
@@ -83,8 +83,8 @@ function ProductsLine({ products }) {
               .replace(".", ",")}</td>
              
               <td className="w-1/12 px-12 border">{transactions.filter(transaction =>transaction.product === products.name).reduce((acc, transaction) => {
-  console.log( typeof(acc))
-  console.log( typeof(transaction.qtde))
+  // console.log( typeof(acc))
+  // console.log( typeof(transaction.qtde))
   return acc + (transaction.type === 'Venda' || transaction.type === 'Consignado' ?  -transaction.qtde : transaction.qtde)}
 , 0)}</td>
               {/* <td className="w-1/12 px-12 border">{transactions.filter(transaction =>transaction.product === products.name).reduce((acc, transaction) =>acc - transaction.qtde ,0)}</td> */}

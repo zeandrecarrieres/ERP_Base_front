@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function SuppliersAdd() {
+function SuppliersAdd({onSupplierModalClose}) {
   const [type, setType] = useState("");
   const [category, setCategory] = useState("");
   // const [nick, setNick] = useState("");
@@ -61,6 +61,8 @@ function SuppliersAdd() {
         setInscription('')
         setSite('')
 
+
+        onSupplierModalClose()
 
 
       })
