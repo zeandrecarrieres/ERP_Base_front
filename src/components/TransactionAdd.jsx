@@ -77,7 +77,7 @@ function TransactionAdd({ onTransactionModalClose }) {
       .then(function (reponse) {
         //On traite la suite une fois la réponse obtenue
         //  addCounter();
-        console.log(reponse);
+        // console.log(reponse);
         alert("Transação efetuada com sucesso!");
 
         setDate("");
@@ -95,15 +95,16 @@ function TransactionAdd({ onTransactionModalClose }) {
         setDiscount(0);
         setComission(0);
         setObs("");
-
+        
+        setCounter(counter + 1);
         onTransactionModalClose();
+        
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues
         console.log(erreur);
         alert("Preencha todos os campos");
       });
-    setCounter(counter + 1);
   };
 
   return (
@@ -126,6 +127,7 @@ function TransactionAdd({ onTransactionModalClose }) {
               name="date"
               className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30 text-sm"
               onChange={(e) => setDate(e.target.value)}
+              
             />
           </div>
           <div className="flex flex-col mb-4 ">

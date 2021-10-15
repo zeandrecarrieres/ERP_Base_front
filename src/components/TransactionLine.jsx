@@ -1,16 +1,11 @@
 import {useEffect} from "react";
 import { Delete, Edit } from "@material-ui/icons";
 
-function TransactionsLine({ transactions }) {
+function TransactionsLine({ transactions, counter }) {
  
- useEffect(() => {
-
-  
-
-
-
-
-},[])
+  useEffect(() => {
+   
+  },[transactions])
  
   const deleteTransaction = async () => {
     await fetch(

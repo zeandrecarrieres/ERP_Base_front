@@ -1,13 +1,27 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { TransactionsContext } from "../TransactionsContext";
 import TransactionLine from "../components/TransactionLine";
 // import TransactionsAdd from "../components/TransactionAdd";
+import { getCurrentMonth, filterListByMonth } from '../helpers/dateFilter'
 
 import { NewTransactionModal } from "../components/NewTransactionModal";
 
 function Transactions() {
   const transactions = useContext(TransactionsContext);
-  const [modalTransactionIsOpen, setModalTransactionIsOpen] = useState(false);
+  const [modalTransactionIsOpen, setModalTransactionIsOpen] = useState(false)
+  const [filteredTransaction, setFilteredTransactions] = useState([])
+  const [currentMonth, setCurrentMonth] = useState(getCurrentMonth)
+  const [month, setMonth] = useState(getCurrentMonth)
+  const [counter, setCounter] = useState (1)
+
+  // console.log(currentMonth)
+
+  useEffect(() => {
+    setFilteredTransactions(filterListByMonth(transactions, month )
+    )
+    console.log(filteredTransaction, currentMonth)
+  },[month])
+
 
   function openModal() {
     setModalTransactionIsOpen(true);
@@ -24,6 +38,23 @@ function Transactions() {
           <h1 className="text-red-700 text-lg mt-20 ">
             Lista de Transações
           </h1>
+
+          <label htmlFor="month">Mês:</label>
+          <select name="month"  id="month" onChange={(e) => setMonth(`2021-${e.target.value}`)}>
+            <option value="01" >Janeiro</option>
+            <option value="02" >Fevereiro</option>
+            <option value="03" >Março</option>
+            <option value="04" >Abril</option>
+            <option value="05" >Maio</option>
+            <option value="06" >Junho</option>
+            <option value="07" >Julho</option>
+            <option value="08" >Agosto</option>
+            <option value="09" >Setembro</option>
+            <option value="10" selected="selected" >Outubro</option>
+            <option value="11" >Novembro</option>
+            <option value="12" >Dezembro</option>
+          </select>
+          {console.log(month)}
           <button
             onClick={openModal}
             className="flex justify-center items-center text-base bg-gray-700 hover:bg-gray-500 text-white p-3 rounded align-rigth h-8 mt-4 "
@@ -50,8 +81,10 @@ function Transactions() {
           </thead>
         </table>
 
-        {transactions.map((transaction) => (
-          <TransactionLine key={transaction._id} transactions={transaction} />
+        {/* {console.log(filteredTransaction)} */}
+
+        {filteredTransaction.map((transaction) => (
+          <TransactionLine key={transaction._id} transactions={transaction} counter={counter} />
         ))}
       </div>
 
