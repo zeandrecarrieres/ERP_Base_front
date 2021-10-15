@@ -21,12 +21,14 @@ function App() {
       .then((data) => setTransactions(data));
   }, []);
 
+  
+
   return (
     <div>
       <TransactionsContext.Provider value={transactions}>
         <BrowserRouter>
           <Header />
-          <div className="flex w-full flex-wrap md:flex-nowrap">
+          <div className="hidden sm:flex w-full flex-wrap md:flex-nowrap ">
             <SideBar />
             <div className="flex bg-grey-100 w-full flex-wrap md:flex-nowrap">
               <Switch>

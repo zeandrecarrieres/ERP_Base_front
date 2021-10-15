@@ -39,7 +39,6 @@ function Users() {
           <thead className="border ">
             <tr className="border ">
               <th className="w-1/12  border bg-gray-100 font-medium text-sm">Tipo</th>
-              <th className="w-1/12  border bg-gray-100 font-medium text-sm">Username</th>
               <th className="w-2/12  border bg-gray-100 font-medium text-sm">Nome</th>
               <th className="w-1/12  border bg-gray-100 font-medium text-sm">Email</th>
               <th className="w-1/12  border bg-gray-100 font-medium text-sm">Telefone</th>

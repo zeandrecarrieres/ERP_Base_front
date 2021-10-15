@@ -16,7 +16,7 @@ function UsersLine({ users }) {
           <tr>
             <td className="w-1/12 px-12 border text-sm">{users.type}</td>
             {/* <td className="w-1/12 border">{users.category}</td> */}
-            <td className="w-1/12 px-16 border">{users.username}</td>
+            {/* <td className="w-1/12 px-16 border">{users.username}</td> */}
             <td className="w-2/12 px-12 border">{users.name}</td>
             <td className="w-1/12 border">{users.email}</td>
             <td className="w-1/12 px-12 border">{users.telephone}</td>

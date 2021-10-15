@@ -34,10 +34,10 @@ function Transactions() {
   }
 
 
-  
-
   return (
     <div>
+
+      
       <div className="mx-20 text-sm">
         <div className="flex justify-between items-center">
           <h1 className="text-red-700 text-lg mt-20 ">
