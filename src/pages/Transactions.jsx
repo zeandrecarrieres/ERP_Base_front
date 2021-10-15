@@ -15,12 +15,14 @@ function Transactions() {
   const [counter, setCounter] = useState (1)
 
   // console.log(currentMonth)
+  const anoAtual = new Date().getFullYear()
+  const mesAtual = new Date().getMonth()
 
   useEffect(() => {
     setFilteredTransactions(filterListByMonth(transactions, month )
     )
     console.log(filteredTransaction, currentMonth)
-  },[month])
+  },[month, mesAtual])
 
 
   function openModal() {
@@ -31,6 +33,9 @@ function Transactions() {
     setModalTransactionIsOpen(false);
   }
 
+
+  
+
   return (
     <div>
       <div className="mx-20 text-sm">
@@ -40,7 +45,8 @@ function Transactions() {
           </h1>
 
           <label htmlFor="month">Mês:</label>
-          <select name="month"  id="month" onChange={(e) => setMonth(`2021-${e.target.value}`)}>
+          <select name="month"  id="month" onChange={(e) => setMonth(`${anoAtual}-${e.target.value}`)}>
+            <option selected hidden value={mesAtual}>mês atual</option>
             <option value="01" >Janeiro</option>
             <option value="02" >Fevereiro</option>
             <option value="03" >Março</option>
@@ -50,7 +56,7 @@ function Transactions() {
             <option value="07" >Julho</option>
             <option value="08" >Agosto</option>
             <option value="09" >Setembro</option>
-            <option value="10" selected="selected" >Outubro</option>
+            <option value="10"  >Outubro</option>
             <option value="11" >Novembro</option>
             <option value="12" >Dezembro</option>
           </select>
