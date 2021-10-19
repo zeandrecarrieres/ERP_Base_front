@@ -8,6 +8,7 @@ import { NewTransactionModal } from "../components/NewTransactionModal";
 
 function Transactions() {
   const transactions = useContext(TransactionsContext);
+  
   const [modalTransactionIsOpen, setModalTransactionIsOpen] = useState(false);
   const [filteredTransaction, setFilteredTransactions] = useState([]);
   const [busca, setBusca] = useState("");

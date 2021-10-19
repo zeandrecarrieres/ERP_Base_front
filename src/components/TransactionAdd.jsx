@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+
 // import { TransactionsContext } from "../TransactionsContext";
 
 function TransactionAdd({ onTransactionModalClose }) {
@@ -10,12 +11,14 @@ function TransactionAdd({ onTransactionModalClose }) {
   const [product, setProduct] = useState("");
   const [qtde, setQtde] = useState(0);
   const [reference_price, setReference_price] = useState(0);
-  const [total_price, setTotal_price] = useState(0);
   const [productOptions, setProductOptions] = useState([]);
+  const [total_price, setTotal_price] = useState(0);
+  const [discount, setDiscount] = useState(0);
+
   const [clientOptions, setClientOptions] = useState([]);
   const [userOptions, setUserOptions] = useState([]);
   const [supplierOptions, setSupplierOptions] = useState([]);
-  const [discount, setDiscount] = useState(0);
+
   const [comission, setComission] = useState(0);
   const [condition_payment, setCondition_payment] = useState("");
   const [vcto, setVcto] = useState("");
@@ -23,14 +26,19 @@ function TransactionAdd({ onTransactionModalClose }) {
   const [obs, setObs] = useState("");
   const [counter, setCounter] = useState(1);
 
+  const [productsItems, setProductsItems] = useState([]);
+  const [productListItems, setProductListItems] = useState([]);
+
+  
+
   // const transactions = useContext(TransactionsContext);
 
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_URL_API}/products`)
-      .then((response) => response.json())
-      .then((data) => setProductOptions(data))
-      .catch((error) => console.log(error));
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${process.env.REACT_APP_URL_API}/products`)
+  //     .then((response) => response.json())
+  //     .then((data) => setProductOptions(data))
+  //     .catch((error) => console.log(error));
+  // }, []);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/clients`)
@@ -53,6 +61,25 @@ function TransactionAdd({ onTransactionModalClose }) {
       .catch((error) => console.log(error));
   }, []);
 
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_URL_API}/products`)
+      .then((response) => response.json())
+      .then((data) => setProductOptions(data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  const includeItem = () => {
+    setProductsItems([product, qtde, reference_price, discount, total_price]);
+    let newList = [...productListItems, productsItems];
+
+    setProductListItems(newList);
+    
+  };
+
+  
+
+  console.log(productListItems);
+
   const registerTransaction = (e) => {
     e.preventDefault();
 
@@ -65,10 +92,11 @@ function TransactionAdd({ onTransactionModalClose }) {
         client,
         user,
         comission,
-        product,
-        qtde,
-        reference_price,
-        total_price,
+        productListItems,
+        // product,
+        // qtde,
+        // reference_price,
+        // total_price,
         condition_payment,
         vcto,
         form_payment,
@@ -95,10 +123,9 @@ function TransactionAdd({ onTransactionModalClose }) {
         setDiscount(0);
         setComission(0);
         setObs("");
-        
+
         setCounter(counter + 1);
         onTransactionModalClose();
-        
       })
       .catch(function (erreur) {
         //On traite ici les erreurs éventuellement survenues
@@ -127,7 +154,6 @@ function TransactionAdd({ onTransactionModalClose }) {
               name="date"
               className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30 text-sm"
               onChange={(e) => setDate(e.target.value)}
-              
             />
           </div>
           <div className="flex flex-col mb-4 ">
@@ -222,102 +248,135 @@ function TransactionAdd({ onTransactionModalClose }) {
           />
         </div>
 
-        <div className="flex flex-col mb-4">
-          <label
-            htmlFor="product"
-            className="font-bold text-sm text-gray-500 w-64"
+        <div className="flex justify-between shadow p-3 mb-4 bg-gray-50">
+          <div className="flex">
+            <div className="flex flex-col mb-4">
+              <div></div>
+              <label
+                htmlFor="product"
+                className="font-bold text-sm text-gray-500 w-64 mb-1"
+              >
+                Produto(s)
+              </label>
+              <select
+                className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 text-sm w-80"
+                id="options-select"
+                placeholder="description"
+                // onClick={(e) => getProducts(e)}
+                onChange={(e) => setProduct(e.target.value)}
+              >
+                <option value="" className="flex flex-col mb-4">
+                  -- Selecione uma opção --
+                </option>
+                {productOptions.map((option) => (
+                  <option value={option.name}>{option.name}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex flex-col mb-4 ml-4">
+              <label
+                htmlFor="qtde"
+                className="font-bold text-sm text-gray-500 mb-1"
+              >
+                Qtde
+              </label>
+              <input
+                type="number"
+                id="qtde"
+                name="qtde"
+                value={qtde}
+                className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-20"
+                onChange={(e) => {
+                  setTotal_price(qtde * e.target.value);
+                  setQtde(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="flex flex-col mb-4  ml-4">
+              <label
+                htmlFor="salePrice"
+                className="font-bold text-sm text-gray-500 mb-1"
+              >
+                {type === "Compra" || type === "Entrada"
+                  ? "Preço de Compra"
+                  : "Preço de Venda"}
+              </label>
+              <input
+                type="float"
+                id="salePrice"
+                name="salePrice"
+                value={reference_price}
+                className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-32"
+                onChange={(e) => {
+                  setReference_price(parseFloat(e.target.value));
+
+                  setTotal_price(qtde * e.target.value);
+                }}
+              />
+            </div>
+            <div className="flex flex-col mb-4  ml-4">
+              <label
+                htmlFor="discount"
+                className="font-bold text-sm text-gray-500 mb-1"
+              >
+                % Desconto
+              </label>
+              <input
+                type="number"
+                id="discount"
+                name="discount"
+                value={discount}
+                className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-20"
+                onChange={(e) => {
+                  setDiscount(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="flex flex-col mb-4  ml-4">
+              <label
+                htmlFor="totalPrice"
+                className="font-bold text-sm text-gray-500 mb-1"
+              >
+                Total
+              </label>
+              <input
+                type="number"
+                id="totalPrice"
+                name="totalPrice"
+                value={(total_price * (1 - discount / 100)).toFixed(2)}
+                readOnly
+                className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-32"
+              />
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={includeItem}
+            className="text-gray-700 text-xl font-bold "
           >
-            Produto
-          </label>
-          <select
-            className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
-            id="options-select"
-            placeholder="description"
-            // onClick={(e) => getProducts(e)}
-            onChange={(e) => setProduct(e.target.value)}
-          >
-            <option value="" className="flex flex-col mb-4">
-              -- Selecione uma opção --
-            </option>
-            {productOptions.map((option) => (
-              <option value={option.name}>{option.name}</option>
-            ))}
-          </select>
+            +
+          </button>
         </div>
 
-        <div className="flex justify-between flex-wrap">
-          <div className="flex flex-col mb-4">
-            <label htmlFor="qtde" className="font-bold text-sm text-gray-500">
-              Quantidade
-            </label>
-            <input
-              type="number"
-              id="qtde"
-              name="qtde"
-              value={qtde}
-              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-32"
-              onChange={(e) => {
-                // setTotal_price(qtde * e.target.value);
-                setQtde(e.target.value);
-              }}
-            />
-          </div>
-          <div className="flex flex-col mb-4">
-            <label
-              htmlFor="salePrice"
-              className="font-bold text-sm text-gray-500"
-            >
-              {type === "Compra" || type === "Entrada"
-                ? "Preço de Compra"
-                : "Preço de Venda"}
-            </label>
-            <input
-              type="float"
-              id="salePrice"
-              name="salePrice"
-              value={reference_price}
-              className="border py-2 px-3 text-grey-darkes h-10 my-2 shadow-sm bg-opacity-30 px-2	w-32 "
-              onChange={(e) => {
-                setReference_price(parseFloat(e.target.value));
+        {productListItems.map((item) => {
+          return (
+            <>
+              <ul className="flex justify-between bg-gray-50 shadow px-6">
+                <li className="px-2 mr-18 w-48 ">{item[0]}</li>
+                <li className="px-2 mr-18">{item[1]}</li>
+                <li className="px-2 mr-18">{item[2]}</li>
+                <li className="px-2 mr-18">{item[3]}</li>
+                <li className="px-2 mr-18">{item[4]}</li>
+              </ul>
+            </>
+          );
+        })}
 
-                setTotal_price(qtde * e.target.value);
-              }}
-            />
-          </div>
+        <div className="flex justify-between flex-wrap mt-8">
           <div className="flex flex-col mb-4">
-            <label
-              htmlFor="discount"
-              className="font-bold text-sm text-gray-500"
-            >
-              % Desconto
-            </label>
-            <input
-              type="number"
-              id="discount"
-              name="discount"
-              value={discount}
-              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
-              onChange={(e) => {
-                setDiscount(e.target.value);
-              }}
-            />
-          </div>
-          <div className="flex flex-col mb-4">
-            <label
-              htmlFor="totalPrice"
-              className="font-bold text-sm text-gray-500"
-            >
-              Total
-            </label>
-            <input
-              type="number"
-              id="totalPrice"
-              name="totalPrice"
-              value={(total_price * (1 - discount / 100)).toFixed(2)}
-              readOnly
-              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
-            />
-
             <div className="flex justify-between flex-wrap ">
               <div className="flex flex-col mb-4 ">
                 <label
@@ -358,35 +417,31 @@ function TransactionAdd({ onTransactionModalClose }) {
                 />
               </div>
 
-              
               <div className="flex flex-col mb-4 ">
-              <label
-                htmlFor="form_payment"
-                className="font-bold text-sm text-gray-500 w-64"
-              >
-                Forma de Pagamento
-              </label>
-              <select
-                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
-                id="options-select"
-                placeholder="description"
-                // onClick={(e) => getProducts(e)}
-                onChange={(e) => setForm_payment(e.target.value)}
-              >
-                <option value="" className="flex flex-col mb-4">
-                  -- Selecione uma opção --
-                </option>
+                <label
+                  htmlFor="form_payment"
+                  className="font-bold text-sm text-gray-500 w-64"
+                >
+                  Forma de Pagamento
+                </label>
+                <select
+                  className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
+                  id="options-select"
+                  placeholder="description"
+                  // onClick={(e) => getProducts(e)}
+                  onChange={(e) => setForm_payment(e.target.value)}
+                >
+                  <option value="" className="flex flex-col mb-4">
+                    -- Selecione uma opção --
+                  </option>
 
-                <option value="dinheiro">Dinheiro</option>
-                <option value="cheque">Cheque</option>
-                <option value="boleto">Boleto</option>
-                <option value="cartao">Cartão Crédito</option>
-              </select>
+                  <option value="dinheiro">Dinheiro</option>
+                  <option value="cheque">Cheque</option>
+                  <option value="boleto">Boleto</option>
+                  <option value="cartao">Cartão Crédito</option>
+                </select>
+              </div>
             </div>
-
-            </div>
-
-           
 
             <label
               htmlFor="totalPrice"
