@@ -30,6 +30,8 @@ function DashBoard() {
     return acc;
   }, 0);
 
+  
+
   return (
     <div className="flex-column justify-center items-center m-auto bg-grey-100 h-screen w-full 
     ">
