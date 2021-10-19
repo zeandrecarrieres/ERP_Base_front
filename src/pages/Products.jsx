@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import ProductLine from "../components/ProductLine";
+import ProductLine from "../components/ProductLine"
+
 import { NewProductModal } from "../components/NewProductModal";
 
 function Products() {
@@ -20,6 +21,8 @@ function Products() {
   function closeProductModal() {
     setModalProductIsOpen(false);
   }
+
+  console.log(products)
 
   return (
     <div>

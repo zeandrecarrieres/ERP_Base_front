@@ -38,9 +38,11 @@ function TransactionsLine({ transactions, counter }) {
             <td className="w-3/12  border">{transactions.product}</td>
             <td className="w-1/12  border">{transactions.qtde}</td>
             <td className="w-1/12  border ">
-              {transactions.reference_price
+              {/* {transactions.reference_price
                 .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
-                .replace(".", ",")}
+                .replace(".", ",")} */}
+                  {transactions.reference_price
+                }
             </td>
             {}
 
