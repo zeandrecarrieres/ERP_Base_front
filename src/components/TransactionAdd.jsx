@@ -14,6 +14,7 @@ function TransactionAdd({ onTransactionModalClose }) {
   const [productOptions, setProductOptions] = useState([]);
   const [total_price, setTotal_price] = useState(0);
   const [discount, setDiscount] = useState(0);
+  const [totalValue, setTotalValue] = useState(0);
 
   const [clientOptions, setClientOptions] = useState([]);
   const [userOptions, setUserOptions] = useState([]);
@@ -26,8 +27,8 @@ function TransactionAdd({ onTransactionModalClose }) {
   const [obs, setObs] = useState("");
   const [counter, setCounter] = useState(1);
 
-  const [productsItems, setProductsItems] = useState([]);
-  const [productListItems, setProductListItems] = useState([]);
+  const [productsItems, setProductsItems] = useState([0,0,0,0,0]);
+  const [productListItems, setProductListItems] = useState([[0,0,0,0,0]]);
 
   
 
@@ -69,16 +70,29 @@ function TransactionAdd({ onTransactionModalClose }) {
   }, []);
 
   const includeItem = () => {
-    setProductsItems([product, qtde, reference_price, discount, total_price]);
+    let listItem = [product, qtde, reference_price, discount, total_price]
+    setProductsItems(listItem);
     let newList = [...productListItems, productsItems];
 
     setProductListItems(newList);
+    setTotalValue(productListItems.map((item) => item[4]).reduce((acc,item)=>acc+item))
     
   };
 
+  // useEffect(() => {
+  //   function updateTotal() {
+  //     const totalValueAdd = () => {
+  //       productListItems.map((item) => item[4]).reduce((acc,item)=>acc+item)
+  //   }
+  //   setTotalValue(totalValueAdd)}
+  // },[])
   
+ 
 
-  console.log(productListItems);
+  console.log((productListItems));
+
+ 
+
 
   const registerTransaction = (e) => {
     e.preventDefault();
@@ -96,7 +110,7 @@ function TransactionAdd({ onTransactionModalClose }) {
         // product,
         // qtde,
         // reference_price,
-        // total_price,
+        totalValue,
         condition_payment,
         vcto,
         form_payment,
@@ -289,7 +303,7 @@ function TransactionAdd({ onTransactionModalClose }) {
                 className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-20"
                 onChange={(e) => {
                   setTotal_price(qtde * e.target.value);
-                  setQtde(e.target.value);
+                  setQtde(Number(e.target.value));
                 }}
               />
             </div>
@@ -310,7 +324,7 @@ function TransactionAdd({ onTransactionModalClose }) {
                 value={reference_price}
                 className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-32"
                 onChange={(e) => {
-                  setReference_price(parseFloat(e.target.value));
+                  setReference_price(Number(e.target.value));
 
                   setTotal_price(qtde * e.target.value);
                 }}
@@ -330,7 +344,7 @@ function TransactionAdd({ onTransactionModalClose }) {
                 value={discount}
                 className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-20"
                 onChange={(e) => {
-                  setDiscount(e.target.value);
+                  setDiscount(Number(e.target.value));
                 }}
               />
             </div>
@@ -346,7 +360,7 @@ function TransactionAdd({ onTransactionModalClose }) {
                 type="number"
                 id="totalPrice"
                 name="totalPrice"
-                value={(total_price * (1 - discount / 100)).toFixed(2)}
+                value={Number(total_price * (1 - discount / 100)).toFixed(2)}
                 readOnly
                 className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-32"
               />
@@ -379,6 +393,22 @@ function TransactionAdd({ onTransactionModalClose }) {
           <div className="flex flex-col mb-4">
             <div className="flex justify-between flex-wrap ">
               <div className="flex flex-col mb-4 ">
+
+              <label
+              htmlFor="totalPrice"
+              className="font-bold text-sm text-gray-500"
+            >
+              Valor Total
+            </label>
+            <input
+                type="number"
+                id="totalValue"
+                name="totalValue"
+                value={totalValue}
+                className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-20"
+                
+              />
+
                 <label
                   htmlFor="client"
                   className="font-bold text-sm text-gray-500 w-64"

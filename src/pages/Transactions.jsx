@@ -120,14 +120,14 @@ function Transactions() {
               <th className="w-1/12  border bg-gray-100 text-sm font-medium">
                 Tipo
               </th>
-              <th className="w-1/12  border pl-8 bg-gray-100 text-sm font-medium">
+              <th className="w-1/12  border  bg-gray-100 text-sm font-medium">
                 Usuário
               </th>
               {/* <th className="w-1/12  border bg-gray-100 text-sm font-medium">Comissão</th> */}
-              <th className="w-1/12  border py-2  pl-24 bg-gray-100 text-sm font-medium">
+              <th className="w-3/12  border py-2  pl-12 bg-gray-100 text-sm font-medium">
                 Cliente
               </th>
-              <th className="w-1/12  pl-36 border bg-gray-100 text-sm font-medium">
+              {/* <th className="w-1/12  pl-36 border bg-gray-100 text-sm font-medium">
                 Produto
               </th>
               <th className="w-1/12  pl-60 border bg-gray-100 text-sm font-medium">
@@ -135,11 +135,11 @@ function Transactions() {
               </th>
               <th className="w-1/12  pl-60 border bg-gray-100 text-sm font-medium">
                 Valor
-              </th>
-              <th className="w-2/12 pl-60 border bg-gray-100 text-sm font-medium">
+              </th> */}
+              <th className="w-3/12 pl-60 border bg-gray-100 text-sm font-medium">
                 Valor Total
               </th>
-              <th className="w-1/12 pl-24 border bg-gray-100 text-sm font-medium">
+              <th className="w-1/12 pl-12 border bg-gray-100 text-sm font-medium">
                 Vcto
               </th>
               <th className="w-1/12 pl-20 border bg-gray-100 text-sm font-medium">
@@ -159,6 +159,7 @@ function Transactions() {
             key={transaction._id}
             transactions={transaction}
             counter={counter}
+           
           />
         ))}
       </div>
