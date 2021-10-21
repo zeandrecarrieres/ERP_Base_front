@@ -1,21 +1,40 @@
 import React, { useState, useContext } from "react";
 import { Delete, Edit } from "@material-ui/icons";
-import { NewProductModal } from "../components/NewProductModal";
+import { EditProductModal } from "../components/EditProductModal";
 
 import { TransactionsContext } from "../TransactionsContext";
 
 function ProductsLine({ products }) {
   const [counter, setCounter] = useState(0);
-  const [modalProductIsOpen, setModalProductIsOpen] = useState(false);
+  // const [modalProductIsOpen, setModalProductIsOpen] = useState(false);
+  const [modalEditProductIsOpen, setModalEditProductIsOpen] = useState(false);
+
+  const [id, setId] = useState("")
+  const [code, setCode] = useState()
+  const [category, setCategory] = useState()
+  const [description, setDescription] = useState()
+  const [name, setName] = useState()
+  const [purchase_price, setPurchase_price] = useState()
+  const [qtde, setQtde] = useState()
+  const [reference_price, setReference_price] = useState()
+
 
   const transactions = useContext(TransactionsContext);
 
-  function openProductModal() {
-    setModalProductIsOpen(true);
+  // function openProductModal() {
+  //   setModalProductIsOpen(true);
+  // }
+
+  // function closeProductModal() {
+  //   setModalProductIsOpen(false);
+  // }
+
+     function openEditProductModal() {
+    setModalEditProductIsOpen(true);
   }
 
-  function closeProductModal() {
-    setModalProductIsOpen(false);
+  function closeEditProductModal() {
+    setModalEditProductIsOpen(false);
   }
 
   const deleteProduct = async () => {
@@ -26,13 +45,33 @@ function ProductsLine({ products }) {
     setCounter(counter + 1);
   };
 
-  const editProduct = async () => {
-    await fetch(`${process.env.REACT_APP_URL_API}/products/` + products._id);
+  const openModalWithId = (id) => {
+    console.log(products._id)
+    openEditProductModal()
+  }
 
-    console.log(products._id);
-    setCounter(counter + 1);
+
+
+    // const produto = 
+    // await fetch(`${process.env.REACT_APP_URL_API}/products/` + products._id)
+    // .then((response) => response.json())
+    // .then((data) => {
+    //   setCode(data.code)
+    //   setCategory(data.category)
+    //   setDescription(data.description)
+    //   setName(data.name)
+    //   setPurchase_price(data.purchase_price)
+    //   setQtde(data.qtde)
+    //   setReference_price(data.reference_price)
+           
+    // });
+
+
+    // console.log(produto)
+    // // console.log(products._id);
+    // setCounter(counter + 1);
     //  openProductModal()
-  };
+  // };
 
   return (
     <>
@@ -74,7 +113,7 @@ function ProductsLine({ products }) {
             {/* <td className="w-1/12 px-12 border">{transactions.filter(transaction =>transaction.product === products.name).reduce((acc, transaction) =>acc - transaction.qtde ,0)}</td> */}
 
             <td className="w-1/12 px-12 border text-yellow-700 hover:text-yellow-500">
-              <button onClick={(e) => editProduct(products._id)}>
+              <button onClick={(e)=>openModalWithId(products._id)}>
                 <Edit />
               </button>
             </td>
@@ -86,9 +125,13 @@ function ProductsLine({ products }) {
           </tr>
         </tbody>
       </table>
-      <NewProductModal
-        isOpen={modalProductIsOpen}
-        onRequestClose={closeProductModal}
+
+    
+
+      <EditProductModal
+        isOpen={modalEditProductIsOpen}
+        onRequestClose={closeEditProductModal}
+        id={products._id}
       />
     </>
   );

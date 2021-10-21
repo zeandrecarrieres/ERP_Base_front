@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import ProductLine from "../components/ProductLine"
 
 import { NewProductModal } from "../components/NewProductModal";
+import { EditProductModal } from "../components/EditProductModal";
 
 function Products() {
   const [products, setProducts] = useState([]);
   // const [counter, setCounter] = useState(1);
   const [modalProductIsOpen, setModalProductIsOpen] = useState(false);
+  const [modalEditProductIsOpen, setModalEditProductIsOpen] = useState(false);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/products`)
@@ -20,6 +22,14 @@ function Products() {
 
   function closeProductModal() {
     setModalProductIsOpen(false);
+  }
+
+    function openEditProductModal() {
+    setModalEditProductIsOpen(true);
+  }
+
+  function closeEditProductModal() {
+    setModalEditProductIsOpen(false);
   }
 
   console.log(products)
@@ -77,6 +87,11 @@ function Products() {
 
       <NewProductModal
         isOpen={modalProductIsOpen}
+        onRequestClose={closeProductModal}
+      />
+
+        <EditProductModal
+        isOpen={modalEditProductIsOpen}
         onRequestClose={closeProductModal}
       />
     </div>

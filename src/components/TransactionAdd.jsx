@@ -378,12 +378,12 @@ function TransactionAdd({ onTransactionModalClose }) {
         {productListItems.map((item) => {
           return (
             <>
-              <ul className="flex justify-between bg-gray-50 shadow px-6">
-                <li className="px-2 mr-18 w-48 ">{item[0]}</li>
-                <li className="px-2 mr-18">{item[1]}</li>
-                <li className="px-2 mr-18">{item[2]}</li>
-                <li className="px-2 mr-18">{item[3]}</li>
-                <li className="px-2 mr-18">{item[4]}</li>
+              <ul className="flex justify-around text-right bg-gray-50 shadow px-6">
+                <li className="px-2 mr-18 w-48 text-center ">{item[0]}</li>
+                <li className="px-2 mr-18 text-center">{item[1]}</li>
+                <li className="px-2 mr-18 text-center">{item[2]}</li>
+                <li className="px-2 mr-18 text-center">{item[3]}</li>
+                <li className="px-2 mr-18 text-center">{item[4]}</li>
               </ul>
             </>
           );
