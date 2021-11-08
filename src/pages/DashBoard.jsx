@@ -1,14 +1,17 @@
 import React, { useContext } from "react";
 import { TransactionsContext } from "../TransactionsContext";
-import CountUp from 'react-countup'
+import CountUp from "react-countup";
 
 import {
   ResponsiveContainer,
-  BarChart,
-  Bar,
+  // BarChart,
+  // Bar,
+  LineChart,
+  Line,
   CartesianGrid,
+  Tooltip,
   XAxis,
-  YAxis,
+  // YAxis,
 } from "recharts";
 
 function DashBoard() {
@@ -30,25 +33,47 @@ function DashBoard() {
     return acc;
   }, 0);
 
-  
+
 
   return (
-    <div className="flex-column justify-center items-center m-auto bg-grey-100 h-screen w-full 
-    ">
+    <div
+      className="flex-column justify-center items-center m-auto bg-grey-100 h-screen w-full 
+    "
+    >
       <div className="w-full flex-wrap lg:flex-nowrap">
         <ResponsiveContainer width="90%" aspect={6 / 2}>
-          <BarChart
+          <LineChart
             width={150}
             height={40}
             data={transactions.sort()}
             margin={{ top: 50, right: 10, bottom: 0, left: 100 }}
           >
-            <CartesianGrid stroke="#e6e6e6" fill="#a09f9d48" />
-
-            <Bar type="monotone" dataKey="total_price" fill="#660e0e" />
-            <XAxis dataKey="date" />
-            <YAxis />
-          </BarChart>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e6e6e6" fill="#fff" />
+            <Line
+              type="monotone"
+              dataKey="total_price"
+              name="Receitas"
+              stroke="#173b0e"
+              strokeWidth={5}
+              dot={{r:5}}
+              activeDot={{r:7}}
+              fill="#103d07"
+            />
+            <Line
+              type="monotone"
+              dataKey="total_price"
+              name="Despesas"
+              stroke="#dd4f17"
+              strokeWidth={5}
+              dot={{r:5}}
+              activeDot={{r:7}}
+              fill="#660e0e"
+            />
+            
+            <XAxis dataKey="mês" stroke="#cecece" />
+            <Tooltip />
+            {/* <YAxis /> */}
+          </LineChart>
         </ResponsiveContainer>
       </div>
 
@@ -58,17 +83,15 @@ function DashBoard() {
             Receitas
           </h3>
           <p className="text-3xl font-medium text-center text-green-500 ">
-            <CountUp 
+            <CountUp
               end={totalRevenue}
               duration={2}
               prefix={"R$"}
               separator="."
               decimal=","
               decimals={2}
-
-
             />
-{console.log(typeof(totalRevenue))}
+            {/* {console.log(typeof(totalRevenue))} */}
 
             {/* {totalRevenue
               .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
@@ -80,15 +103,13 @@ function DashBoard() {
             Despesas
           </h3>
           <p className="text-3xl font-medium text-center text-red-700 ">
-            <CountUp 
+            <CountUp
               end={totalDepenses}
               duration={2}
               prefix={"R$"}
               separator="."
               decimal=","
               decimals={2}
-
-
             />
           </p>
         </div>
@@ -97,15 +118,13 @@ function DashBoard() {
             Resultado
           </h3>
           <p className="text-3xl font-bold text-center text-gray-500 ">
-          <CountUp 
+            <CountUp
               end={totalRevenue - totalDepenses}
               duration={2}
               prefix={"R$"}
               separator="."
               decimal=","
               decimals={2}
-
-
             />
             {/* {(totalRevenue - totalDepenses)
               .toLocaleString("pt-br", { style: "currency", currency: "BRL" })

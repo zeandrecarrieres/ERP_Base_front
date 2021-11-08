@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ProductLine from "../components/ProductLine"
+import { TransactionsContext } from "../TransactionsContext";
 
 import { NewProductModal } from "../components/NewProductModal";
 import { EditProductModal } from "../components/EditProductModal";
 
 function Products() {
+  const transactions = useContext(TransactionsContext);
+
   const [products, setProducts] = useState([]);
-  // const [counter, setCounter] = useState(1);
+
   const [modalProductIsOpen, setModalProductIsOpen] = useState(false);
   const [modalEditProductIsOpen, setModalEditProductIsOpen] = useState(false);
 
@@ -24,19 +27,21 @@ function Products() {
     setModalProductIsOpen(false);
   }
 
-    function openEditProductModal() {
-    setModalEditProductIsOpen(true);
-  }
+  // console.log(transactions)
 
-  function closeEditProductModal() {
-    setModalEditProductIsOpen(false);
-  }
+  //   function openEditProductModal() {
+  //   setModalEditProductIsOpen(true);
+  // }
 
-  console.log(products)
+  // function closeEditProductModal() {
+  //   setModalEditProductIsOpen(false);
+  // }
+
+  // console.log(products)
 
   return (
     <div>
-      <div className="mx-20 pb-12 xl:max-w-3xl">
+      <div className="mx-20 pb-12 xl:max-w-4xl">
         <div className="flex justify-between items-center">
           <h1 className="text-red-700 text-xl mt-20 ">Lista de Produtos</h1>
           <button
@@ -55,16 +60,16 @@ function Products() {
               <th className="w-1/12  border py-2 bg-gray-100 font-medium text-sm">
                 Categoria
               </th>
-              <th className="w-2/12 border bg-gray-100 font-medium text-sm">
+              <th className="w-3/12 border bg-gray-100 font-medium text-sm">
                 Nome
               </th>
-              <th className="w-2/12 pl-12 border bg-gray-100 font-medium text-sm">
+              <th className="w-3/12  border bg-gray-100 font-medium text-sm">
                 Descrição
               </th>
-              <th className="w-1/12 pl-12 border bg-gray-100 font-medium text-sm">
+              <th className="w-3/12 pl-12 border bg-gray-100 font-medium text-sm">
                 Preço Compra
               </th>
-              <th className="w-1/12 border bg-gray-100 font-medium text-sm">
+              <th className="w-3/12 border bg-gray-100 font-medium text-sm">
                 Preço Venda
               </th>
               <th className="w-1/12 pl-6 border bg-gray-100 font-medium text-sm">
@@ -81,7 +86,7 @@ function Products() {
         </table>
 
         {products.map((product) => (
-          <ProductLine key={product.id} products={product} />
+          <ProductLine key={product._id} products={product} />
         ))}
       </div>
 

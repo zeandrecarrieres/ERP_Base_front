@@ -12,8 +12,12 @@ import Finances from "./pages/Finances";
 import Transactions from "./pages/Transactions";
 import SideBar from "./components/SideBar";
 
+
+import CounterProvider from "./CounterCountext";
+
 function App() {
   const [transactions, setTransactions] = useState([]);
+  const [counter, SetCounter] = useState(1)
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/transactions`)
@@ -25,6 +29,7 @@ function App() {
 
   return (
     <div>
+   
       <TransactionsContext.Provider value={transactions}>
         <BrowserRouter>
           <Header />
@@ -44,6 +49,7 @@ function App() {
           </div>
         </BrowserRouter>
       </TransactionsContext.Provider>
+
     </div>
   );
 }

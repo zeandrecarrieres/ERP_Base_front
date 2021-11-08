@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// import { TransactionsContext } from "../TransactionsContext";
-
 function TransactionAdd({ onTransactionModalClose }) {
   const [date, setDate] = useState("");
   const [type, setType] = useState("");
@@ -15,10 +13,13 @@ function TransactionAdd({ onTransactionModalClose }) {
   const [total_price, setTotal_price] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [totalValue, setTotalValue] = useState(0);
+  
 
   const [clientOptions, setClientOptions] = useState([]);
   const [userOptions, setUserOptions] = useState([]);
   const [supplierOptions, setSupplierOptions] = useState([]);
+
+  const [estoque, setEstoque] = useState([])
 
   const [comission, setComission] = useState(0);
   const [condition_payment, setCondition_payment] = useState("");
@@ -27,19 +28,8 @@ function TransactionAdd({ onTransactionModalClose }) {
   const [obs, setObs] = useState("");
   const [counter, setCounter] = useState(1);
 
-  const [productsItems, setProductsItems] = useState([0,0,0,0,0]);
-  const [productListItems, setProductListItems] = useState([[0,0,0,0,0]]);
-
-  
-
-  // const transactions = useContext(TransactionsContext);
-
-  // useEffect(() => {
-  //   fetch(`${process.env.REACT_APP_URL_API}/products`)
-  //     .then((response) => response.json())
-  //     .then((data) => setProductOptions(data))
-  //     .catch((error) => console.log(error));
-  // }, []);
+  const [productsItems, setProductsItems] = useState([2,2,2,2]);
+  const [productListItems, setProductListItems] = useState([[1,1,1,1]]);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/clients`)
@@ -70,30 +60,26 @@ function TransactionAdd({ onTransactionModalClose }) {
   }, []);
 
   const includeItem = () => {
-    let listItem = [product, qtde, reference_price, discount, total_price]
-    setProductsItems(listItem);
-    let newList = [...productListItems, productsItems];
+    // let listItem = ;
+    setProductsItems([product, qtde, reference_price, discount, total_price]);
+    // setEstoque(product === "" || qtde === "" ? null : [product, qtde])
 
-    setProductListItems(newList);
-    setTotalValue(productListItems.map((item) => item[4]).reduce((acc,item)=>acc+item))
+    // let stockList = [...productsItems, estoque]
+
+    // console.log(stockList)
     
+    // let newList = ;
+
+    setProductListItems([...productListItems, productsItems]);
+    setTotalValue(
+      productListItems.map((item) => item[4]).reduce((acc, item) => acc + item)
+    );
+    console.log(productListItems)
   };
 
-  // useEffect(() => {
-  //   function updateTotal() {
-  //     const totalValueAdd = () => {
-  //       productListItems.map((item) => item[4]).reduce((acc,item)=>acc+item)
-  //   }
-  //   setTotalValue(totalValueAdd)}
-  // },[])
+  console.log(productListItems)
+
   
- 
-
-  console.log((productListItems));
-
- 
-
-
   const registerTransaction = (e) => {
     e.preventDefault();
 
@@ -142,7 +128,6 @@ function TransactionAdd({ onTransactionModalClose }) {
         onTransactionModalClose();
       })
       .catch(function (erreur) {
-        //On traite ici les erreurs éventuellement survenues
         console.log(erreur);
         alert("Preencha todos os campos");
       });
@@ -283,7 +268,9 @@ function TransactionAdd({ onTransactionModalClose }) {
                   -- Selecione uma opção --
                 </option>
                 {productOptions.map((option) => (
-                  <option value={option.name}>{option.name}</option>
+                  <option value={option.name} id={option.name}>
+                    {option.name}
+                  </option>
                 ))}
               </select>
             </div>
@@ -393,21 +380,19 @@ function TransactionAdd({ onTransactionModalClose }) {
           <div className="flex flex-col mb-4">
             <div className="flex justify-between flex-wrap ">
               <div className="flex flex-col mb-4 ">
-
-              <label
-              htmlFor="totalPrice"
-              className="font-bold text-sm text-gray-500"
-            >
-              Valor Total
-            </label>
-            <input
-                type="number"
-                id="totalValue"
-                name="totalValue"
-                value={totalValue}
-                className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-20"
-                
-              />
+                <label
+                  htmlFor="totalPrice"
+                  className="font-bold text-sm text-gray-500"
+                >
+                  Valor Total
+                </label>
+                <input
+                  type="number"
+                  id="totalValue"
+                  name="totalValue"
+                  value={totalValue}
+                  className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-20"
+                />
 
                 <label
                   htmlFor="client"

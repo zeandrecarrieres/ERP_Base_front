@@ -46,7 +46,7 @@ function TransactionsLine({ transactions, counter, totalValue}) {
             </td>
             {}
 
-            {transactions.totalValue > 0 ? (
+            {transactions.totalValue >= 0 ? (
               <td className="w-1/12  border text-green-500">
                 {transactions.totalValue
                   .toLocaleString("pt-br", {
@@ -56,7 +56,7 @@ function TransactionsLine({ transactions, counter, totalValue}) {
                   .replace(".", ",")}
               </td>
             ) : (
-              <td className="w-1/12  border text-green-500">
+              <td className="w-1/12  border text-red-500">
                 {(transactions.totalValue * -1)
                   .toLocaleString("pt-br", {
                     style: "currency",

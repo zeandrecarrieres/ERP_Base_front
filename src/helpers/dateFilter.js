@@ -17,7 +17,7 @@ export const filterListByMonth = (transactions, date) => {
         newTransactions.push(transactions[i])
     }
     
-    console.log(currentMonth)
+    // console.log(currentMonth)
     
     return newTransactions
 }

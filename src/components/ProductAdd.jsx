@@ -1,8 +1,11 @@
-import React, { useState} from "react";
+import React, { useState, useContext} from "react";
 import axios from "axios";
 
 
+
 function ProductAdd({onProductModalClose}) {
+  
+
   const [code, setCode] = useState("");
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
@@ -36,17 +39,18 @@ function ProductAdd({onProductModalClose}) {
         setQtde("");
         setPurchase_price("");
         setReference_price("");
-
         onProductModalClose()
+
+        
       
       })
       .catch(function (erreur) {
-        //On traite ici les erreurs éventuellement survenues
         alert("Preencha todos os campos!");
         console.log(erreur);
       });
   };
 
+  
   return (
     <div>
       <div className="w-90 bg-white rounded shadow-lg mt-24 p-8 m-4 md:max-w-2xl md:mx-auto">

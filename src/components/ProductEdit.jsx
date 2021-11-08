@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 function ProductEdit({onEditProductModalClose, id}) {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const [code, setCode] = useState("");
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
@@ -11,7 +11,7 @@ function ProductEdit({onEditProductModalClose, id}) {
   const [qtde, setQtde] = useState("");
   const [purchase_price, setPurchase_price] = useState("");
   const [reference_price, setReference_price] = useState("");
-  const [selectedOption,setSelectedOption] = useState("")
+  // const [selectedOption,setSelectedOption] = useState("")
 
 
 
@@ -26,10 +26,10 @@ function ProductEdit({onEditProductModalClose, id}) {
       setPurchase_price(data.purchase_price)
       setQtde(data.qtde)
       setReference_price(data.reference_price)
-      setSelectedOption(category)
+      // setSelectedOption(category)
       console.log('teste',id, 'fim')
      
-    });
+    }, []);
 
 
 
@@ -39,8 +39,8 @@ function ProductEdit({onEditProductModalClose, id}) {
   const registerProduct = (e) => {
     e.preventDefault();
     axios({
-      method: "post",
-      url: `${process.env.REACT_APP_URL_API}/products`,
+      method: "put",
+      url: `${process.env.REACT_APP_URL_API}/products/`+ id,
       data: {
         code,
         category,
@@ -53,7 +53,7 @@ function ProductEdit({onEditProductModalClose, id}) {
     })
       .then(function (reponse) {
         //On traite la suite une fois la réponse obtenue
-        alert("Produto Cadastrado com sucessosss!");
+        alert("Produto Atualizado com sucesso!");
         setCode("");
         setCategory("");
         setName("");
@@ -255,7 +255,7 @@ function ProductEdit({onEditProductModalClose, id}) {
           </div>
 
           <button className="px-5 py-3 bg-red-700 text-white hover:bg-red-600 text-white  text-base mx-auto p-4 rounded w-full sm:w-auto">
-            Cadastrar
+            Atualizar
           </button>
         </form>
 

@@ -10,9 +10,11 @@ function Transactions() {
   const transactions = useContext(TransactionsContext);
   
   const [modalTransactionIsOpen, setModalTransactionIsOpen] = useState(false);
-  const [filteredTransaction, setFilteredTransactions] = useState([]);
+  const [filteredTransactions, setFilteredTransactions] = useState([]);
+  const [filteredTransactionsByType, setFilteredTransactionsByType] = useState([]);
+  const [transactionByType, setTransactionsByType] = useState(filteredTransactions);
   const [busca, setBusca] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState();
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth);
   const [month, setMonth] = useState(getCurrentMonth);
   const [counter, setCounter] = useState(1);
@@ -29,16 +31,24 @@ function Transactions() {
     setModalTransactionIsOpen(false);
   }
 
-  const transactionsByType = () => {
-    setFilteredTransactions(filteredTransaction.filter(transactions.type == type));
-  };
+
+  // const onChangeType = () => {
+  //   setFilteredTransactions(filteredTransaction.filter(transactions.type === type));
+
+  // }
+    
+   
+
+  
 
   useEffect(() => {
+    // setMonth(mesAtual)
+    console.log(type)
     setFilteredTransactions(filterListByMonth(transactions, month));
-    console.log(filteredTransaction, currentMonth);
-  }, [month, mesAtual, type]);
+    setFilteredTransactionsByType(filteredTransactions.filter(transactions => transactions.type === type));
+  }, [month, type]);
 
-  // console.log(type)
+  // console.log(filteredTransactions.filter(transactions => transactions.type === "Compra"))
 
   return (
     <div>
@@ -76,13 +86,14 @@ function Transactions() {
             </select>
           </div>
 
-          <label htmlFor="tyoe" className="pl-24 pr-12 font-medium">
+          <label htmlFor="type" className="pl-24 pr-12 font-medium">
               Tipo:
             </label>
             <select
               name="type"
-              id="tyoe"
+              id="type"
               onChange={(e) => setType(e.target.value)}
+              defaultValue="Venda"
               className="border py-2  text-grey-darkest h-10 my-2 shadow bg-opacity-30 px-2 text-sm"
             >
               <option selected hidden>
@@ -152,9 +163,9 @@ function Transactions() {
           </thead>
         </table>
 
-        {/* {console.log(filteredTransaction)} */}
+        {/* {console.log(filteredTransactions)} */}
 
-        {filteredTransaction.map((transaction) => (
+        {filteredTransactionsByType.map((transaction) => (
           <TransactionLine
             key={transaction._id}
             transactions={transaction}

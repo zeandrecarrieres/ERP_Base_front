@@ -1,35 +1,24 @@
 import React, { useState, useContext } from "react";
 import { Delete, Edit } from "@material-ui/icons";
 import { EditProductModal } from "../components/EditProductModal";
-
 import { TransactionsContext } from "../TransactionsContext";
 
 function ProductsLine({ products }) {
-  const [counter, setCounter] = useState(0);
-  // const [modalProductIsOpen, setModalProductIsOpen] = useState(false);
-  const [modalEditProductIsOpen, setModalEditProductIsOpen] = useState(false);
-
-  const [id, setId] = useState("")
-  const [code, setCode] = useState()
-  const [category, setCategory] = useState()
-  const [description, setDescription] = useState()
-  const [name, setName] = useState()
-  const [purchase_price, setPurchase_price] = useState()
-  const [qtde, setQtde] = useState()
-  const [reference_price, setReference_price] = useState()
-
-
   const transactions = useContext(TransactionsContext);
 
-  // function openProductModal() {
-  //   setModalProductIsOpen(true);
-  // }
+  const [modalEditProductIsOpen, setModalEditProductIsOpen] = useState(false);
 
-  // function closeProductModal() {
-  //   setModalProductIsOpen(false);
-  // }
+  // console.log(
+  //   transactions[1].productListItems
+  //     .filter((transaction) => transaction[0] === "61769e78f8d78518c0471ab9")
+  //     .reduce((acc, transaction) => {
+  //       return (
+  //         acc + (transaction.type === "Venda" ? -transactions[1] : transaction)
+  //       );
+  //     })
+  // );
 
-     function openEditProductModal() {
+  function openEditProductModal() {
     setModalEditProductIsOpen(true);
   }
 
@@ -42,36 +31,12 @@ function ProductsLine({ products }) {
       method: "DELETE",
     });
     alert("Produto deletado com sucesso!");
-    setCounter(counter + 1);
   };
 
   const openModalWithId = (id) => {
-    console.log(products._id)
-    openEditProductModal()
-  }
-
-
-
-    // const produto = 
-    // await fetch(`${process.env.REACT_APP_URL_API}/products/` + products._id)
-    // .then((response) => response.json())
-    // .then((data) => {
-    //   setCode(data.code)
-    //   setCategory(data.category)
-    //   setDescription(data.description)
-    //   setName(data.name)
-    //   setPurchase_price(data.purchase_price)
-    //   setQtde(data.qtde)
-    //   setReference_price(data.reference_price)
-           
-    // });
-
-
-    // console.log(produto)
-    // // console.log(products._id);
-    // setCounter(counter + 1);
-    //  openProductModal()
-  // };
+    console.log(products._id);
+    openEditProductModal();
+  };
 
   return (
     <>
@@ -80,16 +45,14 @@ function ProductsLine({ products }) {
           <tr>
             <td className="w-1/12 py-2 border text-sm">{products.code}</td>
             <td className="w-2/12 border text-sm">{products.category}</td>
-            <td className="w-2/12 border text-sm">{products.name}</td>
-            <td className="w-2/12 pl-12 border text-sm">
-              {products.description}
-            </td>
-            <td className="w-1/12 border text-sm">
+            <td className="w-3/12 border text-sm">{products.name}</td>
+            <td className="w-3/12 border text-sm">{products.description}</td>
+            <td className="w-1/12 border px-4 text-sm">
               {products.purchase_price
                 .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
                 .replace(".", ",")}
             </td>
-            <td className="w-1/12  border text-sm">
+            <td className="w-1/12  pl-12 border text-sm">
               {products.reference_price
                 .toLocaleString("pt-br", { style: "currency", currency: "BRL" })
                 .replace(".", ",")}
@@ -98,9 +61,12 @@ function ProductsLine({ products }) {
             <td className="w-1/12 px-12 border text-sm">
               {transactions
                 .filter((transaction) => transaction.product === products.name)
+                .map((transaction) => console.log(transaction.name))}
+              {/* {transactions
+                .filter((transaction) => transaction.product === products.name)
                 .reduce((acc, transaction) => {
                   // console.log( typeof(acc))
-                  // console.log( typeof(transaction.qtde))
+                  console.log( typeof(transaction.qtde))
                   return (
                     acc +
                     (transaction.type === "Venda" ||
@@ -108,12 +74,13 @@ function ProductsLine({ products }) {
                       ? -transaction.qtde
                       : transaction.qtde)
                   );
-                }, 0)}
+                }, 0)} */}
+              {/* {console.log(transactions)}  */}
             </td>
             {/* <td className="w-1/12 px-12 border">{transactions.filter(transaction =>transaction.product === products.name).reduce((acc, transaction) =>acc - transaction.qtde ,0)}</td> */}
 
             <td className="w-1/12 px-12 border text-yellow-700 hover:text-yellow-500">
-              <button onClick={(e)=>openModalWithId(products._id)}>
+              <button onClick={(e) => openModalWithId(products._id)}>
                 <Edit />
               </button>
             </td>
@@ -126,8 +93,6 @@ function ProductsLine({ products }) {
         </tbody>
       </table>
 
-    
-
       <EditProductModal
         isOpen={modalEditProductIsOpen}
         onRequestClose={closeEditProductModal}
@@ -136,6 +101,5 @@ function ProductsLine({ products }) {
     </>
   );
 }
-
 
 export default ProductsLine;
