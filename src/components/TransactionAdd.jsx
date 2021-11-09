@@ -27,9 +27,8 @@ function TransactionAdd({ onTransactionModalClose }) {
   const [form_payment, setForm_payment] = useState("");
   const [obs, setObs] = useState("");
   const [counter, setCounter] = useState(1);
-
-  const [productsItems, setProductsItems] = useState([2,2,2,2]);
-  const [productListItems, setProductListItems] = useState([[1,1,1,1]]);
+  // const [productsItems, setProductsItems] = useState([0,0,0,0]);
+  const [productListItems, setProductListItems] = useState([]);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/clients`)
@@ -60,8 +59,7 @@ function TransactionAdd({ onTransactionModalClose }) {
   }, []);
 
   const includeItem = () => {
-    // let listItem = ;
-    setProductsItems([product, qtde, reference_price, discount, total_price]);
+    let listItem = [product, qtde, reference_price, discount, total_price]
     // setEstoque(product === "" || qtde === "" ? null : [product, qtde])
 
     // let stockList = [...productsItems, estoque]
@@ -70,14 +68,23 @@ function TransactionAdd({ onTransactionModalClose }) {
     
     // let newList = ;
 
-    setProductListItems([...productListItems, productsItems]);
-    setTotalValue(
-      productListItems.map((item) => item[4]).reduce((acc, item) => acc + item)
-    );
-    console.log(productListItems)
+    setProductListItems([...productListItems, listItem]);
+   
+    
+   
   };
 
-  console.log(productListItems)
+
+
+  
+
+  useEffect(() => {
+    
+    setTotalValue(
+      productListItems.map((item) => item[4]).reduce((acc, item) => acc + item, 0)
+    );
+  }, [productListItems])
+  
 
   
   const registerTransaction = (e) => {

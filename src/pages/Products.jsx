@@ -37,7 +37,7 @@ function Products() {
   //   setModalEditProductIsOpen(false);
   // }
 
-  // console.log(products)
+  console.log(products)
 
   return (
     <div>
