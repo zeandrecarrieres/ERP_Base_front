@@ -26,13 +26,21 @@ function DashBoard() {
 
   // const transactionsGraph = transactions.sort();
 
+
+
   const totalDepenses = transactions.reduce((acc, transaction) => {
     if (transaction.type === "Compra") {
-      return acc + transaction.total_price;
+      return acc + transaction.totalValue;
     }
     return acc;
   }, 0);
 
+  const totalRevenues = transactions.reduce((acc, transaction) => {
+    if (transaction.type === "Venda") {
+      return acc + transaction.totalValue;
+    }
+    return acc;
+  }, 0);
 
 
   return (
@@ -84,7 +92,7 @@ function DashBoard() {
           </h3>
           <p className="text-3xl font-medium text-center text-green-500 ">
             <CountUp
-              end={totalRevenue}
+              end={totalRevenues}
               duration={2}
               prefix={"R$"}
               separator="."
@@ -119,7 +127,7 @@ function DashBoard() {
           </h3>
           <p className="text-3xl font-bold text-center text-gray-500 ">
             <CountUp
-              end={totalRevenue - totalDepenses}
+              end={totalRevenues - totalDepenses}
               duration={2}
               prefix={"R$"}
               separator="."
