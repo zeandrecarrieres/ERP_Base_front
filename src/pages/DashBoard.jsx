@@ -17,26 +17,21 @@ import {
 function DashBoard() {
   const transactions = useContext(TransactionsContext);
 
-  const totalRevenue = transactions.reduce((acc, transaction) => {
-    if (transaction.type === "Venda") {
-      return acc + transaction.total_price;
-    }
-    return acc;
-  }, 0);
+  
 
   // const transactionsGraph = transactions.sort();
 
 
 
   const totalDepenses = transactions.reduce((acc, transaction) => {
-    if (transaction.type === "Compra") {
+    if (transaction.type === "Compra" || transaction.type === "Entrada") {
       return acc + transaction.totalValue;
     }
     return acc;
   }, 0);
 
   const totalRevenues = transactions.reduce((acc, transaction) => {
-    if (transaction.type === "Venda") {
+    if (transaction.type === "Venda" || transaction.type === "Saida" ) {
       return acc + transaction.totalValue;
     }
     return acc;

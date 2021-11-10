@@ -59,9 +59,9 @@ function ProductsLine({ products }) {
             </td>
 
             <td className="w-1/12 px-12 border text-sm">
-              {transactions
-                .filter((transaction) => transaction.product === products.name)
-                .map((transaction) => console.log(transaction.name))}
+              {/* {transactions
+                .filter((transaction) => transaction.productListItems[0] === products.name)
+                .map((transaction) => console.log(transaction.name))} */}
               {/* {transactions
                 .filter((transaction) => transaction.product === products.name)
                 .reduce((acc, transaction) => {
@@ -75,7 +75,7 @@ function ProductsLine({ products }) {
                       : transaction.qtde)
                   );
                 }, 0)} */}
-              {/* {console.log(transactions)}  */}
+              
             </td>
             {/* <td className="w-1/12 px-12 border">{transactions.filter(transaction =>transaction.product === products.name).reduce((acc, transaction) =>acc - transaction.qtde ,0)}</td> */}
 

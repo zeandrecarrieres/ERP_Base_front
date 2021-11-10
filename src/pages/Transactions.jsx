@@ -42,7 +42,7 @@ function Transactions() {
     setFilteredTransactionsByType(
       filteredTransactions.filter((transactions) => transactions.type === type)
     );
-  }, [month, type]);
+  }, [filteredTransactions, month, transactions, type]);
 
   return (
     <div>
