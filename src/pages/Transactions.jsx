@@ -8,18 +8,19 @@ import { NewTransactionModal } from "../components/NewTransactionModal";
 
 function Transactions() {
   const transactions = useContext(TransactionsContext);
-  
+
   const [modalTransactionIsOpen, setModalTransactionIsOpen] = useState(false);
   const [filteredTransactions, setFilteredTransactions] = useState([]);
-  const [filteredTransactionsByType, setFilteredTransactionsByType] = useState([]);
-  const [transactionByType, setTransactionsByType] = useState(filteredTransactions);
+  const [filteredTransactionsByType, setFilteredTransactionsByType] = useState(
+    []
+  );
+  const [transactionByType, setTransactionsByType] =
+    useState(filteredTransactions);
   const [busca, setBusca] = useState("");
-  const [type, setType] = useState();
+  const [type, setType] = useState("Venda");
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth);
   const [month, setMonth] = useState(getCurrentMonth);
-  const [counter, setCounter] = useState(1);
 
-  // console.log(currentMonth)
   const anoAtual = new Date().getFullYear();
   const mesAtual = new Date().getMonth();
 
@@ -31,24 +32,17 @@ function Transactions() {
     setModalTransactionIsOpen(false);
   }
 
-
   // const onChangeType = () => {
   //   setFilteredTransactions(filteredTransaction.filter(transactions.type === type));
 
   // }
-    
-   
-
-  
 
   useEffect(() => {
-    // setMonth(mesAtual)
-    console.log(type)
     setFilteredTransactions(filterListByMonth(transactions, month));
-    setFilteredTransactionsByType(filteredTransactions.filter(transactions => transactions.type === type));
+    setFilteredTransactionsByType(
+      filteredTransactions.filter((transactions) => transactions.type === type)
+    );
   }, [month, type]);
-
-  // console.log(filteredTransactions.filter(transactions => transactions.type === "Compra"))
 
   return (
     <div>
@@ -56,8 +50,6 @@ function Transactions() {
         <div className="flex justify-between items-center">
           <h1 className="text-red-700 text-lg mt-20 ">Lista de Transações</h1>
           <div>
-            
-            
             <label htmlFor="month" className="pl-24 pr-12 font-medium">
               Mês:
             </label>
@@ -65,10 +57,11 @@ function Transactions() {
               name="month"
               id="month"
               onChange={(e) => setMonth(`${anoAtual}-${e.target.value}`)}
-              defaultValue={mesAtual}
+              // defaultValue="2021-10"
               className="border py-2  text-grey-darkest h-10 my-2 shadow bg-opacity-30 px-2 text-sm"
             >
-              <option selected hidden value={mesAtual}>
+              <option selected hidden value="Outubro">
+                {/* <option > */}
                 Selecione o mês
               </option>
               <option value="01">Janeiro</option>
@@ -87,33 +80,34 @@ function Transactions() {
           </div>
 
           <label htmlFor="type" className="pl-24 pr-12 font-medium">
-              Tipo:
-            </label>
-            <select
-              name="type"
-              id="type"
-              onChange={(e) => setType(e.target.value)}
-              defaultValue="Venda"
-              className="border py-2  text-grey-darkest h-10 my-2 shadow bg-opacity-30 px-2 text-sm"
-            >
-              <option selected hidden>
-                Selecione o tipo
-              </option>
-              <option value="Venda">Venda</option>
-              <option value="Saída">Saída</option>
-              <option value="Consignado">Consignado</option>
-              <option value="Compra">Compra</option>
-              <option value="Entrada">Entrada</option>
-            </select>
+            Tipo:
+          </label>
+          <select
+            name="type"
+            id="type"
+            onChange={(e) => setType(e.target.value)}
+            defaultValue="Venda"
+            className="border py-2  text-grey-darkest h-10 my-2 shadow bg-opacity-30 px-2 text-sm"
+          >
+            <option selected hidden value="Venda">
+              {/* <option selected hidden> */}
+              Selecione o tipo
+            </option>
+            <option value="Venda">Venda</option>
+            <option value="Saída">Saída</option>
+            <option value="Consignado">Consignado</option>
+            <option value="Compra">Compra</option>
+            <option value="Entrada">Entrada</option>
+          </select>
 
           <label htmlFor="busca" className="p-12 font-medium">
-              Pesquisa:
-            </label>
-            <input
-              type="text"
-              className="border py-2  text-grey-darkest h-10 my-2 shadow bg-opacity-30 px-2 text-sm"
-              onChange={(e) => setBusca(e.target.value)}
-            />
+            Pesquisa:
+          </label>
+          <input
+            type="text"
+            className="border py-2  text-grey-darkest h-10 my-2 shadow bg-opacity-30 px-2 text-sm"
+            onChange={(e) => setBusca(e.target.value)}
+          />
 
           <button
             onClick={openModal}
@@ -166,12 +160,7 @@ function Transactions() {
         {/* {console.log(filteredTransactions)} */}
 
         {filteredTransactionsByType.map((transaction) => (
-          <TransactionLine
-            key={transaction._id}
-            transactions={transaction}
-            counter={counter}
-           
-          />
+          <TransactionLine key={transaction._id} transactions={transaction} />
         ))}
       </div>
 

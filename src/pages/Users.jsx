@@ -18,7 +18,7 @@ function Users() {
     fetch(`${process.env.REACT_APP_URL_API}/users`)
       .then((response) => response.json())
       .then((data) => setUsers(data));
-  }, []);
+  }, [users]);
 
   
   return (

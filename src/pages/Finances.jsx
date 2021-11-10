@@ -8,8 +8,8 @@ import { NewTransactionModal } from "../components/NewTransactionModal";
 function Finances() {
   const transactions = useContext(TransactionsContext);
   const [modalTransactionIsOpen, setModalTransactionIsOpen] = useState(false);
-  const [start_date, setStart_date] = useState(new Date)
-  const [end_date, setEnd_date] = useState(new Date)
+  const [start_date, setStart_date] = useState(new Date());
+  const [end_date, setEnd_date] = useState(new Date());
 
   function openModal() {
     setModalTransactionIsOpen(true);
@@ -49,16 +49,30 @@ function Finances() {
 
         <div>
           <p className="font-extrabold">
-            Selecione o período:   <input type="date" value="start_date" onChange={(e) => {
-              setStart_date(new Date(e.target.value))}} className="ml-20" />{console.log(start_date)} 
-            <input type="date" value="end_date" onChange={(e) => {
-              setEnd_date(new Date(e.target.value))}} className="ml-20" />{console.log(`enddate:${end_date}`)}
+            Selecione o período:{" "}
+            <input
+              type="date"
+              value="start_date"
+              onChange={(e) => {
+                setStart_date(new Date(e.target.value));
+              }}
+              className="ml-20"
+            />
+            {console.log(start_date)}
+            <input
+              type="date"
+              value="end_date"
+              onChange={(e) => {
+                setEnd_date(new Date(e.target.value));
+              }}
+              className="ml-20"
+            />
+            {console.log(`enddate:${end_date}`)}
           </p>
         </div>
 
         <div className="flex justify-between items-center">
           <h1 className="text-red-700 text-xl mt-20 font-base">Financeiro</h1>
-       
         </div>
         <table className="table-fixed border w-full ">
           <thead className="border ">
@@ -66,20 +80,26 @@ function Finances() {
               <th className="w-1/12  border bg-gray-100 font-medium">Data</th>
               <th className="w-1/12  border bg-gray-100 font-medium">Tipo</th>
 
-              <th className="w-3/12  border bg-gray-100 font-medium">Cliente</th>
+              <th className="w-3/12  border bg-gray-100 font-medium">
+                Cliente
+              </th>
 
-              <th className="w-3/12 border bg-gray-100 font-medium">Valor Total</th>
+              <th className="w-3/12 border bg-gray-100 font-medium">
+                Valor Total
+              </th>
             </tr>
           </thead>
         </table>
-             
-        {transactions.filter(transaction =>  transaction.date === (start_date).toISOString() ).map((transaction) => (
-          <>
-          
-          <FinanceLine key={transaction._id} transactions={transaction} />
-          </>
-        ))}
 
+        {transactions
+          .filter(
+            (transaction) => transaction.date === start_date.toISOString()
+          )
+          .map((transaction) => (
+            <>
+              <FinanceLine key={transaction._id} transactions={transaction} />
+            </>
+          ))}
 
         {/* {transactions.map((transaction) => (
           <FinanceLine key={transaction._id} transactions={transaction} />

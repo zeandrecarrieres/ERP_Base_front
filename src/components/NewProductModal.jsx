@@ -1,4 +1,3 @@
-import { useContext} from 'react'
 import Modal from 'react-modal'
 import ProductAdd from './ProductAdd'
 
@@ -7,7 +6,6 @@ import ProductAdd from './ProductAdd'
 export function NewProductModal({isOpen, onRequestClose}) {
   
 
-  // console.log(counter)
  
     return (
         <Modal

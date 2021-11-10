@@ -1,4 +1,3 @@
-import {useContext} from "react";
 import Modal from 'react-modal'
 import UserAdd from './UserAdd'
 

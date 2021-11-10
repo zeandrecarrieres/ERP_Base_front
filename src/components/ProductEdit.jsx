@@ -29,11 +29,11 @@ function ProductEdit({onEditProductModalClose, id}) {
       // setSelectedOption(category)
       console.log('teste',id, 'fim')
      
-    }, []);
+    });
 
 
 
-  }, [])
+  }, [id])
 
 
   const registerProduct = (e) => {

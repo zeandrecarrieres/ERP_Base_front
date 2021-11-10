@@ -1,23 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
-import ProductLine from "../components/ProductLine"
-import { TransactionsContext } from "../TransactionsContext";
-
+import React, { useState, useEffect } from "react";
+import ProductLine from "../components/ProductLine";
 import { NewProductModal } from "../components/NewProductModal";
-import { EditProductModal } from "../components/EditProductModal";
 
 function Products() {
-  const transactions = useContext(TransactionsContext);
-
   const [products, setProducts] = useState([]);
-
   const [modalProductIsOpen, setModalProductIsOpen] = useState(false);
-  const [modalEditProductIsOpen, setModalEditProductIsOpen] = useState(false);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/products`)
       .then((response) => response.json())
       .then((data) => setProducts(data));
-  }, []);
+  }, [products]);
 
   function openProductModal() {
     setModalProductIsOpen(true);
@@ -26,18 +19,6 @@ function Products() {
   function closeProductModal() {
     setModalProductIsOpen(false);
   }
-
-  // console.log(transactions)
-
-  //   function openEditProductModal() {
-  //   setModalEditProductIsOpen(true);
-  // }
-
-  // function closeEditProductModal() {
-  //   setModalEditProductIsOpen(false);
-  // }
-
-  console.log(products)
 
   return (
     <div>
@@ -92,11 +73,6 @@ function Products() {
 
       <NewProductModal
         isOpen={modalProductIsOpen}
-        onRequestClose={closeProductModal}
-      />
-
-        <EditProductModal
-        isOpen={modalEditProductIsOpen}
         onRequestClose={closeProductModal}
       />
     </div>

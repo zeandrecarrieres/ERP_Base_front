@@ -19,7 +19,7 @@ function Suppliers() {
     fetch(`${process.env.REACT_APP_URL_API}/suppliers`)
       .then((response) => response.json())
       .then((data) => setSuppliers(data));
-  }, []);
+  }, [suppliers]);
 
   return (
     <div>

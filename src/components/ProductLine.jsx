@@ -18,8 +18,6 @@ function ProductsLine({ products }) {
   //     })
   // );
 
-console.log(transactions)
-
   function openEditProductModal() {
     setModalEditProductIsOpen(true);
   }

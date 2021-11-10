@@ -1,16 +1,16 @@
 import React from "react";
-import { Delete, Edit } from "@material-ui/icons";
+// import { Delete, Edit } from "@material-ui/icons";
 
 function TransactionsLine({ transactions }) {
-  const deleteTransaction = async () => {
-    await fetch(
-      `${process.env.REACT_APP_URL_API}/transactions/` + transactions._id,
-      {
-        method: "DELETE",
-      }
-    );
-    alert("Transação deletada com sucesso!");
-  };
+  // const deleteTransaction = async () => {
+  //   await fetch(
+  //     `${process.env.REACT_APP_URL_API}/transactions/` + transactions._id,
+  //     {
+  //       method: "DELETE",
+  //     }
+  //   );
+  //   alert("Transação deletada com sucesso!");
+  // };
 
   return (
     <>
