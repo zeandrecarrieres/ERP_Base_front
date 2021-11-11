@@ -39,10 +39,19 @@ function Transactions() {
 
   useEffect(() => {
     setFilteredTransactions(filterListByMonth(transactions, month));
+    // setFilteredTransactionsByType(
+    //   filteredTransactions.filter((transactions) => transactions.type === type)
+    // );
+  }, [month, transactions, type]);
+
+  useEffect(() => {
+    // setFilteredTransactions(filterListByMonth(transactions, month));
     setFilteredTransactionsByType(
       filteredTransactions.filter((transactions) => transactions.type === type)
     );
-  }, [filteredTransactions, month, transactions, type]);
+  }, [filteredTransactions, type]);
+
+
 
   return (
     <div>
