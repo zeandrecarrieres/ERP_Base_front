@@ -1,13 +1,27 @@
-import {useEffect} from "react";
+import {useState, useEffect} from "react";
 import { Delete, Edit } from "@material-ui/icons";
+import { EditTransactionModal } from "../components/EditTransactionModal";
 
-function TransactionsLine({ transactions, counter, totalValue}) {
+function TransactionsLine({ transactions, totalValue}) {
  
+  const [modalEditTransactionIsOpen, setModalEditTransactionIsOpen] = useState(false);
+
   useEffect(() => {
    
   },[transactions])
 
-  
+  function openEditTransactionModal() {
+    setModalEditTransactionIsOpen(true);
+  }
+
+  function closeEditTransactionModal() {
+    setModalEditTransactionIsOpen(false);
+  }
+
+  const openModalWithId = (id) => {
+    console.log(transactions._id);
+    openEditTransactionModal();
+  };
  
   const deleteTransaction = async () => {
     await fetch(
@@ -19,6 +33,8 @@ function TransactionsLine({ transactions, counter, totalValue}) {
     alert("Transação deletada com sucesso!");
   };
 
+
+  
   return (
     <>
       <table className="table-fixed border w-full ">
@@ -77,6 +93,7 @@ function TransactionsLine({ transactions, counter, totalValue}) {
 
             <td className="w-1/12 pl-16 border text-yellow-700 hover:text-yellow-500">
               <button>
+              {/* <button onClick={(e) => openModalWithId(transactions._id)}> */}
                 <Edit />
               </button>
             </td>
@@ -91,6 +108,13 @@ function TransactionsLine({ transactions, counter, totalValue}) {
           </tr>
         </tbody>
       </table>
+
+      <EditTransactionModal
+        isOpen={modalEditTransactionIsOpen}
+        onRequestClose={closeEditTransactionModal}
+        id={transactions._id}
+      />
+
     </>
   );
 }

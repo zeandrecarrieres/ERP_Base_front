@@ -2,11 +2,14 @@ import React, { useState, useContext } from "react";
 import { Delete, Edit } from "@material-ui/icons";
 import { EditProductModal } from "../components/EditProductModal";
 import { TransactionsContext } from "../TransactionsContext";
+import { getEstoque } from "../helpers/getEstoque.js"
 
 function ProductsLine({ products }) {
-  const transactions = useContext(TransactionsContext);
+  const { transactions } = useContext(TransactionsContext);
 
   const [modalEditProductIsOpen, setModalEditProductIsOpen] = useState(false);
+
+  
 
   // console.log(
   //   transactions[1].productListItems
@@ -38,6 +41,21 @@ function ProductsLine({ products }) {
     openEditProductModal();
   };
 
+  
+
+  // const ItemsQtde =  transactions.map((item)=>(
+  //               item.productListItems)
+  //             )
+
+  // console.log(ItemsQtde)
+  
+
+  // console.log(ItemsQtde.reduce((acc, items)=>acc+items[1],0))
+
+  
+
+
+
   return (
     <>
       <table className="table-fixed border w-full  ">
@@ -58,23 +76,8 @@ function ProductsLine({ products }) {
                 .replace(".", ",")}
             </td>
 
-            <td className="w-1/12 px-12 border text-sm">
-              {/* {transactions
-                .filter((transaction) => transaction.productListItems[0] === products.name)
-                .map((transaction) => console.log(transaction.name))} */}
-              {/* {transactions
-                .filter((transaction) => transaction.product === products.name)
-                .reduce((acc, transaction) => {
-                  // console.log( typeof(acc))
-                  console.log( typeof(transaction.qtde))
-                  return (
-                    acc +
-                    (transaction.type === "Venda" ||
-                    transaction.type === "Consignado"
-                      ? -transaction.qtde
-                      : transaction.qtde)
-                  );
-                }, 0)} */}
+            <td className="w-1/12 px-16 border text-sm">
+              {getEstoque(transactions, products)}
               
             </td>
             {/* <td className="w-1/12 px-12 border">{transactions.filter(transaction =>transaction.product === products.name).reduce((acc, transaction) =>acc - transaction.qtde ,0)}</td> */}

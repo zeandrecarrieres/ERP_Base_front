@@ -12,7 +12,12 @@ function SuppliersLine({ suppliers }) {
   function closeEditSupplierModal() {
     setModalEditSupplierIsOpen(false);
   }
-
+  
+  const openModalWithId = (id) => {
+    console.log(suppliers._id);
+    openEditSupplierModal();
+  };
+  
   const deleteSupplier = async () => {
     await fetch(`${process.env.REACT_APP_URL_API}/suppliers/` + suppliers._id, {
       method: "DELETE",
@@ -20,10 +25,6 @@ function SuppliersLine({ suppliers }) {
     alert("Fornecedor deletado com sucesso!");
   };
 
-  const openModalWithId = (id) => {
-    console.log(suppliers._id);
-    openEditSupplierModal();
-  };
 
   return (
     <>

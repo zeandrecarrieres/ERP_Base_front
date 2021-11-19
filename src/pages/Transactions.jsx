@@ -4,10 +4,12 @@ import TransactionLine from "../components/TransactionLine";
 // import TransactionsAdd from "../components/TransactionAdd";
 import { getCurrentMonth, filterListByMonth } from "../helpers/dateFilter";
 
+
+
 import { NewTransactionModal } from "../components/NewTransactionModal";
 
 function Transactions() {
-  const transactions = useContext(TransactionsContext);
+  const { transactions, transaction } = useContext(TransactionsContext);
 
   const [modalTransactionIsOpen, setModalTransactionIsOpen] = useState(false);
   const [filteredTransactions, setFilteredTransactions] = useState([]);
@@ -24,6 +26,7 @@ function Transactions() {
   const anoAtual = new Date().getFullYear();
   const mesAtual = new Date().getMonth();
 
+
   function openModal() {
     setModalTransactionIsOpen(true);
   }
@@ -37,20 +40,23 @@ function Transactions() {
 
   // }
 
-  useEffect(() => {
-    setFilteredTransactions(filterListByMonth(transactions, month));
-    // setFilteredTransactionsByType(
-    //   filteredTransactions.filter((transactions) => transactions.type === type)
-    // );
-  }, [month, transactions, type]);
+  
 
   useEffect(() => {
     // setFilteredTransactions(filterListByMonth(transactions, month));
     setFilteredTransactionsByType(
       filteredTransactions.filter((transactions) => transactions.type === type)
     );
-  }, [filteredTransactions, type]);
+  }, [filteredTransactions, type, transactions, month]);
 
+  useEffect(() => {
+    setFilteredTransactions(filterListByMonth(transactions, month));
+    // setFilteredTransactionsByType(
+    //   filteredTransactions.filter((transactions) => transactions.type === type)
+    // );
+  }, [month, type, transactions]);
+
+// console.log(filteredTransactions)
 
 
   return (
@@ -66,7 +72,7 @@ function Transactions() {
               name="month"
               id="month"
               onChange={(e) => setMonth(`${anoAtual}-${e.target.value}`)}
-              // defaultValue="2021-10"
+              defaultValue="2021-10"
               className="border py-2  text-grey-darkest h-10 my-2 shadow bg-opacity-30 px-2 text-sm"
             >
               <option selected hidden value="Outubro">
@@ -143,11 +149,11 @@ function Transactions() {
               </th>
               {/* <th className="w-1/12  pl-36 border bg-gray-100 text-sm font-medium">
                 Produto
-              </th>
-              <th className="w-1/12  pl-60 border bg-gray-100 text-sm font-medium">
+              </th> */}
+              {/* <th className="w-1/12  pl-60 border bg-gray-100 text-sm font-medium">
                 Qtde
-              </th>
-              <th className="w-1/12  pl-60 border bg-gray-100 text-sm font-medium">
+              </th> */}
+              {/* <th className="w-1/12  pl-60 border bg-gray-100 text-sm font-medium">
                 Valor
               </th> */}
               <th className="w-3/12 pl-60 border bg-gray-100 text-sm font-medium">

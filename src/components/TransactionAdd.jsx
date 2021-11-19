@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { TransactionsContext } from "../TransactionsContext";
+
 import axios from "axios";
 
 function TransactionAdd({ onTransactionModalClose }) {
+  const [add, setAdd] = useState(0);
+
   const [date, setDate] = useState("");
   const [type, setType] = useState("");
   const [client, setClient] = useState("");
@@ -13,22 +17,20 @@ function TransactionAdd({ onTransactionModalClose }) {
   const [total_price, setTotal_price] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [totalValue, setTotalValue] = useState(0);
-  
 
   const [clientOptions, setClientOptions] = useState([]);
   const [userOptions, setUserOptions] = useState([]);
   const [supplierOptions, setSupplierOptions] = useState([]);
 
-  const [estoque, setEstoque] = useState([])
+  const [estoque, setEstoque] = useState([]);
 
   const [comission, setComission] = useState(0);
   const [condition_payment, setCondition_payment] = useState("");
   const [vcto, setVcto] = useState("");
   const [form_payment, setForm_payment] = useState("");
   const [obs, setObs] = useState("");
-  const [counter, setCounter] = useState(1);
-  // const [productsItems, setProductsItems] = useState([0,0,0,0]);
   const [productListItems, setProductListItems] = useState([]);
+  const { setTransaction } = useContext(TransactionsContext);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_API}/clients`)
@@ -58,37 +60,29 @@ function TransactionAdd({ onTransactionModalClose }) {
       .catch((error) => console.log(error));
   }, []);
 
+  
+
   const includeItem = () => {
-    let listItem = [product, qtde, reference_price, discount, total_price]
-    // setEstoque(product === "" || qtde === "" ? null : [product, qtde])
-
-    // let stockList = [...productsItems, estoque]
-
-    // console.log(stockList)
-    
-    // let newList = ;
+    let listItem = [product, qtde, reference_price, discount, total_price];
 
     setProductListItems([...productListItems, listItem]);
-   
-    
-   
+
   };
 
-
-
-  
-
   useEffect(() => {
-    
     setTotalValue(
-      productListItems.map((item) => item[4]).reduce((acc, item) => acc + item, 0)
+      productListItems
+        .map((item) => item[4])
+        .reduce((acc, item) => acc + item, 0)
     );
-  }, [productListItems])
-  
+  }, [productListItems]);
 
-  
   const registerTransaction = (e) => {
     e.preventDefault();
+
+    productListItems.map((item)=>{
+      
+    })
 
     axios({
       method: "post",
@@ -111,10 +105,22 @@ function TransactionAdd({ onTransactionModalClose }) {
     })
       .then(function (reponse) {
         //On traite la suite une fois la réponse obtenue
-        //  addCounter();
+
         // console.log(reponse);
         alert("Transação efetuada com sucesso!");
 
+        setTransaction({
+          date,
+          type,
+          client,
+          user,
+          comission,
+          productListItems,
+          totalValue,
+          condition_payment,
+          vcto,
+          form_payment,
+        });
         setDate("");
         setType("");
         setClient("");
@@ -131,7 +137,6 @@ function TransactionAdd({ onTransactionModalClose }) {
         setComission(0);
         setObs("");
 
-        setCounter(counter + 1);
         onTransactionModalClose();
       })
       .catch(function (erreur) {

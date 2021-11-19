@@ -15,7 +15,7 @@ import {
 } from "recharts";
 
 function DashBoard() {
-  const transactions = useContext(TransactionsContext);
+  const { transactions } = useContext(TransactionsContext);
 
   
 
