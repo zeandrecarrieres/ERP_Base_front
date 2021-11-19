@@ -99,7 +99,7 @@ function ClientAdd({onCLientModalClose}) {
               </label>
               <select
                 id="options-select"
-                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
+                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm border-solid border-gray-300"
                 placeholder="category"
                 onChange={(e) => setType(e.target.value)}
               >
@@ -133,7 +133,7 @@ function ClientAdd({onCLientModalClose}) {
               </label>
               <select
                 id="options-select"
-                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
+                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm border-solid border-gray-300"
                 placeholder="category"
                 onChange={(e) => setCategory(e.target.value)}
               >
@@ -170,7 +170,7 @@ function ClientAdd({onCLientModalClose}) {
               id="name"
               name="name"
               value={name}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setName(e.target.value)}
             />
           </div>
@@ -187,7 +187,7 @@ function ClientAdd({onCLientModalClose}) {
               id="email"
               name="email"
               value={email}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -204,7 +204,7 @@ function ClientAdd({onCLientModalClose}) {
               id="telephone"
               name="telephone"
               value={telephone}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setTelephone(e.target.value)}
             />
           </div>
@@ -221,7 +221,7 @@ function ClientAdd({onCLientModalClose}) {
               id="address"
               name="address"
               value={address}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
@@ -238,7 +238,7 @@ function ClientAdd({onCLientModalClose}) {
               id="complement"
               name="complement"
               value={complement}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setComplement(e.target.value)}
             />
           </div>
@@ -255,7 +255,7 @@ function ClientAdd({onCLientModalClose}) {
               id="district"
               name="district"
               value={district}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setDistrict(e.target.value)}
             />
           </div>
@@ -272,7 +272,7 @@ function ClientAdd({onCLientModalClose}) {
               id="city"
               name="city"
               value={city}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setCity(e.target.value)}
             />
           </div>
@@ -290,7 +290,7 @@ function ClientAdd({onCLientModalClose}) {
                 id="state"
                 name="state"
                 value={state}
-                className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+                className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
                 onChange={(e) => setState(e.target.value)}
               />
             </div>
@@ -307,7 +307,7 @@ function ClientAdd({onCLientModalClose}) {
                 id="postal"
                 name="postal"
                 value={postal}
-                className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+                className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
                 onChange={(e) => setPostal(e.target.value)}
               />
             </div>
@@ -325,7 +325,7 @@ function ClientAdd({onCLientModalClose}) {
               id="cnp"
               name="cnp"
               value={cnp}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setCnp(e.target.value)}
             />
           </div>

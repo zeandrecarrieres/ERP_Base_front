@@ -32,22 +32,22 @@ function Clients() {
             +
           </button>
         </div>
-        <table className="table-fixed border ">
+        <table className="table-fixed border w-8/12">
           <thead className="border ">
             <tr className="border ">
-              <th className="w-1/12  border bg-gray-100 font-medium text-sm ">
+              {/* <th className="w-1/12  border bg-gray-100 font-medium text-sm ">
                 Tipo
-              </th>
+              </th> */}
               <th className="w-1/12  border py-2 bg-gray-100 font-medium text-sm ">
                 Categoria
               </th>
               <th className="w-3/12  border bg-gray-100 font-medium text-sm ">
                 Nome/Razão Social
               </th>
-              <th className="w-2/12  border bg-gray-100 font-medium text-sm ">
+              <th className="w-3/12  border bg-gray-100 font-medium text-sm ">
                 Email
               </th>
-              <th className="w-2/12  border bg-gray-100 font-medium text-sm ">
+              <th className="w-3/12  border bg-gray-100 font-medium text-sm ">
                 Telefone
               </th>
               <th className="w-1/12  border bg-gray-100 font-medium text-sm ">

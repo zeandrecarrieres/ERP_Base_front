@@ -63,7 +63,7 @@ function SideBar() {
                 Transações
               </Link>
             </li>
-            <li className="py-2  hover:bg-gray-200 rounded p-4 hover:text-red-700">
+            {/* <li className="py-2  hover:bg-gray-200 rounded p-4 hover:text-red-700">
               <Assessment />
               <Link
                 to="/transactions"
@@ -91,7 +91,7 @@ function SideBar() {
                 Financeiro
               </Link>
               
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

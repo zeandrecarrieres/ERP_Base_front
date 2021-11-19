@@ -85,7 +85,7 @@ function ProductEdit({onEditProductModalClose, id}) {
           </div>
 
           <div className="flex justify-between ">
-            <div className="flex flex-col mb-4">
+            {/* <div className="flex flex-col mb-4">
               <label
                 htmlFor="code"
                 className=" font-medium text-sm text-gray-500 "
@@ -97,10 +97,10 @@ function ProductEdit({onEditProductModalClose, id}) {
                 id="code"
                 name="code"
                 value={code}
-                className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30"
+                className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30 border-solid border-gray-300"
                 onChange={(e) => setCode(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="flex flex-col mb-4">
               {/* <label
                 htmlFor="category"
@@ -124,7 +124,7 @@ function ProductEdit({onEditProductModalClose, id}) {
               </label>
               <select
                 id="options-select"
-                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
+                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm border-solid border-gray-300" 
                 placeholder="category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
@@ -182,7 +182,7 @@ function ProductEdit({onEditProductModalClose, id}) {
               id="name"
               name="name"
               value={name}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setName(e.target.value)}
             />
           </div>
@@ -198,12 +198,12 @@ function ProductEdit({onEditProductModalClose, id}) {
               id="description"
               name="description"
               value={description}
-              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
 
-          <div className="flex justify-between">
+          {/* <div className="flex justify-between gap-3">
             <div className="flex flex-col mb-4">
               <label
                 htmlFor="purchase_price"
@@ -216,7 +216,7 @@ function ProductEdit({onEditProductModalClose, id}) {
                 id="qtde"
                 name="qtde"
                 value={qtde}
-                className="border py-2 px-3 text-grey-darkes h-10 my-2 shadow-sm bg-opacity-30 px-2	w-full"
+                className="border py-2 px-3 text-grey-darkes h-10 my-2 shadow-sm bg-opacity-30 px-2	w-full border-solid border-gray-300"
                 onChange={(e) => setQtde(e.target.value)}
               />
             </div>
@@ -232,7 +232,7 @@ function ProductEdit({onEditProductModalClose, id}) {
                 id="purchase_price"
                 name="purchase_price"
                 value={purchase_price}
-                className="border py-2 px-3 text-grey-darkes h-10 my-2 shadow-sm bg-opacity-30 px-2	w-full"
+                className="border py-2 px-3 text-grey-darkes h-10 my-2 shadow-sm bg-opacity-30 px-2	w-full border-solid border-gray-300"
                 onChange={(e) => setPurchase_price(e.target.value)}
               />
             </div>
@@ -248,11 +248,11 @@ function ProductEdit({onEditProductModalClose, id}) {
                 id="reference_price"
                 name="reference_price"
                 value={reference_price}
-                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full"
+                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full border-solid border-gray-300"
                 onChange={(e) => setReference_price(e.target.value)}
               />
             </div>
-          </div>
+          </div> */}
 
           <button className="px-5 py-3 bg-red-700 text-white hover:bg-red-600 text-white  text-base mx-auto p-4 rounded w-full sm:w-auto">
             Atualizar

@@ -17,6 +17,8 @@ function TransactionAdd({ onTransactionModalClose }) {
   const [total_price, setTotal_price] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [totalValue, setTotalValue] = useState(0);
+  const [transport, setTransport] = useState(0);
+  const [depense, setDepense] = useState(0);
 
   const [clientOptions, setClientOptions] = useState([]);
   const [userOptions, setUserOptions] = useState([]);
@@ -88,8 +90,8 @@ function TransactionAdd({ onTransactionModalClose }) {
       method: "post",
       url: `${process.env.REACT_APP_URL_API}/transactions`,
       data: {
-        date,
         type,
+        date,
         client,
         user,
         comission,
@@ -98,6 +100,8 @@ function TransactionAdd({ onTransactionModalClose }) {
         // qtde,
         // reference_price,
         totalValue,
+        transport,
+        depense,
         condition_payment,
         vcto,
         form_payment,
@@ -163,7 +167,7 @@ function TransactionAdd({ onTransactionModalClose }) {
               type="date"
               id="date"
               name="date"
-              className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30 text-sm"
+              className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30 text-sm border-solid border-gray-300"
               onChange={(e) => setDate(e.target.value)}
             />
           </div>
@@ -175,7 +179,7 @@ function TransactionAdd({ onTransactionModalClose }) {
               Tipo
             </label>
             <select
-              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
+              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm border-solid border-gray-300"
               id="options-select"
               placeholder="description"
               // onClick={(e) => getProducts(e)}
@@ -203,7 +207,7 @@ function TransactionAdd({ onTransactionModalClose }) {
               {type === "Compra" ? "Comprador" : "Vendedor"}
             </label>
             <select
-              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
+              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm border-solid border-gray-300"
               id="options-select"
               placeholder="description"
               // onClick={(e) => getProducts(e)}
@@ -227,7 +231,7 @@ function TransactionAdd({ onTransactionModalClose }) {
             {type === "Compra" ? "Fornecedor" : "Cliente"}
           </label>
           <select
-            className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
+            className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm border-solid border-gray-300"
             id="options-select"
             placeholder="description"
             // onClick={(e) => getProducts(e)}
@@ -244,7 +248,7 @@ function TransactionAdd({ onTransactionModalClose }) {
                   <option value={option.name}>{option.name}</option>
                 ))}
           </select>
-          <label htmlFor="discount" className="font-bold text-sm text-gray-500">
+          <label htmlFor="discount" className="font-bold text-sm text-gray-500 border-solid border-gray-300">
             % Comissão
           </label>
           <input
@@ -252,7 +256,7 @@ function TransactionAdd({ onTransactionModalClose }) {
             id="comission"
             name="comission"
             value={comission}
-            className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
+            className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full border-solid border-gray-300"
             onChange={(e) => {
               setComission(e.target.value);
             }}
@@ -270,7 +274,7 @@ function TransactionAdd({ onTransactionModalClose }) {
                 Produto(s)
               </label>
               <select
-                className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 text-sm w-80"
+                className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 text-sm w-80 "
                 id="options-select"
                 placeholder="description"
                 // onClick={(e) => getProducts(e)}
@@ -380,18 +384,18 @@ function TransactionAdd({ onTransactionModalClose }) {
               <ul className="flex justify-around text-right bg-gray-50 shadow px-6">
                 <li className="px-2 mr-18 w-48 text-center ">{item[0]}</li>
                 <li className="px-2 mr-18 text-center">{item[1]}</li>
-                <li className="px-2 mr-18 text-center">{item[2]}</li>
+                <li className="px-2 mr-18 text-center">{item[2].toFixed(2)}</li>
                 <li className="px-2 mr-18 text-center">{item[3]}</li>
-                <li className="px-2 mr-18 text-center">{item[4]}</li>
+                <li className="px-2 mr-18 text-center">{item[4].toFixed(2)}</li>
               </ul>
             </>
           );
         })}
 
-        <div className="flex justify-between flex-wrap mt-8">
-          <div className="flex flex-col mb-4">
+      
+         
             <div className="flex justify-between flex-wrap ">
-              <div className="flex flex-col mb-4 ">
+              <div className="flex flex-col ">
                 <label
                   htmlFor="totalPrice"
                   className="font-bold text-sm text-gray-500"
@@ -402,24 +406,64 @@ function TransactionAdd({ onTransactionModalClose }) {
                   type="number"
                   id="totalValue"
                   name="totalValue"
-                  value={totalValue}
-                  className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-20"
+                  value={totalValue.toFixed(2)}
+                  className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-32 border-solid border-gray-300"
                 />
-
+                
+               
+                </div>
+                <div className="flex flex-col ">
+                <label
+                  htmlFor="totalPrice"
+                  className="font-bold text-sm text-gray-500"
+                >
+                  Frete
+                </label>
+                <input
+                  type="number"
+                  id="transport"
+                  name="transport"
+                  value={transport}
+                  className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-20 border-solid border-gray-300"
+                  onChange={(e) => setTransport(e.target.value)}
+                  
+                />
+                
+               
+                </div>
+                <div className="flex flex-col ">
+                <label
+                  htmlFor="totalPrice"
+                  className="font-bold text-sm text-gray-500"
+                >
+                  Outras Depesas
+                </label>
+                <input
+                  type="number"
+                  id="depense"
+                  name="depense"
+                  value={depense}
+                  className="border py-2 px-3 text-grey-darkest h-10  shadow-sm bg-opacity-30 px-2 w-28 border-solid border-gray-300"
+                  onChange={(e) => setDepense(e.target.value)}
+                />
+                
+               
+                </div>
+                <div className="flex flex-col ">
                 <label
                   htmlFor="client"
-                  className="font-bold text-sm text-gray-500 w-64"
+                  className="font-bold text-sm text-gray-500"
                 >
                   Condição de Pagamento
                 </label>
                 <select
-                  className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
+                  className="border py-2 px-3 text-grey-darkest h-10 shadow-sm bg-opacity-30 px-2 text-sm border-solid border-gray-300"
                   id="options-select"
                   placeholder="description"
                   // onClick={(e) => getProducts(e)}
                   onChange={(e) => setCondition_payment(e.target.value)}
                 >
-                  <option value="" className="flex flex-col mb-4">
+                  <option value="" className="flex">
                     -- Selecione uma opção --
                   </option>
 
@@ -428,7 +472,7 @@ function TransactionAdd({ onTransactionModalClose }) {
                 </select>
               </div>
 
-              <div className="flex flex-col ml-20 mb-4">
+              <div className="flex flex-col">
                 <label
                   htmlFor="date"
                   className="font-bold text-sm text-gray-500"
@@ -439,26 +483,26 @@ function TransactionAdd({ onTransactionModalClose }) {
                   type="date"
                   id="date"
                   name="vcto"
-                  className="border py-2 px-3 text-grey-darkest w-full h-10 my-2 shadow-sm bg-opacity-30 text-sm"
+                  className="border py-2 px-3 text-grey-darkest h-10 shadow-sm bg-opacity-30 text-sm border-solid border-gray-300"
                   onChange={(e) => setVcto(e.target.value)}
                 />
               </div>
 
-              <div className="flex flex-col mb-4 ">
+              <div className="flex flex-col mb-4 pl ">
                 <label
                   htmlFor="form_payment"
-                  className="font-bold text-sm text-gray-500 w-64"
+                  className="font-bold text-sm text-gray-500"
                 >
                   Forma de Pagamento
                 </label>
                 <select
-                  className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
+                  className="border py-2 pl-3 text-grey-darkest h-10 shadow-sm bg-opacity-30 px-2 text-sm border-solid border-gray-300"
                   id="options-select"
                   placeholder="description"
                   // onClick={(e) => getProducts(e)}
                   onChange={(e) => setForm_payment(e.target.value)}
                 >
-                  <option value="" className="flex flex-col mb-4">
+                  <option value="" className="flex flex-col">
                     -- Selecione uma opção --
                   </option>
 
@@ -484,11 +528,11 @@ function TransactionAdd({ onTransactionModalClose }) {
               id="obs"
               name="obs"
               value={obs}
-              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full "
+              className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 w-full border-solid border-gray-300"
               onChange={(e) => setObs(e.target.value)}
             />
-          </div>
-        </div>
+         
+        
 
         <button className="px-5 py-3 bg-red-700 text-white hover:bg-red-600 text-white text-base mx-auto p-4 rounded w-full sm:w-auto">
           Cadastrar

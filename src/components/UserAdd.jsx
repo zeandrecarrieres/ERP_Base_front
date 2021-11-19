@@ -64,7 +64,7 @@ function UserAdd({onUserModalClose}) {
               </label>
               <select
                 id="options-select"
-                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm"
+                className="border py-2 px-3 text-grey-darkest h-10 my-2 shadow-sm bg-opacity-30 px-2 text-sm border-solid border-gray-300"
                 placeholder="category"
                 onChange={(e) => setType(e.target.value)}
               >
@@ -93,7 +93,7 @@ function UserAdd({onUserModalClose}) {
               id="name"
               name="name"
               value={name}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setName(e.target.value)}
             />
           </div>
@@ -110,7 +110,7 @@ function UserAdd({onUserModalClose}) {
               id="email"
               name="email"
               value={email}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -127,7 +127,7 @@ function UserAdd({onUserModalClose}) {
               id="telephone"
               name="telephone"
               value={telephone}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setTelephone(e.target.value)}
             />
           </div>
@@ -144,7 +144,7 @@ function UserAdd({onUserModalClose}) {
               id="username"
               name="username"
               value={username}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
@@ -161,7 +161,7 @@ function UserAdd({onUserModalClose}) {
               id="password"
               name="password"
               value={password}
-              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2"
+              className="border py-2 px-3 text-grey-darkest    h-10 my-2 shadow-sm bg-opacity-30 px-2 border-solid border-gray-300"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
